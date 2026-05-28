@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Affiliate Dashboard — CreatorStack</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root {
+  --bg: #FAFAF6;
+  --surface: #FFFFFF;
+  --surface-2: #F4F1EA;
+  --border: #E8E3D9;
+  --border-2: #D8D2C6;
+  --primary: #1C1835;
+  --primary-hover: #2D2850;
+  --accent: #C8882E;
+  --accent-light: #FDF4E3;
+  --accent-hover: #A87023;
+  --text: #1A1714;
+  --text-2: #5C5650;
+  --text-3: #9C9086;
+  --success: #2A7A45;
+  --success-light: #E8F7EE;
+  --error: #C0392B;
+  --error-light: #FEE9E7;
+  --warning: #D97A04;
+  --warning-light: #FEF0E3;
+  --standard: #6E7591;
+  --standard-light: #F0F1F8;
+  --growth: #B8762A;
+  --growth-light: #FEF4E0;
+  --elite: #1F6B45;
+  --elite-light: #E8F7EE;
+  --shadow-sm: 0 1px 3px rgba(28,24,53,0.07), 0 1px 2px rgba(28,24,53,0.05);
+  --shadow-md: 0 4px 12px rgba(28,24,53,0.08), 0 2px 4px rgba(28,24,53,0.04);
+  --shadow-lg: 0 12px 28px rgba(28,24,53,0.10), 0 4px 8px rgba(28,24,53,0.06);
+  --r: 14px;
+  --r-sm: 8px;
+  --t: 0.22s ease;
+}
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+.serif { font-family: 'Cormorant Garamond', serif; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif; }
+img { max-width: 100%; display: block; }
+
+/* LAYOUT */
+.layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 0;
+  min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+  background: var(--primary);
+  color: #fff;
+  padding: 28px 20px;
+  overflow-y: auto;
+  position: sticky;
+  top: 0;
+  max-height: 100vh;
+}
+.sidebar-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+.sidebar-logo span { color: var(--accent); }
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: var(--r-sm);
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.6);
+  transition: var(--t);
+  cursor: pointer;
+}
+.sidebar-link:hover {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+.sidebar-link.active {
+  background: var(--accent);
+  color: var(--primary);
+  font-weight: 600;
+}
+.sidebar-footer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 0.85rem;
+}
+.sidebar-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.sidebar-user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  font-weight: 700;
+}
+.sidebar-user-name {
+  color: #fff;
+  font-weight: 600;
+  word-break: break-word;
+}
+.sidebar-logout {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.6);
+  font-size: 0.85rem;
+  text-align: left;
+  width: 100%;
+  margin-top: 12px;
+  transition: var(--t);
+}
+.sidebar-logout:hover {
+  color: #fff;
+}
+
+/* MAIN CONTENT */
+.main {
+  padding: 32px;
+  overflow-y: auto;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+.header-left h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+.header-sub {
+  font-size: 0.9rem;
+  color: var(--text-2);
+  margin-top: 4px;
+}
+
+/* TIER BADGE */
+.tier-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-top: 8px;
+}
+.tier-badge.standard {
+  background: var(--standard-light);
+  color: var(--standard);
+}
+.tier-badge.growth {
+  background: var(--growth-light);
+  color: var(--growth);
+}
+.tier-badge.elite {
+  background: var(--elite-light);
+  color: var(--elite);
+}
+
+/* CARDS GRID */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 32px;
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+}
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transition: var(--t);
+}
+
+/* STAT CARD */
+.stat-card {
+  display: flex;
+  flex-direction: column;
+}
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--text-3);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 12px;
+}
+.stat-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1;
+}
+.stat-change {
+  font-size: 0.8rem;
+  margin-top: 8px;
+}
+.stat-change.up {
+  color: var(--success);
+}
+.stat-change.down {
+  color: var(--error);
+}
+
+/* SECTION */
+.section {
+  margin-bottom: 32px;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* TAB BUTTONS */
+.tab-btns {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: var(--t);
+  border-bottom: 3px solid transparent;
+  position: relative;
+  bottom: -1px;
+}
+.tab-btn:hover {
+  color: var(--primary);
+}
+.tab-btn.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* TABLE */
+.table-wrap {
+  overflow-x: auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+thead {
+  background: var(--surface-2);
+}
+th {
+  padding: 12px;
+  text-align: left;
+  font-weight: 700;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+}
+td {
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--border-2);
+}
+tbody tr:hover {
+  background: var(--bg);
+}
+
+/* LINK COPY */
+.link-copy {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface-2);
+  padding: 10px 12px;
+  border-radius: var(--r-sm);
+  font-size: 0.85rem;
+  word-break: break-all;
+  font-family: 'Courier New', monospace;
+  color: var(--text-2);
+}
+.copy-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: var(--t);
+}
+.copy-btn:hover {
+  background: var(--accent-hover);
+}
+
+/* BUTTON */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: var(--t);
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--primary-hover);
+}
+.btn-accent {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-accent:hover {
+  background: var(--accent-hover);
+}
+.btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--border-2);
+  color: var(--primary);
+}
+.btn-outline:hover {
+  border-color: var(--primary);
+  background: var(--surface-2);
+}
+.btn-small {
+  padding: 8px 14px;
+  font-size: 0.8rem;
+}
+.btn-full {
+  width: 100%;
+}
+
+/* FORM */
+.form-group {
+  margin-bottom: 20px;
+}
+.form-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-2);
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+.form-label span {
+  color: var(--error);
+}
+.form-input, .form-select {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-sm);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text);
+  outline: none;
+  transition: var(--t);
+}
+.form-input:focus, .form-select:focus {
+  border-color: var(--primary);
+  background: var(--surface);
+  box-shadow: 0 0 0 3px rgba(28,24,53,0.06);
+}
+.form-hint {
+  font-size: 0.8rem;
+  color: var(--text-3);
+  margin-top: 6px;
+}
+.form-error {
+  font-size: 0.82rem;
+  color: var(--error);
+  margin-top: 8px;
+  display: none;
+}
+.form-error.show {
+  display: block;
+}
+.form-success {
+  font-size: 0.82rem;
+  color: var(--success);
+  margin-top: 8px;
+  display: none;
+}
+.form-success.show {
+  display: block;
+}
+
+/* MODAL */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(28,24,53,0.5);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.modal {
+  background: var(--surface);
+  border-radius: 14px;
+  padding: 32px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: var(--shadow-lg);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+.modal-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+.modal-close {
+  background: var(--surface-2);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--t);
+  color: var(--text-2);
+}
+.modal-close:hover {
+  background: var(--border);
+  color: var(--text);
+}
+
+/* ALERT */
+.alert {
+  padding: 14px 16px;
+  border-radius: var(--r-sm);
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+  display: none;
+}
+.alert.show {
+  display: block;
+}
+.alert-error {
+  background: var(--error-light);
+  color: var(--error);
+  border: 1px solid rgba(192,57,43,0.2);
+}
+.alert-success {
+  background: var(--success-light);
+  color: var(--success);
+  border: 1px solid rgba(42,122,69,0.2);
+}
+.alert-info {
+  background: var(--accent-light);
+  color: var(--accent);
+  border: 1px solid rgba(200,136,46,0.2);
+}
+.alert-warning {
+  background: var(--warning-light);
+  color: var(--warning);
+  border: 1px solid rgba(217,122,4,0.2);
+}
+
+/* EMPTY STATE */
+.empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--text-2);
+}
+.empty-state-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+.empty-state h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+/* LOADING */
+.loading {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 240px;
+    height: 100vh;
+    z-index: 999;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  .sidebar.active {
+    transform: translateX(0);
+  }
+  .main {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .main {
+    padding: 16px 12px;
+  }
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+  .card {
+    padding: 16px;
+  }
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .header-left h1 {
+    font-size: 1.5rem;
+  }
+  .tab-btns {
+    gap: 4px;
+  }
+  .tab-btn {
+    padding: 10px 12px;
+    font-size: 0.8rem;
+  }
+  table {
+    font-size: 0.8rem;
+  }
+  th, td {
+    padding: 10px 8px;
+  }
+  .link-copy {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="layout">
+  <!-- SIDEBAR -->
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-logo">Creator<span>Stack</span></div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-link active" data-page="overview">
+        <span>📊</span> Overview
+      </div>
+      <div class="sidebar-link" data-page="sales">
+        <span>💰</span> Sales & Revenue
+      </div>
+      <div class="sidebar-link" data-page="links">
+        <span>🔗</span> Affiliate Links
+      </div>
+      <div class="sidebar-link" data-page="coupons">
+        <span>🎟</span> Coupons
+      </div>
+      <div class="sidebar-link" data-page="payouts">
+        <span>💳</span> Payouts
+      </div>
+      <div class="sidebar-link" data-page="profile">
+        <span>⚙️</span> Profile
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar" id="userAvatar">A</div>
+        <div>
+          <div class="sidebar-user-name" id="userName">User</div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);" id="userEmail">email@example.com</div>
+        </div>
+      </div>
+      <button class="sidebar-logout" onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+    <!-- OVERVIEW PAGE -->
+    <div class="page" id="overview-page">
+      <div class="header">
+        <div class="header-left">
+          <h1 class="serif">Welcome back, <span id="displayName">User</span></h1>
+          <p class="header-sub" id="headerDate">Dashboard • Today</p>
+          <div class="tier-badge standard" id="tierBadge">🥈 Standard Partner • 20% Commission</div>
+        </div>
+      </div>
+
+      <!-- STATS -->
+      <div class="grid-2">
+        <div class="card stat-card">
+          <div class="stat-label">Total Sales</div>
+          <div class="stat-value" id="totalSales">0</div>
+          <div class="stat-change up">Next tier: 25 sales</div>
+        </div>
+        <div class="card stat-card">
+          <div class="stat-label">Revenue (₹)</div>
+          <div class="stat-value" id="totalRevenue">0</div>
+          <div class="stat-change">Commission-based earnings</div>
+        </div>
+        <div class="card stat-card">
+          <div class="stat-label">Available Payout</div>
+          <div class="stat-value" id="availablePayout">0</div>
+          <div class="stat-change" id="payoutStatus">Ready to withdraw</div>
+        </div>
+        <div class="card stat-card">
+          <div class="stat-label">Active Coupons</div>
+          <div class="stat-value" id="activeCoupons">0</div>
+          <div class="stat-change">Track performance</div>
+        </div>
+      </div>
+
+      <!-- RECENT SALES -->
+      <div class="section">
+        <div class="section-title">📈 Recent Sales (Last 7 Days)</div>
+        <div class="card">
+          <div class="table-wrap">
+            <table id="recentSalesTable">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Product</th>
+                  <th>Price</th>
+                  <th>Commission (₹)</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="recentSalesBody">
+                <tr><td colspan="5" style="text-align:center;padding:24px;color:var(--text-3);">Loading...</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="empty-state" id="emptySales" style="display:none;">
+            <div class="empty-state-icon">🎯</div>
+            <h3>No sales yet</h3>
+            <p>Start sharing your affiliate links to drive sales and earn commission.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- REWARDS INFO -->
+      <div class="section">
+        <div class="card" style="background:linear-gradient(135deg,var(--primary),#2D2850);color:#fff;border:none;">
+          <h3 class="serif" style="margin-bottom:12px;color:#fff;">🎁 100+ Monthly Sales = Exclusive Rewards</h3>
+          <p style="margin-bottom:16px;color:rgba(255,255,255,0.8);">Elite affiliates reaching 100+ monthly sales are enrolled in our exclusive rewards program.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;font-size:0.85rem;">
+            <div>✈️ International trips</div>
+            <div>📱 Premium electronics</div>
+            <div>🎒 Accessories & gadgets</div>
+            <div>🏆 Monthly recognition</div>
+          </div>
+          <p style="margin-top:16px;font-size:0.8rem;color:rgba(255,255,255,0.6);">Just keep an eye on your inbox! 👀</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SALES PAGE -->
+    <div class="page" id="sales-page" style="display:none;">
+      <div class="header">
+        <div class="header-left">
+          <h1 class="serif">Sales & Revenue</h1>
+          <p class="header-sub">Track all your sales and earnings</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card stat-card">
+          <div class="stat-label">Total Sales Count</div>
+          <div class="stat-value" id="salesCount">0</div>
+        </div>
+        <div class="card stat-card">
+          <div class="stat-label">Total Revenue</div>
+          <div class="stat-value" id="revTotal">₹0</div>
+        </div>
+        <div class="card stat-card">
+          <div class="stat-label">Avg. Per Sale</div>
+          <div class="stat-value" id="avgSale">₹0</div>
+        </div>
+        <div class="card stat-card">
+          <div class="stat-label">Pending Payouts</div>
+          <div class="stat-value" id="pendingPayouts">₹0</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">All Sales</div>
+        <div class="card">
+          <div class="table-wrap">
+            <table id="allSalesTable">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Order ID</th>
+                  <th>Product</th>
+                  <th>Customer</th>
+                  <th>Product Price</th>
+                  <th>Coupon Used</th>
+                  <th>Commission</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="allSalesBody">
+                <tr><td colspan="8" style="text-align:center;padding:24px;"><div class="loading"></div></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="empty-state" id="emptyAllSales" style="display:none;">
+            <div class="empty-state-icon">📊</div>
+            <h3>No sales recorded</h3>
+            <p>Your sales will appear here once customers purchase using your affiliate links.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LINKS PAGE -->
+    <div class="page" id="links-page" style="display:none;">
+      <div class="header">
+        <div class="header-left">
+          <h1 class="serif">Affiliate Links</h1>
+          <p class="header-sub">Your unique links for each product</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="card">
+          <div id="productsLinksContainer">
+            <div style="text-align:center;padding:24px;"><div class="loading"></div></div>
+          </div>
+          <div class="empty-state" id="emptyProducts" style="display:none;">
+            <div class="empty-state-icon">🔗</div>
+            <h3>No products available</h3>
+            <p>Check back later for products to share.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COUPONS PAGE -->
+    <div class="page" id="coupons-page" style="display:none;">
+      <div class="header">
+        <div class="header-left">
+          <h1 class="serif">Manage Coupons</h1>
+          <p class="header-sub">Create and track your discount codes</p>
+        </div>
+        <button class="btn btn-accent" onclick="openModal('couponModal')">+ Create Coupon</button>
+      </div>
+
+      <div class="grid-2">
+        <div class="card stat-card">
+          <div class="stat-label">Active Coupons</div>
+          <div class="stat-value" id="activeCouponsCount">0</div>
+        </div>
+        <div class="card stat-card">
+          <div class="stat-label">Total Uses</div>
+          <div class="stat-value" id="totalCouponUses">0</div>
+        </div>
+        <div class="card stat-card">
+          <div class="stat-label">Most Used</div>
+          <div class="stat-value" id="mostUsedCoupon">-</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Your Coupons</div>
+        <div class="card">
+          <div id="couponsContainer">
+            <div style="text-align:center;padding:24px;"><div class="loading"></div></div>
+          </div>
+          <div class="empty-state" id="emptyCoupons" style="display:none;">
+            <div class="empty-state-icon">🎟</div>
+            <h3>No coupons yet</h3>
+            <p>Create your first coupon to offer discounts to your audience.</p>
+            <button class="btn btn-accent" style="margin-top:16px;" onclick="openModal('couponModal')">Create Coupon</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAYOUTS PAGE -->
+    <div class="page" id="payouts-page" style="display:none;">
+      <div class="header">
+        <div class="header-left">
+          <h1 class="serif">Payout Requests</h1>
+          <p class="header-sub">Manage your withdrawal requests</p>
+        </div>
+        <button class="btn btn-accent" onclick="openModal('payoutModal')">Request Payout</button>
+      </div>
+
+      <div class="grid-2">
+        <div class="card stat-card">
+          <div class="stat-label">Available Balance</div>
+          <div class="stat-value" id="availableBalance">₹0</div>
+        </div>
+        <div class="card stat-card">
+          <div class="stat-label">Total Paid Out</div>
+          <div class="stat-value" id="totalPaidOut">₹0</div>
+        </div>
+        <div class="card stat-card">
+          <div class="stat-label">Pending Requests</div>
+          <div class="stat-value" id="pendingRequests">0</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Payout History</div>
+        <div class="card">
+          <div class="table-wrap">
+            <table id="payoutsTable">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Amount (₹)</th>
+                  <th>Status</th>
+                  <th>Payment ID</th>
+                </tr>
+              </thead>
+              <tbody id="payoutsBody">
+                <tr><td colspan="4" style="text-align:center;padding:24px;"><div class="loading"></div></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="empty-state" id="emptyPayouts" style="display:none;">
+            <div class="empty-state-icon">💳</div>
+            <h3>No payout requests yet</h3>
+            <p>Request a payout when you're ready to withdraw your earnings.</p>
+            <button class="btn btn-accent" style="margin-top:16px;" onclick="openModal('payoutModal')">Request Payout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROFILE PAGE -->
+    <div class="page" id="profile-page" style="display:none;">
+      <div class="header">
+        <div class="header-left">
+          <h1 class="serif">Profile Settings</h1>
+          <p class="header-sub">Manage your account information</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="serif" style="margin-bottom:16px;">Account Information</h3>
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:0.9rem;">
+            <div>
+              <div style="color:var(--text-3);font-size:0.8rem;">Name</div>
+              <div style="font-weight:600;" id="profileName">-</div>
+            </div>
+            <div>
+              <div style="color:var(--text-3);font-size:0.8rem;">Email</div>
+              <div style="font-weight:600;" id="profileEmail">-</div>
+            </div>
+            <div>
+              <div style="color:var(--text-3);font-size:0.8rem;">Phone</div>
+              <div style="font-weight:600;" id="profilePhone">-</div>
+            </div>
+            <div>
+              <div style="color:var(--text-3);font-size:0.8rem;">Role</div>
+              <div style="font-weight:600;" id="profileRole">-</div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h3 class="serif" style="margin-bottom:16px;">Bank Account Details</h3>
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:0.9rem;">
+            <div>
+              <div style="color:var(--text-3);font-size:0.8rem;">Account Holder</div>
+              <div style="font-weight:600;" id="bankName">-</div>
+            </div>
+            <div>
+              <div style="color:var(--text-3);font-size:0.8rem;">Account Number</div>
+              <div style="font-weight:600;" id="bankAccount">****</div>
+            </div>
+            <div>
+              <div style="color:var(--text-3);font-size:0.8rem;">IFSC Code</div>
+              <div style="font-weight:600;" id="bankIFSC">-</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="card" style="background:var(--error-light);border:1px solid rgba(192,57,43,0.2);">
+          <h3 style="color:var(--error);margin-bottom:12px;">⚠️ Danger Zone</h3>
+          <p style="font-size:0.9rem;color:var(--error);margin-bottom:16px;">Once you log out, you'll need to verify your email again to log back in.</p>
+          <button class="btn" style="background:var(--error);color:#fff;" onclick="logout()">Logout Account</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CREATE COUPON MODAL -->
+<div class="modal-overlay" id="couponModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title serif">Create Coupon</div>
+      <button class="modal-close" onclick="closeModal('couponModal')">✕</button>
+    </div>
+    <div class="alert alert-error" id="couponError"></div>
+    <div class="alert alert-success" id="couponSuccess"></div>
+    
+    <div class="form-group">
+      <label class="form-label">Coupon Code <span>*</span></label>
+      <input type="text" id="couponCode" class="form-input" placeholder="e.g. SAVE20" maxlength="20" style="text-transform:uppercase;">
+      <div class="form-hint">Unique code (alphanumeric only)</div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Discount Type <span>*</span></label>
+      <select id="couponType" class="form-select" onchange="updateCouponType()">
+        <option value="">Select type</option>
+        <option value="percentage">Percentage (%)</option>
+        <option value="fixed">Fixed Amount (₹)</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Discount Amount <span>*</span></label>
+      <input type="number" id="couponAmount" class="form-input" placeholder="0" min="0">
+      <div class="form-hint" id="discountHint">Max percentage varies by tier</div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Validity Type <span>*</span></label>
+      <select id="validityType" class="form-select">
+        <option value="">Select validity</option>
+        <option value="Number_of_sales">Number of Sales</option>
+        <option value="Number_of_days">Number of Days</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Validity Value <span>*</span></label>
+      <input type="number" id="validityValue" class="form-input" placeholder="e.g., 50" min="1">
+      <div class="form-hint" id="validityHint">Number of sales or days</div>
+    </div>
+    <button class="btn btn-accent btn-full" onclick="createCoupon()">Create Coupon</button>
+  </div>
+</div>
+
+<!-- REQUEST PAYOUT MODAL -->
+<div class="modal-overlay" id="payoutModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title serif">Request Payout</div>
+      <button class="modal-close" onclick="closeModal('payoutModal')">✕</button>
+    </div>
+    <div class="alert alert-error" id="payoutError"></div>
+    <div class="alert alert-success" id="payoutSuccess"></div>
+    
+    <div class="card" style="background:var(--accent-light);border:1px solid rgba(200,136,46,0.2);margin-bottom:20px;">
+      <div style="font-size:0.85rem;color:var(--text-2);">
+        <div style="font-weight:600;margin-bottom:4px;">Available Balance:</div>
+        <div style="font-size:1.3rem;font-weight:700;color:var(--accent);" id="modalAvailable">₹0</div>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label">Payout Amount (₹) <span>*</span></label>
+      <input type="number" id="payoutAmount" class="form-input" placeholder="Enter amount" min="0">
+      <div class="form-hint">Minimum payout: ₹100. Maximum: Your available balance</div>
+    </div>
+    
+    <div class="alert alert-info">
+      💡 Payouts are processed within 3-5 business days to your registered bank account.
+    </div>
+    
+    <button class="btn btn-accent btn-full" onclick="requestPayout()">Request Payout</button>
+  </div>
+</div>
+
+<script>
+// ========== CONFIG ==========
+const SUPABASE_URL = localStorage.getItem('SUPABASE_URL') || 'YOUR_SUPABASE_URL';
+const SUPABASE_ANON_KEY = localStorage.getItem('SUPABASE_ANON_KEY') || 'YOUR_SUPABASE_ANON_KEY';
+const { createClient } = supabase;
+const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// ========== STATE ==========
+let currentAffiliate = null;
+let allProducts = [];
+let allOrders = [];
+let allCoupons = [];
+
+// ========== INITIALIZATION ==========
+(function() {
+  const stored = localStorage.getItem('cs_affiliate');
+  if(!stored) {
+    window.location.href = 'affiliate.html';
+    return;
+  }
+  currentAffiliate = JSON.parse(stored);
+  initDashboard();
+})();
+
+async function initDashboard() {
+  if(!currentAffiliate?.id) {
+    window.location.href = 'affiliate.html';
+    return;
+  }
+
+  // Update header and sidebar
+  const firstName = (currentAffiliate.name || 'User').split(' ')[0];
+  document.getElementById('displayName').textContent = firstName;
+  document.getElementById('userName').textContent = currentAffiliate.name || 'User';
+  document.getElementById('userEmail').textContent = currentAffiliate.affiliate_email || '';
+  const initials = currentAffiliate.name ? currentAffiliate.name.substring(0, 1).toUpperCase() : 'A';
+  document.getElementById('userAvatar').textContent = initials;
+
+  // Update tier badge
+  updateTierBadge();
+
+  // Load data
+  await Promise.all([
+    loadProducts(),
+    loadOrdersAndCoupons()
+  ]);
+
+  // Initialize page navigation
+  initPageNav();
+
+  // Update overview page
+  updateOverviewPage();
+}
+
+function updateTierBadge() {
+  const commission = currentAffiliate.affiliate_commission || 'standard_partner_20%';
+  const sales = currentAffiliate.affiliate_sales || 0;
+  const tierBadge = document.getElementById('tierBadge');
+
+  if(commission.includes('elite') || sales >= 100) {
+    tierBadge.innerHTML = '💎 Elite Partner • 40% Commission';
+    tierBadge.className = 'tier-badge elite';
+  } else if(commission.includes('growth') || sales >= 25) {
+    tierBadge.innerHTML = '🥇 Growth Partner • 30% Commission';
+    tierBadge.className = 'tier-badge growth';
+  } else {
+    tierBadge.innerHTML = '🥈 Standard Partner • 20% Commission';
+    tierBadge.className = 'tier-badge standard';
+  }
+}
+
+async function loadProducts() {
+  try {
+    const { data, error } = await sb.from('Products').select('*');
+    if(error) throw error;
+    allProducts = data || [];
+  } catch(err) {
+    console.error('Load Products Error:', err);
+  }
+}
+
+async function loadOrdersAndCoupons() {
+  try {
+    const [ordersRes, couponsRes] = await Promise.all([
+      sb.from('Orders').select('*').eq('affiliate_id', currentAffiliate.id),
+      sb.from('coupons').select('*').eq('affiliate_id', currentAffiliate.id)
+    ]);
+
+    if(ordersRes.error) throw ordersRes.error;
+    if(couponsRes.error) throw couponsRes.error;
+
+    allOrders = ordersRes.data || [];
+    allCoupons = couponsRes.data || [];
+  } catch(err) {
+    console.error('Load Orders/Coupons Error:', err);
+  }
+}
+
+function updateOverviewPage() {
+  const sales = currentAffiliate.affiliate_sales || 0;
+  const revenue = currentAffiliate.affiliate_revenue_inr || 0;
+  const activeCouponsCount = allCoupons.filter(c => !c.is_expired).length;
+
+  document.getElementById('totalSales').textContent = sales;
+  document.getElementById('totalRevenue').textContent = `₹${revenue.toLocaleString('en-IN')}`;
+  document.getElementById('availablePayout').textContent = `₹${revenue.toLocaleString('en-IN')}`;
+  document.getElementById('activeCoupons').textContent = activeCouponsCount;
+
+  // Recent sales
+  const recentOrders = allOrders.slice(0, 5);
+  const tbody = document.getElementById('recentSalesBody');
+  if(recentOrders.length === 0) {
+    tbody.innerHTML = '';
+    document.getElementById('emptySales').style.display = 'block';
+  } else {
+    document.getElementById('emptySales').style.display = 'none';
+    tbody.innerHTML = recentOrders.map(order => `
+      <tr>
+        <td>${new Date(order.created_at).toLocaleDateString()}</td>
+        <td>${getProductName(order.Product)}</td>
+        <td>₹${order.Product_price || 0}</td>
+        <td>₹${calculateCommission(order.Product_price, order.affiliate_id)}</td>
+        <td><span style="color:var(--success);font-weight:600;">${order.Is_paid ? '✓ Paid' : '⏳ Pending'}</span></td>
+      </tr>
+    `).join('');
+  }
+}
+
+function getProductName(productId) {
+  const product = allProducts.find(p => p.id === productId);
+  return product?.Product_name || 'Product';
+}
+
+function calculateCommission(price, affiliateId) {
+  const commission = currentAffiliate.affiliate_commission || 'standard_partner_20%';
+  let rate = 0.20;
+  if(commission.includes('elite')) rate = 0.40;
+  else if(commission.includes('growth')) rate = 0.30;
+  return Math.floor(price * rate);
+}
+
+// ========== PAGE NAVIGATION ==========
+function initPageNav() {
+  document.querySelectorAll('.sidebar-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const page = link.dataset.page;
+      showPage(page);
+      
+      document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
+}
+
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+  document.getElementById(`${page}-page`).style.display = 'block';
+
+  if(page === 'sales') updateSalesPage();
+  else if(page === 'links') updateLinksPage();
+  else if(page === 'coupons') updateCouponsPage();
+  else if(page === 'payouts') updatePayoutsPage();
+  else if(page === 'profile') updateProfilePage();
+}
+
+async function updateSalesPage() {
+  const tbody = document.getElementById('allSalesBody');
+  if(allOrders.length === 0) {
+    tbody.innerHTML = '';
+    document.getElementById('emptyAllSales').style.display = 'block';
+  } else {
+    document.getElementById('emptyAllSales').style.display = 'none';
+    tbody.innerHTML = allOrders.map(order => `
+      <tr>
+        <td>${new Date(order.created_at).toLocaleDateString()}</td>
+        <td>${order.Order_number || 'N/A'}</td>
+        <td>${getProductName(order.Product)}</td>
+        <td>${order.Customer_name || '-'}</td>
+        <td>₹${order.Product_price || 0}</td>
+        <td>${order.coupon_used ? '✓' : '-'}</td>
+        <td>₹${calculateCommission(order.Product_price, order.affiliate_id)}</td>
+        <td><span style="color:${order.Is_paid ? 'var(--success)' : 'var(--warning)'};font-weight:600;">${order.Is_paid ? '✓ Paid' : '⏳ Pending'}</span></td>
+      </tr>
+    `).join('');
+  }
+
+  document.getElementById('salesCount').textContent = allOrders.length;
+  const totalRev = allOrders.reduce((sum, o) => sum + calculateCommission(o.Product_price || 0, o.affiliate_id), 0);
+  document.getElementById('revTotal').textContent = `₹${totalRev.toLocaleString('en-IN')}`;
+  const avg = allOrders.length > 0 ? Math.floor(totalRev / allOrders.length) : 0;
+  document.getElementById('avgSale').textContent = `₹${avg.toLocaleString('en-IN')}`;
+}
+
+function updateLinksPage() {
+  const container = document.getElementById('productsLinksContainer');
+  if(allProducts.length === 0) {
+    container.innerHTML = '';
+    document.getElementById('emptyProducts').style.display = 'block';
+    return;
+  }
+
+  document.getElementById('emptyProducts').style.display = 'none';
+  container.innerHTML = allProducts.map(product => {
+    const affLink = `https://creatorstack.breakfastclub.co.in/${product.id}?ref=${currentAffiliate.id}`;
+    return `
+      <div style="padding:16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:16px;">
+        <div>
+          <div style="font-weight:600;color:var(--primary);margin-bottom:4px;">${product.Product_name}</div>
+          <div style="font-size:0.85rem;color:var(--text-2);">₹${product.Product_price}</div>
+        </div>
+        <div class="link-copy">
+          <span>${affLink}</span>
+          <button class="copy-btn" onclick="copyText('${affLink}')">Copy</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function updateCouponsPage() {
+  const container = document.getElementById('couponsContainer');
+  if(allCoupons.length === 0) {
+    container.innerHTML = '';
+    document.getElementById('emptyCoupons').style.display = 'block';
+  } else {
+    document.getElementById('emptyCoupons').style.display = 'none';
+    container.innerHTML = allCoupons.map(coupon => `
+      <div style="padding:16px;border-bottom:1px solid var(--border);">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <div style="font-weight:600;font-family:monospace;color:var(--primary);">${coupon.coupon_code}</div>
+          <span style="background:var(--accent-light);color:var(--accent);padding:4px 8px;border-radius:4px;font-size:0.75rem;font-weight:600;">${coupon.discount_type === 'percentage' ? coupon.discount + '%' : '₹' + coupon.discount}</span>
+        </div>
+        <div style="font-size:0.85rem;color:var(--text-2);">Valid: ${coupon.validity} ${coupon.validity_type === 'Number_of_sales' ? 'sales' : 'days'}</div>
+      </div>
+    `).join('');
+  }
+
+  document.getElementById('activeCouponsCount').textContent = allCoupons.length;
+  const totalUses = allCoupons.reduce((sum, c) => sum + (c.uses || 0), 0);
+  document.getElementById('totalCouponUses').textContent = totalUses;
+}
+
+function updatePayoutsPage() {
+  document.getElementById('availableBalance').textContent = `₹${(currentAffiliate.affiliate_revenue_inr || 0).toLocaleString('en-IN')}`;
+  document.getElementById('totalPaidOut').textContent = '₹0';
+  document.getElementById('pendingRequests').textContent = '0';
+}
+
+function updateProfilePage() {
+  document.getElementById('profileName').textContent = currentAffiliate.name || '-';
+  document.getElementById('profileEmail').textContent = currentAffiliate.affiliate_email || '-';
+  document.getElementById('profilePhone').textContent = currentAffiliate.affiliate_phone || '-';
+  document.getElementById('profileRole').textContent = currentAffiliate.best_role || '-';
+  document.getElementById('bankName').textContent = currentAffiliate.bankaccount_name || '-';
+  document.getElementById('bankAccount').textContent = '****' + (currentAffiliate.bankaccount_number || '').toString().slice(-4);
+  document.getElementById('bankIFSC').textContent = currentAffiliate.bankaccount_ifsc || '-';
+}
+
+// ========== MODAL HELPERS ==========
+function openModal(id) {
+  document.getElementById(id).classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.modal-overlay').forEach(o => {
+  o.addEventListener('click', e => { if(e.target === o) closeModal(o.id); });
+});
+
+// ========== COUPON FUNCTIONS ==========
+function updateCouponType() {
+  const type = document.getElementById('couponType').value;
+  const hint = document.getElementById('discountHint');
+  const commission = currentAffiliate.affiliate_commission || 'standard_partner_20%';
+  
+  if(type === 'percentage') {
+    let maxDiscount = 20;
+    if(commission.includes('elite')) maxDiscount = 40;
+    else if(commission.includes('growth')) maxDiscount = 30;
+    hint.textContent = `Max discount: ${maxDiscount}%`;
+  } else if(type === 'fixed') {
+    const canFixed = commission.includes('growth') || commission.includes('elite');
+    if(!canFixed) {
+      alert('Only Growth & Elite partners can offer fixed discounts!');
+      document.getElementById('couponType').value = '';
+      return;
+    }
+    hint.textContent = 'Max discount: ₹498';
+  }
+}
+
+async function createCoupon() {
+  const code = document.getElementById('couponCode').value.trim().toUpperCase();
+  const type = document.getElementById('couponType').value;
+  const amount = parseInt(document.getElementById('couponAmount').value) || 0;
+  const validityType = document.getElementById('validityType').value;
+  const validityValue = parseInt(document.getElementById('validityValue').value) || 0;
+
+  if(!code || !type || !amount || !validityType || !validityValue) {
+    showAlert('couponError', 'Please fill all fields');
+    return;
+  }
+
+  try {
+    const coupon = {
+      affiliate_id: currentAffiliate.id,
+      coupon_code: code,
+      discount_type: type,
+      discount: amount,
+      validity_type: validityType,
+      validity: validityValue
+    };
+
+    const { data, error } = await sb.from('coupons').insert([coupon]).select().single();
+    if(error) throw error;
+
+    showAlert('couponSuccess', '✓ Coupon created successfully!', 'success');
+    setTimeout(() => {
+      closeModal('couponModal');
+      loadOrdersAndCoupons();
+      updateCouponsPage();
+    }, 1500);
+  } catch(err) {
+    showAlert('couponError', 'Failed to create coupon: ' + (err.message || 'Please try again.'));
+  }
+}
+
+async function requestPayout() {
+  const amount = parseInt(document.getElementById('payoutAmount').value) || 0;
+  const available = currentAffiliate.affiliate_revenue_inr || 0;
+
+  if(!amount) {
+    showAlert('payoutError', 'Please enter a valid amount');
+    return;
+  }
+
+  if(amount < 100) {
+    showAlert('payoutError', 'Minimum payout amount is ₹100');
+    return;
+  }
+
+  if(amount > available) {
+    showAlert('payoutError', 'Insufficient balance');
+    return;
+  }
+
+  try {
+    const payout = {
+      affiliate_id: currentAffiliate.id,
+      payout_amount_inr: amount,
+      payout_status: 'pending'
+    };
+
+    const { data, error } = await sb.from('affiliate_payout_request').insert([payout]).select().single();
+    if(error) throw error;
+
+    showAlert('payoutSuccess', '✓ Payout request submitted!', 'success');
+    setTimeout(() => {
+      closeModal('payoutModal');
+      updatePayoutsPage();
+    }, 1500);
+  } catch(err) {
+    showAlert('payoutError', 'Failed to request payout: ' + (err.message || 'Please try again.'));
+  }
+}
+
+function showAlert(id, msg, type='error') {
+  const el = document.getElementById(id);
+  el.textContent = msg;
+  el.className = `alert alert-${type} show`;
+}
+
+function copyText(text) {
+  navigator.clipboard.writeText(text).then(() => {
+    alert('✓ Copied to clipboard!');
+  });
+}
+
+function logout() {
+  localStorage.removeItem('cs_affiliate');
+  localStorage.removeItem('cs_affiliate_token');
+  window.location.href = 'affiliate.html';
+}
+</script>
+</body>
+</html>
