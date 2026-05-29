@@ -132,9 +132,7 @@ nav{
   animation:fadeDown 0.7s ease 0.1s both;
   letter-spacing:-0.02em;
 }
-.hero h1 em{
-  font-style:italic;color:var(--accent);
-}
+.hero h1 em{font-style:italic;color:var(--accent);}
 .hero-sub{
   margin-top:24px;
   font-size:clamp(1rem,2vw,1.18rem);
@@ -363,9 +361,7 @@ section{padding:88px 5%;}
 
 /* FAQ */
 .faq-list{max-width:760px;margin:0 auto;}
-.faq-item{
-  border-bottom:1px solid var(--border);
-}
+.faq-item{border-bottom:1px solid var(--border);}
 .faq-item:first-child{border-top:1px solid var(--border);}
 .faq-q{
   width:100%;background:none;border:none;
@@ -385,11 +381,7 @@ section{padding:88px 5%;}
   color:var(--text-3);
 }
 .faq-item.open .faq-q .icon{transform:rotate(45deg);background:var(--accent-light);color:var(--accent);}
-.faq-a{
-  max-height:0;overflow:hidden;
-  transition:max-height 0.35s ease;
-  padding:0;
-}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.35s ease;padding:0;}
 .faq-item.open .faq-a{max-height:300px;}
 .faq-a-inner{padding-bottom:22px;font-size:0.925rem;color:var(--text-2);line-height:1.75;}
 
@@ -409,10 +401,7 @@ footer{
   display:flex;align-items:center;justify-content:space-between;
   flex-wrap:wrap;gap:24px;
 }
-.footer-logo{
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.4rem;font-weight:700;color:#fff;
-}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:#fff;}
 .footer-logo span{color:var(--accent);}
 .footer-links{display:flex;gap:24px;flex-wrap:wrap;}
 .footer-links a{font-size:0.875rem;color:rgba(255,255,255,0.5);transition:var(--t);}
@@ -442,10 +431,7 @@ footer{
 }
 .modal-overlay.active .modal{transform:translateY(0) scale(1);}
 .modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;}
-.modal-title{
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.6rem;font-weight:700;color:var(--primary);
-}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--primary);}
 .modal-close{
   width:36px;height:36px;background:var(--surface-2);border:none;
   border-radius:50%;display:flex;align-items:center;justify-content:center;
@@ -454,27 +440,17 @@ footer{
 .modal-close:hover{background:var(--border);color:var(--text);}
 
 /* STEPS */
-.step-indicator{
-  display:flex;align-items:center;gap:8px;
-  margin-bottom:28px;
-}
-.step-dot{
-  width:8px;height:8px;border-radius:50%;
-  background:var(--border);transition:var(--t);
-}
+.step-indicator{display:flex;align-items:center;gap:8px;margin-bottom:28px;}
+.step-dot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:var(--t);}
 .step-dot.active{background:var(--accent);transform:scale(1.3);}
 .step-dot.done{background:var(--success);}
 .step-lbl{font-size:0.78rem;color:var(--text-3);margin-left:4px;font-weight:600;}
-
 .form-step{display:none;}
 .form-step.active{display:block;}
 
 /* FORM */
 .form-group{margin-bottom:20px;}
-.form-label{
-  display:block;font-size:0.82rem;font-weight:700;
-  color:var(--text-2);margin-bottom:8px;letter-spacing:0.02em;
-}
+.form-label{display:block;font-size:0.82rem;font-weight:700;color:var(--text-2);margin-bottom:8px;letter-spacing:0.02em;}
 .form-label span{color:var(--error);}
 .form-input{
   width:100%;padding:12px 16px;
@@ -519,21 +495,12 @@ footer{
   outline:none;transition:var(--t);
 }
 .otp-cell:focus{border-color:var(--primary);background:var(--surface);box-shadow:0 0 0 3px rgba(28,24,53,0.06);}
-.otp-info{
-  text-align:center;font-size:0.875rem;color:var(--text-2);
-  margin-bottom:16px;line-height:1.6;
-}
+.otp-info{text-align:center;font-size:0.875rem;color:var(--text-2);margin-bottom:16px;line-height:1.6;}
 .otp-info strong{color:var(--primary);}
-.resend-btn{
-  background:none;border:none;color:var(--accent);
-  font-size:0.82rem;font-weight:600;cursor:pointer;
-  text-decoration:underline;
-}
+.resend-btn{background:none;border:none;color:var(--accent);font-size:0.82rem;font-weight:600;cursor:pointer;text-decoration:underline;}
 
 /* SUCCESS STEP */
-.success-anim{
-  text-align:center;padding:20px 0;
-}
+.success-anim{text-align:center;padding:20px 0;}
 .success-circle{
   width:80px;height:80px;
   background:linear-gradient(135deg,var(--success-light),#d4f4e0);
@@ -547,11 +514,7 @@ footer{
 .success-sub{font-size:0.9rem;color:var(--text-2);line-height:1.7;margin-bottom:28px;}
 
 /* ALERT */
-.alert{
-  padding:12px 16px;border-radius:var(--r-sm);
-  font-size:0.875rem;margin-bottom:16px;
-  display:none;
-}
+.alert{padding:12px 16px;border-radius:var(--r-sm);font-size:0.875rem;margin-bottom:16px;display:none;}
 .alert.show{display:block;}
 .alert-error{background:var(--error-light);color:var(--error);border:1px solid rgba(192,57,43,0.2);}
 .alert-success{background:var(--success-light);color:var(--success);border:1px solid rgba(42,122,69,0.2);}
@@ -597,7 +560,6 @@ footer{
     <a href="#tiers" class="btn btn-ghost">Commission</a>
     <a href="#faq" class="btn btn-ghost">FAQ</a>
     <button class="btn btn-outline" onclick="openModal('loginModal')">Login</button>
-    <button class="btn btn-accent" onclick="openModal('onboardModal')" style="display:none" id="nav-mobile-btn">Join</button>
     <button class="btn btn-accent nav-mobile-btn" onclick="openModal('onboardModal')">Join Now</button>
   </div>
 </nav>
@@ -608,36 +570,18 @@ footer{
   <h1 class="serif">Earn Up To <em>40%</em> On Every<br>Sale You Drive</h1>
   <p class="hero-sub">Join hundreds of creators, freelancers and side-hustlers earning passive income by sharing CreatorStack products with their audience.</p>
   <div class="hero-actions">
-    <button class="btn btn-accent btn-lg" onclick="openModal('onboardModal')">
-      Apply as Affiliate &rarr;
-    </button>
-    <button class="btn btn-outline btn-lg" onclick="openModal('loginModal')">
-      Login to Dashboard
-    </button>
+    <button class="btn btn-accent btn-lg" onclick="openModal('onboardModal')">Apply as Affiliate &rarr;</button>
+    <button class="btn btn-outline btn-lg" onclick="openModal('loginModal')">Login to Dashboard</button>
   </div>
-  <div class="hero-scroll">
-    <div class="scroll-line"></div>
-  </div>
+  <div class="hero-scroll"><div class="scroll-line"></div></div>
 </section>
 
 <!-- STATS BAR -->
 <div class="stats-bar">
-  <div class="stat-item">
-    <div class="stat-val">500<span>+</span></div>
-    <div class="stat-lbl">Active Affiliates</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-val">₹<span>50L+</span></div>
-    <div class="stat-lbl">Total Paid Out</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-val">3</div>
-    <div class="stat-lbl">Tier Levels</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-val">40<span>%</span></div>
-    <div class="stat-lbl">Max Commission</div>
-  </div>
+  <div class="stat-item"><div class="stat-val">500<span>+</span></div><div class="stat-lbl">Active Affiliates</div></div>
+  <div class="stat-item"><div class="stat-val">₹<span>50L+</span></div><div class="stat-lbl">Total Paid Out</div></div>
+  <div class="stat-item"><div class="stat-val">3</div><div class="stat-lbl">Tier Levels</div></div>
+  <div class="stat-item"><div class="stat-val">40<span>%</span></div><div class="stat-lbl">Max Commission</div></div>
 </div>
 
 <!-- FEATURED STRIP -->
@@ -653,7 +597,6 @@ footer{
     <div class="strip-sep">•</div>
     <div class="strip-item">💳 Payout <span>directly to your bank</span></div>
     <div class="strip-sep">•</div>
-    <!-- Duplicate for seamless loop -->
     <div class="strip-item">🎯 Share unique links <span>earn per sale</span></div>
     <div class="strip-sep">•</div>
     <div class="strip-item">🎁 <span>100+ monthly sales</span> = gifts, trips & more</div>
@@ -675,30 +618,10 @@ footer{
     <p class="section-sub">Four easy steps to start earning with CreatorStack.</p>
   </div>
   <div class="steps-grid">
-    <div class="step-card">
-      <div class="step-num">01</div>
-      <div class="step-icon">📝</div>
-      <h3>Apply & Get Verified</h3>
-      <p>Fill your details, verify your email via OTP, and add your bank account. Approvals happen fast.</p>
-    </div>
-    <div class="step-card">
-      <div class="step-num">02</div>
-      <div class="step-icon">🔗</div>
-      <h3>Get Your Unique Links</h3>
-      <p>Your dashboard shows a personalised affiliate link for every CreatorStack product. Just copy & share.</p>
-    </div>
-    <div class="step-card">
-      <div class="step-num">03</div>
-      <div class="step-icon">🎟</div>
-      <h3>Create Custom Coupons</h3>
-      <p>Issue discount coupons to your audience. Track which coupon converts best, right from your dashboard.</p>
-    </div>
-    <div class="step-card">
-      <div class="step-num">04</div>
-      <div class="step-icon">💸</div>
-      <h3>Earn & Request Payout</h3>
-      <p>Watch commissions stack up in real-time. Request a payout anytime — it goes straight to your bank.</p>
-    </div>
+    <div class="step-card"><div class="step-num">01</div><div class="step-icon">📝</div><h3>Apply & Get Verified</h3><p>Fill your details, verify your email via OTP, and add your bank account. Approvals happen fast.</p></div>
+    <div class="step-card"><div class="step-num">02</div><div class="step-icon">🔗</div><h3>Get Your Unique Links</h3><p>Your dashboard shows a personalised affiliate link for every CreatorStack product. Just copy & share.</p></div>
+    <div class="step-card"><div class="step-num">03</div><div class="step-icon">🎟</div><h3>Create Custom Coupons</h3><p>Issue discount coupons to your audience. Track which coupon converts best, right from your dashboard.</p></div>
+    <div class="step-card"><div class="step-num">04</div><div class="step-icon">💸</div><h3>Earn & Request Payout</h3><p>Watch commissions stack up in real-time. Request a payout anytime — it goes straight to your bank.</p></div>
   </div>
 </section>
 
@@ -710,8 +633,6 @@ footer{
     <p class="section-sub">Every affiliate starts at Standard and auto-upgrades as your sales grow.</p>
   </div>
   <div class="tiers-grid">
-
-    <!-- Standard -->
     <div class="tier-card tier-standard">
       <div class="tier-badge-label">🥈 Standard Partner</div>
       <div class="tier-commission serif">20<span>%</span></div>
@@ -724,13 +645,8 @@ footer{
         <div class="tier-feat">Full dashboard access</div>
         <div class="tier-feat">Bank payout on request</div>
       </div>
-      <div class="tier-upgrade">
-        <div class="dot"></div>
-        25 sales unlocks Growth Partner
-      </div>
+      <div class="tier-upgrade"><div class="dot"></div>25 sales unlocks Growth Partner</div>
     </div>
-
-    <!-- Growth -->
     <div class="tier-card tier-growth">
       <div class="tier-badge-label">🥇 Growth Partner</div>
       <div class="tier-commission serif" style="color:var(--growth)">30<span>%</span></div>
@@ -743,13 +659,8 @@ footer{
         <div class="tier-feat">Priority payout processing</div>
         <div class="tier-feat">All Standard features</div>
       </div>
-      <div class="tier-upgrade">
-        <div class="dot" style="background:var(--growth)"></div>
-        100 sales unlocks Elite Partner
-      </div>
+      <div class="tier-upgrade"><div class="dot" style="background:var(--growth)"></div>100 sales unlocks Elite Partner</div>
     </div>
-
-    <!-- Elite -->
     <div class="tier-card tier-elite" style="position:relative;">
       <div style="position:absolute;top:20px;right:20px;background:var(--elite-light);color:var(--elite);font-size:0.72rem;font-weight:700;padding:4px 10px;border-radius:100px;letter-spacing:0.04em;">BEST</div>
       <div class="tier-badge-label">💎 Elite Partner</div>
@@ -764,7 +675,6 @@ footer{
         <div class="tier-feat">All Growth features</div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -776,34 +686,10 @@ footer{
     <p class="section-sub">Elite affiliates hitting 100+ monthly sales are enrolled in our exclusive rewards program. Think big.</p>
   </div>
   <div class="rewards-grid">
-    <div class="reward-card">
-      <div class="reward-icon">✈️</div>
-      <div class="reward-content">
-        <h3>International Trips</h3>
-        <p>Top-performing affiliates receive curated international travel experiences, fully sponsored by us.</p>
-      </div>
-    </div>
-    <div class="reward-card">
-      <div class="reward-icon">📱</div>
-      <div class="reward-content">
-        <h3>Electronics & Gadgets</h3>
-        <p>From smartphones to laptops — high-performing affiliates get the tools that fuel their hustle.</p>
-      </div>
-    </div>
-    <div class="reward-card">
-      <div class="reward-icon">🎒</div>
-      <div class="reward-content">
-        <h3>Premium Accessories</h3>
-        <p>Exclusive fashion, lifestyle, and work accessories handpicked for our top community members.</p>
-      </div>
-    </div>
-    <div class="reward-card">
-      <div class="reward-icon">🏆</div>
-      <div class="reward-content">
-        <h3>Monthly Recognition</h3>
-        <p>Get featured as CreatorStack's top affiliate of the month across our platforms and community.</p>
-      </div>
-    </div>
+    <div class="reward-card"><div class="reward-icon">✈️</div><div class="reward-content"><h3>International Trips</h3><p>Top-performing affiliates receive curated international travel experiences, fully sponsored by us.</p></div></div>
+    <div class="reward-card"><div class="reward-icon">📱</div><div class="reward-content"><h3>Electronics & Gadgets</h3><p>From smartphones to laptops — high-performing affiliates get the tools that fuel their hustle.</p></div></div>
+    <div class="reward-card"><div class="reward-icon">🎒</div><div class="reward-content"><h3>Premium Accessories</h3><p>Exclusive fashion, lifestyle, and work accessories handpicked for our top community members.</p></div></div>
+    <div class="reward-card"><div class="reward-icon">🏆</div><div class="reward-content"><h3>Monthly Recognition</h3><p>Get featured as CreatorStack's top affiliate of the month across our platforms and community.</p></div></div>
   </div>
   <div class="rewards-cta">
     <h3 class="serif">Keep an eye on your inbox.<br>Rewards come <em>unexpectedly.</em></h3>
@@ -818,107 +704,16 @@ footer{
     <h2 class="section-title serif">Questions, answered.</h2>
   </div>
   <div class="faq-list">
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        How are commissions calculated?
-        <span class="icon">+</span>
-      </button>
-      <div class="faq-a"><div class="faq-a-inner">
-        Your commission is based on the original product price multiplied by your tier rate (20%, 30%, or 40%). If you've given a discount coupon to the buyer, that discount amount is deducted from your commission. For example: if a product is ₹500, you're a Standard affiliate (20%), and your coupon gives 10% off — your commission = (₹500 × 20%) − (₹500 × 10%) = ₹100 − ₹50 = ₹50.
-      </div></div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        When will I get upgraded to Growth or Elite Partner?
-        <span class="icon">+</span>
-      </button>
-      <div class="faq-a"><div class="faq-a-inner">
-        Upgrades are based on your cumulative sales count. You'll be upgraded to Growth Partner (30% commission) once you hit 25 total sales, and to Elite Partner (40% commission) at 100 total sales. Your dashboard shows your current progress toward the next tier.
-      </div></div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        What's the difference between fixed and percentage discounts?
-        <span class="icon">+</span>
-      </button>
-      <div class="faq-a"><div class="faq-a-inner">
-        Percentage discounts reduce the product price by a % (e.g., 15% off). Fixed discounts reduce by a flat INR amount (e.g., ₹200 off). Fixed discount coupons are only available to Growth and Elite partners, with a maximum fixed discount of ₹498. Both types of discounts are deducted from your commission earnings.
-      </div></div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        How does my affiliate link work?
-        <span class="icon">+</span>
-      </button>
-      <div class="faq-a"><div class="faq-a-inner">
-        Your affiliate link format is: <code style="background:var(--surface-2);padding:2px 6px;border-radius:4px;font-size:0.85em;">creatorstack.breakfastclub.co.in/PRODUCT_ID?ref=YOUR_ID</code>. When someone clicks your link and makes a paid purchase, the sale is automatically attributed to your account. You'll see it reflected in your dashboard instantly.
-      </div></div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        Can I create multiple coupons?
-        <span class="icon">+</span>
-      </button>
-      <div class="faq-a"><div class="faq-a-inner">
-        Yes! You can create multiple unique coupon codes from your dashboard, each with different discount rates and validity settings. Your dashboard even shows how many times each coupon has been used, so you can spot which codes perform best with your audience.
-      </div></div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        How do I request a payout?
-        <span class="icon">+</span>
-      </button>
-      <div class="faq-a"><div class="faq-a-inner">
-        From your dashboard, go to the Payouts section and click "Request Payout." Enter the amount you'd like to withdraw. Our team processes payouts to the Indian bank account you registered with. Typical processing time is 3–5 business days.
-      </div></div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        When do coupons expire?
-        <span class="icon">+</span>
-      </button>
-      <div class="faq-a"><div class="faq-a-inner">
-        When creating a coupon, you choose the validity type: either a fixed number of sales (e.g., first 50 uses) or a fixed number of days (e.g., valid for 30 days). Once the limit is reached, the coupon automatically becomes inactive.
-      </div></div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        What are the eligibility criteria to join?
-        <span class="icon">+</span>
-      </button>
-      <div class="faq-a"><div class="faq-a-inner">
-        Anyone with an Indian bank account can apply — students, freelancers, creators, self-employed individuals, or side-hustlers. Just fill out the onboarding form, verify your email via OTP, and you're in. All affiliates start at the Standard Partner tier.
-      </div></div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        How quickly are sales reflected in my dashboard?
-        <span class="icon">+</span>
-      </button>
-      <div class="faq-a"><div class="faq-a-inner">
-        Sales are tracked in real-time. The moment a buyer completes a paid order using your link or coupon, it appears in your dashboard. Commission is calculated immediately and added to your pending revenue balance.
-      </div></div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        What gifts do I get with 100+ monthly sales?
-        <span class="icon">+</span>
-      </button>
-      <div class="faq-a"><div class="faq-a-inner">
-        Elite affiliates achieving 100 or more monthly sales are enrolled in our exclusive rewards program. Rewards include international travel experiences, premium electronics, accessories, and more — all fully sponsored by CreatorStack. Gifts are dispatched without warning, so just keep an eye on your inbox! 🎁
-      </div></div>
-    </div>
-
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How are commissions calculated?<span class="icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Your commission is based on the original product price multiplied by your tier rate (20%, 30%, or 40%). If you've given a discount coupon to the buyer, that discount amount is deducted from your commission. For example: if a product is ₹500, you're a Standard affiliate (20%), and your coupon gives 10% off — your commission = (₹500 × 20%) − (₹500 × 10%) = ₹100 − ₹50 = ₹50.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">When will I get upgraded to Growth or Elite Partner?<span class="icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Upgrades are based on your cumulative sales count. You'll be upgraded to Growth Partner (30% commission) once you hit 25 total sales, and to Elite Partner (40% commission) at 100 total sales. Your dashboard shows your current progress toward the next tier.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What's the difference between fixed and percentage discounts?<span class="icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Percentage discounts reduce the product price by a % (e.g., 15% off). Fixed discounts reduce by a flat INR amount (e.g., ₹200 off). Fixed discount coupons are only available to Growth and Elite partners, with a maximum fixed discount of ₹498. Both types of discounts are deducted from your commission earnings.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How does my affiliate link work?<span class="icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Your affiliate link format is: <code style="background:var(--surface-2);padding:2px 6px;border-radius:4px;font-size:0.85em;">creatorstack.breakfastclub.co.in/PRODUCT_ID?ref=YOUR_ID</code>. When someone clicks your link and makes a paid purchase, the sale is automatically attributed to your account.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I create multiple coupons?<span class="icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Yes! You can create multiple unique coupon codes from your dashboard, each with different discount rates and validity settings. Your dashboard shows how many times each coupon has been used, so you can spot which codes perform best.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I request a payout?<span class="icon">+</span></button><div class="faq-a"><div class="faq-a-inner">From your dashboard, go to the Payouts section and click "Request Payout." Enter the amount you'd like to withdraw. Typical processing time is 3–5 business days to your registered Indian bank account.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">When do coupons expire?<span class="icon">+</span></button><div class="faq-a"><div class="faq-a-inner">When creating a coupon, you choose the validity type: either a fixed number of sales (e.g., first 50 uses) or a fixed number of days (e.g., valid for 30 days). Once the limit is reached, the coupon automatically becomes inactive.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What are the eligibility criteria to join?<span class="icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Anyone with an Indian bank account can apply — students, freelancers, creators, self-employed individuals, or side-hustlers. Just fill out the onboarding form, verify your email via OTP, and you're in. All affiliates start at the Standard Partner tier.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How quickly are sales reflected in my dashboard?<span class="icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Sales are tracked in real-time. The moment a buyer completes a paid order using your link or coupon, it appears in your dashboard. Commission is calculated immediately and added to your pending revenue balance.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What gifts do I get with 100+ monthly sales?<span class="icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Elite affiliates achieving 100 or more monthly sales are enrolled in our exclusive rewards program. Rewards include international travel experiences, premium electronics, accessories, and more — all fully sponsored by CreatorStack. Gifts are dispatched without warning, so just keep an eye on your inbox! 🎁</div></div></div>
   </div>
 </section>
 
@@ -954,7 +749,6 @@ footer{
       <div class="modal-title serif">Join as Affiliate</div>
       <button class="modal-close" onclick="closeModal('onboardModal')">✕</button>
     </div>
-
     <div class="step-indicator" id="ob-indicators">
       <div class="step-dot active" id="ob-dot-1"></div>
       <div class="step-dot" id="ob-dot-2"></div>
@@ -962,7 +756,6 @@ footer{
       <div class="step-dot" id="ob-dot-4"></div>
       <span class="step-lbl" id="ob-step-lbl">Step 1 of 4</span>
     </div>
-
     <div class="alert alert-error" id="ob-error"></div>
     <div class="alert alert-info" id="ob-info"></div>
 
@@ -982,10 +775,7 @@ footer{
 
     <!-- STEP 2: OTP -->
     <div class="form-step" id="ob-step-2">
-      <div class="otp-info">
-        OTP sent to <strong id="ob-email-display"></strong>.<br>
-        Check your inbox (and spam). Valid for 10 minutes.
-      </div>
+      <div class="otp-info">OTP sent to <strong id="ob-email-display"></strong>.<br>Check your inbox (and spam). Valid for 10 minutes.</div>
       <div class="otp-grid">
         <input type="text" maxlength="1" class="otp-cell" oninput="otpNext(this,1)" onkeydown="otpBack(event,this)">
         <input type="text" maxlength="1" class="otp-cell" oninput="otpNext(this,2)" onkeydown="otpBack(event,this)">
@@ -995,9 +785,7 @@ footer{
         <input type="text" maxlength="1" class="otp-cell" oninput="otpNext(this,6)" onkeydown="otpBack(event,this)">
       </div>
       <button class="btn btn-primary btn-full" onclick="obVerifyOtp()">Verify OTP →</button>
-      <div style="text-align:center;margin-top:16px;">
-        <button class="resend-btn" onclick="obResendOtp()">Resend OTP</button>
-      </div>
+      <div style="text-align:center;margin-top:16px;"><button class="resend-btn" onclick="obResendOtp()">Resend OTP</button></div>
     </div>
 
     <!-- STEP 3: Role + Phone -->
@@ -1060,7 +848,6 @@ footer{
         <a href="dashboard.html" class="btn btn-accent btn-full btn-lg">Go to Your Dashboard →</a>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -1071,11 +858,9 @@ footer{
       <div class="modal-title serif">Login to Dashboard</div>
       <button class="modal-close" onclick="closeModal('loginModal')">✕</button>
     </div>
-
     <div class="alert alert-error" id="login-error"></div>
     <div class="alert alert-info" id="login-info"></div>
 
-    <!-- Login Step 1 -->
     <div class="form-step active" id="login-step-1">
       <div class="form-group">
         <label class="form-label">Registered Email</label>
@@ -1088,12 +873,8 @@ footer{
       </p>
     </div>
 
-    <!-- Login Step 2 -->
     <div class="form-step" id="login-step-2">
-      <div class="otp-info">
-        OTP sent to <strong id="login-email-display"></strong>.<br>
-        Check your inbox (and spam). Valid for 10 minutes.
-      </div>
+      <div class="otp-info">OTP sent to <strong id="login-email-display"></strong>.<br>Check your inbox (and spam). Valid for 10 minutes.</div>
       <div class="otp-grid">
         <input type="text" maxlength="1" class="otp-cell" oninput="loginOtpNext(this,1)" onkeydown="otpBack(event,this)">
         <input type="text" maxlength="1" class="otp-cell" oninput="loginOtpNext(this,2)" onkeydown="otpBack(event,this)">
@@ -1103,26 +884,39 @@ footer{
         <input type="text" maxlength="1" class="otp-cell" oninput="loginOtpNext(this,6)" onkeydown="otpBack(event,this)">
       </div>
       <button class="btn btn-primary btn-full" onclick="loginVerify()">Login →</button>
-      <div style="text-align:center;margin-top:16px;">
-        <button class="resend-btn" onclick="loginResend()">Resend OTP</button>
-      </div>
+      <div style="text-align:center;margin-top:16px;"><button class="resend-btn" onclick="loginResend()">Resend OTP</button></div>
     </div>
-
   </div>
 </div>
 
 <script>
-// ========== CONFIG ==========
-// Load from environment variables or fallback
-const SUPABASE_URL = window.ENV?.SUPABASE_URL || localStorage.getItem('SUPABASE_URL') || 'YOUR_SUPABASE_URL';
-const SUPABASE_ANON_KEY = window.ENV?.SUPABASE_ANON_KEY || localStorage.getItem('SUPABASE_ANON_KEY') || 'YOUR_SUPABASE_ANON_KEY';
+// ========== CONFIG — Vercel Environment Variables ==========
+// Credentials are fetched from /api/config (a Vercel serverless function
+// that reads SUPABASE_URL and SUPABASE_ANON_KEY from Vercel env vars).
+// Falls back to localStorage for local development only.
+let sb = null;
 
-if(SUPABASE_URL.includes('YOUR_') || SUPABASE_ANON_KEY.includes('YOUR_')) {
-  console.warn('⚠️  Supabase credentials not configured. Update in admin panel or environment variables.');
+async function initSupabase() {
+  try {
+    const res = await fetch('/api/config');
+    if (!res.ok) throw new Error('Config API returned ' + res.status);
+    const { SUPABASE_URL, SUPABASE_ANON_KEY } = await res.json();
+    if (!SUPABASE_URL || !SUPABASE_ANON_KEY) throw new Error('Missing credentials from /api/config');
+    sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    return true;
+  } catch (err) {
+    // Local dev fallback — credentials.html saves these to localStorage
+    const url = localStorage.getItem('SUPABASE_URL');
+    const key = localStorage.getItem('SUPABASE_ANON_KEY');
+    if (url && key && !url.includes('YOUR_')) {
+      sb = supabase.createClient(url, key);
+      console.warn('[Dev] Using localStorage credentials. On Vercel, /api/config is used instead.');
+      return true;
+    }
+    console.error('[Error] Supabase not initialised:', err.message);
+    return false;
+  }
 }
-
-const { createClient } = supabase;
-const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // ========== MODAL HELPERS ==========
 function openModal(id) {
@@ -1178,18 +972,11 @@ function hideAlerts(prefix) {
     if(el){ el.className = 'alert'; el.textContent = ''; }
   });
 }
-function setLoading(btnId, loading) {
-  const btn = document.getElementById(btnId);
-  if(!btn) return;
-  btn.disabled = loading;
-  btn.textContent = loading ? 'Please wait…' : btn.dataset.label || btn.textContent;
-}
 
 // ========== ONBOARDING STATE ==========
 let obData = {};
 let obOtpId = null;
 
-// Show a specific onboarding step
 function obShowStep(n) {
   for(let i=1;i<=5;i++){
     document.getElementById(`ob-step-${i}`).classList.toggle('active', i===n);
@@ -1205,75 +992,46 @@ function obShowStep(n) {
   if(lbl && n===5) document.getElementById('ob-indicators').style.display='none';
 }
 
-// Step 1
 async function obStep1() {
   hideAlerts('ob');
   const name = document.getElementById('ob-name').value.trim();
   const email = document.getElementById('ob-email').value.trim();
   if(!name || !email) { showAlert('ob-error','Please fill in all fields.'); return; }
   if(!/\S+@\S+\.\S+/.test(email)) { showAlert('ob-error','Please enter a valid email.'); return; }
-  if(name.length < 2) { showAlert('ob-error','Please enter a valid name (minimum 2 characters).'); return; }
+  if(name.length < 2) { showAlert('ob-error','Name must be at least 2 characters.'); return; }
 
   const btn = document.getElementById('ob-s1-btn');
   btn.disabled = true; btn.textContent = 'Sending OTP…';
 
   try {
-    // Validate Supabase connection
-    if(SUPABASE_URL.includes('YOUR_')) {
-      throw new Error('Supabase credentials not configured. Please contact admin.');
-    }
+    if(!sb) throw new Error('App not ready. Please refresh the page.');
 
-    // Check if already registered and verified
     const { data: existing, error: checkErr } = await sb.from('affiliates')
       .select('id,is_email_verified').eq('affiliate_email',email).maybeSingle();
-    
-    if(checkErr && checkErr.code !== 'PGRST116') {
-      console.error('Check error:', checkErr);
-      throw new Error('Unable to verify email registration status.');
-    }
-
+    if(checkErr && checkErr.code !== 'PGRST116') throw new Error('Unable to verify email status.');
     if(existing?.is_email_verified) {
       showAlert('ob-error','This email is already registered. Please login instead.');
-      btn.disabled=false; btn.textContent='Continue — Verify Email →';
-      return;
+      btn.disabled=false; btn.textContent='Continue — Verify Email →'; return;
     }
-
-    // Insert OTP record into database
-    const otpPayload = {
-      affiliate_email: email,
-      affiliate_name: name,
-      is_used: false,
-      email_sent: true
-    };
 
     const { data: otp, error: otpError } = await sb.from('affiliate_email_otp')
-      .insert([otpPayload])
-      .select()
-      .single();
-
-    if(otpError) {
-      console.error('OTP Insertion Error:', otpError);
-      throw new Error(otpError.message || 'Failed to create OTP request. Please try again.');
-    }
-
-    if(!otp) {
-      throw new Error('OTP record not created. Please try again.');
-    }
+      .insert([{ affiliate_email: email, affiliate_name: name, is_used: false, email_sent: true }])
+      .select().single();
+    if(otpError) throw new Error(otpError.message || 'Failed to create OTP.');
+    if(!otp) throw new Error('OTP record not created.');
 
     obOtpId = otp.id;
     obData = { name, email };
     document.getElementById('ob-email-display').textContent = email;
     obShowStep(2);
-    showAlert('ob-info',`✓ OTP sent to ${email}. 6-digit code valid for 10 minutes.`,'info');
+    showAlert('ob-info',`✓ OTP sent to ${email}. Valid for 10 minutes.`,'info');
   } catch(err) {
-    const msg = err.message || 'Failed to send OTP. Please check your internet connection.';
-    showAlert('ob-error', msg);
+    showAlert('ob-error', err.message || 'Failed to send OTP. Please try again.');
     console.error('OTP Step 1 Error:', err);
   }
   btn.disabled=false; btn.textContent='Continue — Verify Email →';
 }
 
-// OTP Verify
 async function obVerifyOtp() {
   hideAlerts('ob');
   const grid = document.querySelector('#ob-step-2 .otp-grid');
@@ -1285,35 +1043,16 @@ async function obVerifyOtp() {
 
   try {
     const { data: otp, error: queryErr } = await sb.from('affiliate_email_otp')
-      .select('*')
-      .eq('id', obOtpId)
-      .eq('otp_code', code)
-      .eq('is_used', false)
-      .maybeSingle();
+      .select('*').eq('id', obOtpId).eq('otp_code', code).eq('is_used', false).maybeSingle();
+    if(queryErr) throw new Error(queryErr.message);
+    if(!otp) { showAlert('ob-error','Invalid OTP. Please check and try again.'); btn.disabled=false; btn.textContent='Verify OTP →'; return; }
+    if(new Date(otp.expires_at) < new Date()) { showAlert('ob-error','OTP expired. Please request a new one.'); btn.disabled=false; btn.textContent='Verify OTP →'; return; }
 
-    if(queryErr) {
-      throw new Error(queryErr.message || 'Database query failed.');
-    }
-
-    if(!otp) { 
-      showAlert('ob-error','Invalid OTP. Please check and try again.'); 
-      btn.disabled=false; btn.textContent='Verify OTP →';
-      return; 
-    }
-
-    if(new Date(otp.expires_at) < new Date()) { 
-      showAlert('ob-error','OTP has expired. Please request a new one.'); 
-      btn.disabled=false; btn.textContent='Verify OTP →';
-      return; 
-    }
-
-    // Mark as used
     await sb.from('affiliate_email_otp').update({ is_used: true }).eq('id', obOtpId);
     obShowStep(3);
     showAlert('ob-info','✓ Email verified successfully.','info');
   } catch(err) {
     showAlert('ob-error','Verification failed: ' + (err.message || 'Please try again.'));
-    console.error('OTP Verify Error:', err);
   }
   btn.disabled=false; btn.textContent='Verify OTP →';
 }
@@ -1321,31 +1060,18 @@ async function obVerifyOtp() {
 async function obResendOtp() {
   hideAlerts('ob');
   try {
-    const otpPayload = {
-      affiliate_email: obData.email,
-      affiliate_name: obData.name,
-      is_used: false,
-      email_sent: true
-    };
-
     const { data: otp, error } = await sb.from('affiliate_email_otp')
-      .insert([otpPayload])
-      .select()
-      .single();
-
+      .insert([{ affiliate_email: obData.email, affiliate_name: obData.name, is_used: false, email_sent: true }])
+      .select().single();
     if(error) throw error;
-    if(!otp) throw new Error('Failed to create new OTP');
-
     obOtpId = otp.id;
     clearOtp(document.querySelector('#ob-step-2 .otp-grid'));
-    showAlert('ob-info','✓ New OTP sent to your email.','info');
+    showAlert('ob-info','✓ New OTP sent.','info');
   } catch(err) {
     showAlert('ob-error','Failed to resend OTP: ' + (err.message || 'Please try again.'));
-    console.error('Resend Error:', err);
   }
 }
 
-// Step 3
 function obStep3() {
   hideAlerts('ob');
   const role = document.getElementById('ob-role').value;
@@ -1358,7 +1084,6 @@ function obStep3() {
   obShowStep(4);
 }
 
-// Step 4: Submit
 async function obSubmit() {
   hideAlerts('ob');
   const bankName = document.getElementById('ob-bank-name').value.trim();
@@ -1375,8 +1100,7 @@ async function obSubmit() {
   btn.disabled = true; btn.textContent = 'Creating your account…';
 
   try {
-    // Create affiliate record
-    const affiliatePayload = {
+    const payload = {
       name: obData.name,
       affiliate_email: obData.email,
       is_email_verified: true,
@@ -1390,49 +1114,26 @@ async function obSubmit() {
       bankaccount_ifsc: bankIFSC
     };
 
-    // Check if affiliate exists
-    const { data: existing, error: checkErr } = await sb.from('affiliates')
-      .select('id')
-      .eq('affiliate_email', obData.email)
-      .maybeSingle();
-
-    if(checkErr && checkErr.code !== 'PGRST116') {
-      throw new Error(checkErr.message || 'Failed to check existing account.');
-    }
+    const { data: existing } = await sb.from('affiliates').select('id').eq('affiliate_email', obData.email).maybeSingle();
 
     let affiliateData;
     if(existing) {
-      // Update existing record
-      const { data, error } = await sb.from('affiliates')
-        .update(affiliatePayload)
-        .eq('id', existing.id)
-        .select()
-        .single();
+      const { data, error } = await sb.from('affiliates').update(payload).eq('id', existing.id).select().single();
       if(error) throw error;
       affiliateData = data;
     } else {
-      // Insert new record
-      const { data, error } = await sb.from('affiliates')
-        .insert([affiliatePayload])
-        .select()
-        .single();
+      const { data, error } = await sb.from('affiliates').insert([payload]).select().single();
       if(error) throw error;
       affiliateData = data;
     }
 
-    if(!affiliateData || !affiliateData.id) {
-      throw new Error('Affiliate record creation failed.');
-    }
+    if(!affiliateData?.id) throw new Error('Affiliate record creation failed.');
 
-    // Store in localStorage
     localStorage.setItem('cs_affiliate', JSON.stringify(affiliateData));
     localStorage.setItem('cs_affiliate_token', btoa(obData.email + ':' + new Date().getTime()));
-    
     obShowStep(5);
-    showAlert('ob-info','✓ Account created successfully!','info');
   } catch(err) {
-    const msg = err.message || 'Registration failed. Please try again.';
-    showAlert('ob-error', msg);
+    showAlert('ob-error', err.message || 'Registration failed. Please try again.');
     console.error('Submit Error:', err);
   }
   btn.disabled=false; btn.textContent='Complete Registration 🎉';
@@ -1445,9 +1146,7 @@ let loginAffiliateId = null;
 async function loginSendOtp() {
   hideAlerts('login');
   const email = document.getElementById('login-email').value.trim();
-  if(!email || !/\S+@\S+\.\S+/.test(email)) {
-    showAlert('login-error','Please enter a valid email address.'); return;
-  }
+  if(!email || !/\S+@\S+\.\S+/.test(email)) { showAlert('login-error','Please enter a valid email address.'); return; }
 
   const btn = document.querySelector('#login-step-1 .btn');
   btn.disabled = true; btn.textContent = 'Sending OTP…';
@@ -1455,48 +1154,23 @@ async function loginSendOtp() {
   try {
     const { data: aff, error: affErr } = await sb.from('affiliates')
       .select('id, name, is_email_verified').eq('affiliate_email', email).maybeSingle();
-    
-    if(affErr && affErr.code !== 'PGRST116') {
-      throw new Error(affErr.message || 'Database query failed.');
-    }
-
-    if(!aff) { 
-      showAlert('login-error','No affiliate account found with this email.'); 
-      btn.disabled=false; btn.textContent='Send Login OTP →'; 
-      return; 
-    }
-
-    if(!aff.is_email_verified) { 
-      showAlert('login-error','Email not verified. Please complete registration first.'); 
-      btn.disabled=false; btn.textContent='Send Login OTP →'; 
-      return; 
-    }
-
-    const otpPayload = {
-      affiliate_email: email,
-      affiliate_name: aff.name,
-      is_used: false,
-      email_sent: true
-    };
+    if(affErr && affErr.code !== 'PGRST116') throw new Error(affErr.message);
+    if(!aff) { showAlert('login-error','No affiliate account found with this email.'); btn.disabled=false; btn.textContent='Send Login OTP →'; return; }
+    if(!aff.is_email_verified) { showAlert('login-error','Email not verified. Please complete registration first.'); btn.disabled=false; btn.textContent='Send Login OTP →'; return; }
 
     const { data: otp, error } = await sb.from('affiliate_email_otp')
-      .insert([otpPayload])
-      .select()
-      .single();
-
+      .insert([{ affiliate_email: email, affiliate_name: aff.name, is_used: false, email_sent: true }])
+      .select().single();
     if(error) throw error;
-    if(!otp) throw new Error('Failed to create OTP record.');
 
     loginOtpId = otp.id;
     loginAffiliateId = aff.id;
     document.getElementById('login-email-display').textContent = email;
-
     document.getElementById('login-step-1').classList.remove('active');
     document.getElementById('login-step-2').classList.add('active');
-    showAlert('login-info',`✓ OTP sent to ${email}. Check your inbox.`,'info');
+    showAlert('login-info',`✓ OTP sent to ${email}.`,'info');
   } catch(err) {
     showAlert('login-error','Failed to send OTP: ' + (err.message || 'Please try again.'));
-    console.error('Login OTP Error:', err);
   }
   btn.disabled=false; btn.textContent='Send Login OTP →';
 }
@@ -1512,32 +1186,20 @@ async function loginVerify() {
 
   try {
     const { data: otp, error: otpErr } = await sb.from('affiliate_email_otp')
-      .select('*')
-      .eq('id', loginOtpId)
-      .eq('otp_code', code)
-      .eq('is_used', false)
-      .maybeSingle();
-
+      .select('*').eq('id', loginOtpId).eq('otp_code', code).eq('is_used', false).maybeSingle();
     if(otpErr) throw otpErr;
     if(!otp) { showAlert('login-error','Invalid OTP.'); btn.disabled=false; btn.textContent='Login →'; return; }
     if(new Date(otp.expires_at) < new Date()) { showAlert('login-error','OTP expired. Please request a new one.'); btn.disabled=false; btn.textContent='Login →'; return; }
 
     await sb.from('affiliate_email_otp').update({ is_used: true }).eq('id', loginOtpId);
-
-    const { data: affiliate, error: affErr } = await sb.from('affiliates')
-      .select('*')
-      .eq('id', loginAffiliateId)
-      .single();
-
+    const { data: affiliate, error: affErr } = await sb.from('affiliates').select('*').eq('id', loginAffiliateId).single();
     if(affErr) throw affErr;
-    if(!affiliate) throw new Error('Affiliate record not found.');
 
     localStorage.setItem('cs_affiliate', JSON.stringify(affiliate));
     localStorage.setItem('cs_affiliate_token', btoa(affiliate.affiliate_email + ':' + new Date().getTime()));
     window.location.href = 'dashboard.html';
   } catch(err) {
     showAlert('login-error','Login failed: ' + (err.message || 'Please try again.'));
-    console.error('Login Verify Error:', err);
   }
   btn.disabled=false; btn.textContent='Login →';
 }
@@ -1546,44 +1208,36 @@ async function loginResend() {
   hideAlerts('login');
   const email = document.getElementById('login-email').value.trim();
   try {
-    const { data: aff, error: affErr } = await sb.from('affiliates')
-      .select('id,name').eq('affiliate_email', email).maybeSingle();
-    
-    if(affErr && affErr.code !== 'PGRST116') throw affErr;
-
-    const otpPayload = {
-      affiliate_email: email,
-      affiliate_name: aff?.name || '',
-      is_used: false,
-      email_sent: true
-    };
-
+    const { data: aff } = await sb.from('affiliates').select('id,name').eq('affiliate_email', email).maybeSingle();
     const { data: otp, error } = await sb.from('affiliate_email_otp')
-      .insert([otpPayload])
-      .select()
-      .single();
-
+      .insert([{ affiliate_email: email, affiliate_name: aff?.name || '', is_used: false, email_sent: true }])
+      .select().single();
     if(error) throw error;
     loginOtpId = otp.id;
     clearOtp(document.querySelector('#login-step-2 .otp-grid'));
-    showAlert('login-info','✓ New OTP sent to your email.','info');
+    showAlert('login-info','✓ New OTP sent.','info');
   } catch(err) {
     showAlert('login-error','Failed to resend OTP: ' + (err.message || 'Please try again.'));
-    console.error('Resend Error:', err);
   }
 }
 
-// ========== REDIRECT IF ALREADY LOGGED IN ==========
-(function() {
+// ========== INIT ==========
+// Fetch Vercel env-var credentials, then check if already logged in.
+(async function() {
+  await initSupabase();
   const stored = localStorage.getItem('cs_affiliate');
   if(stored) {
-    const aff = JSON.parse(stored);
-    if(aff?.id) {
-      // Show a "Go to Dashboard" link in nav if logged in
-      document.querySelector('.nav-links').innerHTML += `<a href="dashboard.html" class="btn btn-accent">My Dashboard →</a>`;
-    }
+    try {
+      const aff = JSON.parse(stored);
+      if(aff?.id) {
+        document.querySelector('.nav-links').innerHTML +=
+          `<a href="dashboard.html" class="btn btn-accent">My Dashboard →</a>`;
+      }
+    } catch(e) {}
   }
 })();
 </script>
 </body>
 </html>
+
+
