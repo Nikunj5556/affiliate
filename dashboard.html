@@ -38,12 +38,12 @@ button{cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif}
 .layout{display:grid;grid-template-columns:var(--sidebar-w) 1fr;min-height:100vh}
 
 /* ── SIDEBAR ── */
-.sidebar{background:var(--primary);color:#fff;display:flex;flex-direction:column;padding:0;position:sticky;top:0;height:100vh;overflow-y:auto}
-.sidebar-header{padding:24px 20px 0;border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:20px}
+.sidebar{background:var(--primary);color:#fff;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto}
+.sidebar-header{padding:24px 20px 20px;border-bottom:1px solid rgba(255,255,255,.08)}
 .sidebar-logo{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;color:#fff;margin-bottom:20px}
 .sidebar-logo span{color:var(--accent)}
 .sidebar-user{display:flex;align-items:center;gap:10px;padding:12px;background:rgba(255,255,255,.06);border-radius:10px}
-.avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-hover));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0}
+.avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-hover));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0;color:#fff}
 .sidebar-user-info{min-width:0}
 .sidebar-user-name{font-weight:600;font-size:.875rem;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sidebar-user-email{font-size:.72rem;color:rgba(255,255,255,.45);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -51,19 +51,19 @@ button{cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif}
 .nav-item{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:10px;font-size:.875rem;color:rgba(255,255,255,.6);cursor:pointer;transition:var(--t);user-select:none;border:none;background:none;width:100%;text-align:left}
 .nav-item .icon{font-size:1rem;width:20px;text-align:center;flex-shrink:0}
 .nav-item:hover{background:rgba(255,255,255,.08);color:#fff}
-.nav-item.active{background:var(--accent);color:var(--primary);font-weight:700}
+.nav-item.active{background:var(--accent);color:#fff;font-weight:700}
 .nav-section-label{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3);padding:12px 12px 4px;margin-top:4px}
 .sidebar-footer{padding:16px 12px;border-top:1px solid rgba(255,255,255,.08)}
 .tier-pill{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:100px;font-size:.75rem;font-weight:700;margin-bottom:12px;width:100%;justify-content:center}
 .tier-pill.standard{background:rgba(110,117,145,.2);color:#a8adca}
 .tier-pill.growth{background:rgba(184,118,42,.2);color:#d4a05e}
 .tier-pill.elite{background:rgba(31,107,69,.2);color:#5dc68e}
-.btn-logout{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.5);border-radius:8px;padding:8px;font-size:.8rem;font-weight:600;transition:var(--t)}
+.btn-logout{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.5);border-radius:8px;padding:8px;font-size:.8rem;font-weight:600;transition:var(--t);cursor:pointer}
 .btn-logout:hover{background:rgba(255,255,255,.12);color:#fff}
 
 /* mobile toggle */
 .mobile-top{display:none;background:var(--primary);color:#fff;padding:14px 16px;align-items:center;gap:12px;position:sticky;top:0;z-index:200}
-.hamburger{background:none;border:none;color:#fff;font-size:1.3rem;cursor:pointer}
+.hamburger{background:none;border:none;color:#fff;font-size:1.3rem;cursor:pointer;padding:4px 8px}
 .sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300}
 .sidebar-overlay.show{display:block}
 
@@ -110,7 +110,7 @@ button{cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif}
 .section-title .icon{font-size:1.05rem}
 
 /* ── TABLE ── */
-.table-wrap{overflow-x:auto}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 table{width:100%;border-collapse:collapse;font-size:.875rem}
 thead{background:var(--surface-2)}
 th{padding:11px 14px;text-align:left;font-weight:700;font-size:.75rem;text-transform:uppercase;letter-spacing:.04em;color:var(--text-2);border-bottom:1px solid var(--border);white-space:nowrap}
@@ -146,7 +146,6 @@ tbody tr:hover{background:var(--bg)}
 .form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%239C9086' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:calc(100% - 12px) center;cursor:pointer;padding-right:36px}
 .form-hint{font-size:.75rem;color:var(--text-3);margin-top:5px}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.form-textarea{resize:vertical;min-height:80px}
 
 /* ── MODAL ── */
 .modal-overlay{position:fixed;inset:0;z-index:1000;background:rgba(28,24,53,.52);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .25s ease}
@@ -180,7 +179,6 @@ tbody tr:hover{background:var(--bg)}
 .product-link-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;margin-bottom:14px;transition:var(--t)}
 .product-link-card:hover{box-shadow:var(--shadow-md)}
 .product-meta{display:flex;align-items:center;gap:14px;margin-bottom:12px}
-.product-img{width:44px;height:44px;border-radius:10px;object-fit:cover;background:var(--surface-2)}
 .product-img-placeholder{width:44px;height:44px;border-radius:10px;background:var(--surface-2);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
 .product-name{font-weight:700;color:var(--primary);font-size:.95rem}
 .product-price{font-size:.82rem;color:var(--text-2);margin-top:2px}
@@ -266,10 +264,10 @@ tbody tr:hover{background:var(--bg)}
 
 <!-- MOBILE TOP BAR -->
 <div class="mobile-top">
-  <button class="hamburger" id="menuToggle" onclick="toggleSidebar()">☰</button>
+  <button class="hamburger" onclick="toggleSidebar()">☰</button>
   <span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:#fff">Creator<span style="color:var(--accent)">Stack</span></span>
 </div>
-<div class="sidebar-overlay" id="overlay" onclick="toggleSidebar()"></div>
+<div class="sidebar-overlay" id="overlay" onclick="toggleSidebar(false)"></div>
 
 <div class="layout">
   <!-- SIDEBAR -->
@@ -304,7 +302,7 @@ tbody tr:hover{background:var(--bg)}
   <!-- MAIN -->
   <div class="main" id="mainContent">
 
-    <!-- ═══════════════ OVERVIEW PAGE ═══════════════ -->
+    <!-- ═══════ OVERVIEW ═══════ -->
     <div class="page active" id="page-overview">
       <div class="page-header">
         <div>
@@ -314,7 +312,6 @@ tbody tr:hover{background:var(--bg)}
         <div id="headerTierBadge" class="badge badge-grey">🥈 Standard Partner · 20%</div>
       </div>
 
-      <!-- TIER PROGRESS -->
       <div class="tier-progress" id="tierProgressBlock">
         <div class="tier-progress-top">
           <div class="tier-progress-label" id="tierProgressLabel">Progress to Growth Partner</div>
@@ -323,52 +320,32 @@ tbody tr:hover{background:var(--bg)}
         <div class="progress-track">
           <div class="progress-fill" id="tierProgressFill" style="width:0%"></div>
         </div>
-        <div class="tier-progress-note" id="tierProgressNote">Make 25 sales to unlock 30% commission and fixed discount coupons.</div>
+        <div class="tier-progress-note" id="tierProgressNote">Make 25 sales to unlock 30% commission.</div>
       </div>
 
-      <!-- STATS -->
       <div class="grid-4">
-        <div class="card stat-card">
-          <div class="stat-label">Total Sales</div>
-          <div class="stat-value" id="ov-sales">–</div>
-          <div class="stat-meta" id="ov-sales-meta">Cumulative</div>
-        </div>
-        <div class="card stat-card">
-          <div class="stat-label">Total Revenue</div>
-          <div class="stat-value" id="ov-revenue">–</div>
-          <div class="stat-meta">Commission earned</div>
-        </div>
-        <div class="card stat-card">
-          <div class="stat-label">Pending Payout</div>
-          <div class="stat-value" id="ov-payout">–</div>
-          <div class="stat-meta warn" id="ov-payout-meta">Available to withdraw</div>
-        </div>
-        <div class="card stat-card">
-          <div class="stat-label">Active Coupons</div>
-          <div class="stat-value" id="ov-coupons">–</div>
-          <div class="stat-meta">Click to manage</div>
-        </div>
+        <div class="card stat-card"><div class="stat-label">Total Sales</div><div class="stat-value" id="ov-sales">–</div><div class="stat-meta">Cumulative</div></div>
+        <div class="card stat-card"><div class="stat-label">Total Revenue</div><div class="stat-value" id="ov-revenue">–</div><div class="stat-meta">Commission earned</div></div>
+        <div class="card stat-card"><div class="stat-label">Available Balance</div><div class="stat-value" id="ov-payout">–</div><div class="stat-meta warn" id="ov-payout-meta">Ready to withdraw</div></div>
+        <div class="card stat-card"><div class="stat-label">Active Coupons</div><div class="stat-value" id="ov-coupons">–</div><div class="stat-meta">Click to manage</div></div>
       </div>
 
-      <!-- RECENT SALES -->
       <div class="section">
         <div class="section-title"><span class="icon">📈</span>Recent Sales</div>
         <div class="card">
           <div class="table-wrap">
             <table>
-              <thead><tr><th>Date</th><th>Product</th><th>Product Price</th><th>Coupon</th><th>Commission</th><th>Status</th></tr></thead>
+              <thead><tr><th>Date</th><th>Product</th><th>Price</th><th>Coupon</th><th>Your Commission</th><th>Status</th></tr></thead>
               <tbody id="recentSalesTbody"><tr class="loading-row"><td colspan="6"><div class="spinner"></div></td></tr></tbody>
             </table>
           </div>
           <div class="empty" id="emptyRecentSales" style="display:none">
-            <div class="empty-icon">🎯</div>
-            <h3>No sales yet</h3>
+            <div class="empty-icon">🎯</div><h3>No sales yet</h3>
             <p>Share your affiliate links to start earning commissions.</p>
           </div>
         </div>
       </div>
 
-      <!-- REWARD BANNER -->
       <div class="reward-banner">
         <h3>🎁 100+ Monthly Sales = Exclusive Rewards</h3>
         <p>Elite affiliates reaching 100+ monthly sales are enrolled in our exclusive rewards program. Just keep an eye on your inbox!</p>
@@ -381,160 +358,83 @@ tbody tr:hover{background:var(--bg)}
       </div>
     </div>
 
-    <!-- ═══════════════ SALES PAGE ═══════════════ -->
+    <!-- ═══════ SALES ═══════ -->
     <div class="page" id="page-sales">
       <div class="page-header">
-        <div>
-          <div class="page-title serif">Sales & Revenue</div>
-          <div class="page-sub">All sales attributed to your affiliate account</div>
-        </div>
-        <div class="page-actions">
-          <div class="badge badge-gold" id="salesCommissionBadge">20% Commission</div>
-        </div>
+        <div><div class="page-title serif">Sales & Revenue</div><div class="page-sub">All sales attributed to your affiliate account</div></div>
+        <div class="page-actions"><div class="badge badge-gold" id="salesCommissionBadge">20% Commission</div></div>
       </div>
       <div class="grid-4">
-        <div class="card stat-card">
-          <div class="stat-label">Total Sales</div>
-          <div class="stat-value" id="s-count">–</div>
-        </div>
-        <div class="card stat-card">
-          <div class="stat-label">Gross Revenue</div>
-          <div class="stat-value" id="s-gross">–</div>
-          <div class="stat-meta">Before discount deduction</div>
-        </div>
-        <div class="card stat-card">
-          <div class="stat-label">Net Revenue</div>
-          <div class="stat-value" id="s-net">–</div>
-          <div class="stat-meta">After coupon deductions</div>
-        </div>
-        <div class="card stat-card">
-          <div class="stat-label">Avg. Commission / Sale</div>
-          <div class="stat-value" id="s-avg">–</div>
-        </div>
+        <div class="card stat-card"><div class="stat-label">Total Sales</div><div class="stat-value" id="s-count">–</div></div>
+        <div class="card stat-card"><div class="stat-label">Gross Commission</div><div class="stat-value" id="s-gross">–</div><div class="stat-meta">Before discount deduction</div></div>
+        <div class="card stat-card"><div class="stat-label">Net Commission</div><div class="stat-value" id="s-net">–</div><div class="stat-meta">After coupon deductions</div></div>
+        <div class="card stat-card"><div class="stat-label">Avg. / Sale</div><div class="stat-value" id="s-avg">–</div></div>
       </div>
-
       <div class="section">
         <div class="section-title"><span class="icon">📋</span>All Orders</div>
         <div class="card">
           <div class="table-wrap">
             <table>
-              <thead>
-                <tr>
-                  <th>Date</th><th>Order #</th><th>Product</th><th>Customer</th>
-                  <th>Product Price</th><th>Coupon</th><th>Discount Deducted</th>
-                  <th>Your Commission</th><th>Status</th>
-                </tr>
-              </thead>
+              <thead><tr><th>Date</th><th>Order #</th><th>Product</th><th>Customer</th><th>Product Price</th><th>Coupon</th><th>Deduction</th><th>Your Commission</th><th>Status</th></tr></thead>
               <tbody id="allSalesTbody"><tr class="loading-row"><td colspan="9"><div class="spinner"></div></td></tr></tbody>
             </table>
           </div>
           <div class="empty" id="emptyAllSales" style="display:none">
-            <div class="empty-icon">📊</div>
-            <h3>No orders found</h3>
+            <div class="empty-icon">📊</div><h3>No orders found</h3>
             <p>Orders made through your affiliate links will appear here.</p>
           </div>
         </div>
       </div>
-
-      <!-- Commission formula note -->
       <div class="alert alert-info show" style="margin-top:8px;font-size:.82rem">
-        💡 <strong>Commission formula:</strong> Your commission = Product Price × Your Rate (20/30/40%). If a coupon discount was used, the discount amount is deducted from your commission. Fixed discount coupons reduce commission by (number of uses × fixed amount).
+        💡 <strong>Commission formula:</strong> Your commission = Product Price × Your Rate%. If a coupon was used, the discount amount is deducted from your commission.
       </div>
     </div>
 
-    <!-- ═══════════════ LINKS PAGE ═══════════════ -->
+    <!-- ═══════ LINKS ═══════ -->
     <div class="page" id="page-links">
-      <div class="page-header">
-        <div>
-          <div class="page-title serif">Affiliate Links</div>
-          <div class="page-sub">Your unique tracking link for every product</div>
-        </div>
-      </div>
+      <div class="page-header"><div><div class="page-title serif">Affiliate Links</div><div class="page-sub">Your unique tracking link for every product</div></div></div>
       <div class="alert alert-info show" style="margin-bottom:20px;font-size:.83rem">
         🔗 Share these links with your audience. When someone clicks and makes a purchase, the sale is automatically attributed to your account.
       </div>
-      <div id="linksContainer">
-        <div style="text-align:center;padding:40px;color:var(--text-3)"><div class="spinner"></div></div>
-      </div>
+      <div id="linksContainer"><div style="text-align:center;padding:40px;color:var(--text-3)"><div class="spinner"></div></div></div>
       <div class="empty" id="emptyLinks" style="display:none">
-        <div class="empty-icon">🔗</div>
-        <h3>No products available</h3>
-        <p>Products will appear here once they are published.</p>
+        <div class="empty-icon">🔗</div><h3>No products available</h3><p>Products will appear here once they are published.</p>
       </div>
     </div>
 
-    <!-- ═══════════════ COUPONS PAGE ═══════════════ -->
+    <!-- ═══════ COUPONS ═══════ -->
     <div class="page" id="page-coupons">
       <div class="page-header">
-        <div>
-          <div class="page-title serif">Coupons</div>
-          <div class="page-sub">Create and track your discount codes</div>
-        </div>
-        <div class="page-actions">
-          <button class="btn btn-accent" onclick="openModal('modalCreateCoupon')">+ Create Coupon</button>
-        </div>
+        <div><div class="page-title serif">Coupons</div><div class="page-sub">Create and track your discount codes</div></div>
+        <div class="page-actions"><button class="btn btn-accent" onclick="openModal('modalCreateCoupon')">+ Create Coupon</button></div>
       </div>
-
       <div class="grid-3">
-        <div class="card stat-card">
-          <div class="stat-label">Total Coupons</div>
-          <div class="stat-value" id="coup-total">–</div>
-        </div>
-        <div class="card stat-card">
-          <div class="stat-label">Total Uses</div>
-          <div class="stat-value" id="coup-uses">–</div>
-          <div class="stat-meta">Across all coupons</div>
-        </div>
-        <div class="card stat-card">
-          <div class="stat-label">Best Coupon</div>
-          <div class="stat-value" id="coup-best" style="font-size:1.2rem">–</div>
-          <div class="stat-meta">Most conversions</div>
-        </div>
+        <div class="card stat-card"><div class="stat-label">Total Coupons</div><div class="stat-value" id="coup-total">–</div></div>
+        <div class="card stat-card"><div class="stat-label">Total Uses</div><div class="stat-value" id="coup-uses">–</div><div class="stat-meta">Across all coupons</div></div>
+        <div class="card stat-card"><div class="stat-label">Best Coupon</div><div class="stat-value" id="coup-best" style="font-size:1.2rem">–</div><div class="stat-meta">Most conversions</div></div>
       </div>
-
-      <!-- TIER restriction info -->
-      <div id="couponTierNote" class="alert alert-warning show" style="margin-bottom:16px;font-size:.83rem;display:none"></div>
-
+      <div id="couponTierNote" class="alert alert-warning" style="margin-bottom:16px"></div>
       <div class="section">
         <div class="section-title"><span class="icon">🎟</span>Your Coupons</div>
-        <div id="couponsContainer">
-          <div style="text-align:center;padding:40px;color:var(--text-3)"><div class="spinner"></div></div>
-        </div>
+        <div id="couponsContainer"><div style="text-align:center;padding:40px;color:var(--text-3)"><div class="spinner"></div></div></div>
         <div class="empty" id="emptyCoupons" style="display:none">
-          <div class="empty-icon">🎟</div>
-          <h3>No coupons yet</h3>
-          <p>Create your first coupon to offer discounts to your audience and track which codes perform best.</p>
+          <div class="empty-icon">🎟</div><h3>No coupons yet</h3>
+          <p>Create your first coupon to offer discounts and track which codes perform best.</p>
           <button class="btn btn-accent" style="margin-top:16px" onclick="openModal('modalCreateCoupon')">Create Coupon</button>
         </div>
       </div>
     </div>
 
-    <!-- ═══════════════ PAYOUTS PAGE ═══════════════ -->
+    <!-- ═══════ PAYOUTS ═══════ -->
     <div class="page" id="page-payouts">
       <div class="page-header">
-        <div>
-          <div class="page-title serif">Payouts</div>
-          <div class="page-sub">Request withdrawals to your bank account</div>
-        </div>
-        <div class="page-actions">
-          <button class="btn btn-accent" onclick="openPayoutModal()">Request Payout</button>
-        </div>
+        <div><div class="page-title serif">Payouts</div><div class="page-sub">Request withdrawals to your bank account</div></div>
+        <div class="page-actions"><button class="btn btn-accent" onclick="openPayoutModal()">Request Payout</button></div>
       </div>
       <div class="grid-3">
-        <div class="card stat-card">
-          <div class="stat-label">Available Balance</div>
-          <div class="stat-value" id="po-available">–</div>
-          <div class="stat-meta">Ready to withdraw</div>
-        </div>
-        <div class="card stat-card">
-          <div class="stat-label">Total Paid Out</div>
-          <div class="stat-value" id="po-paid">–</div>
-        </div>
-        <div class="card stat-card">
-          <div class="stat-label">Pending Requests</div>
-          <div class="stat-value" id="po-pending">–</div>
-          <div class="stat-meta warn">Being processed</div>
-        </div>
+        <div class="card stat-card"><div class="stat-label">Available Balance</div><div class="stat-value" id="po-available">–</div><div class="stat-meta">Ready to withdraw</div></div>
+        <div class="card stat-card"><div class="stat-label">Total Paid Out</div><div class="stat-value" id="po-paid">–</div></div>
+        <div class="card stat-card"><div class="stat-label">Pending Requests</div><div class="stat-value" id="po-pending">–</div><div class="stat-meta warn">Being processed</div></div>
       </div>
       <div class="alert alert-info show" style="font-size:.83rem;margin-bottom:20px">
         💳 Payouts are processed within 3–5 business days. Minimum payout is ₹100.
@@ -544,42 +444,29 @@ tbody tr:hover{background:var(--bg)}
         <div class="card">
           <div class="table-wrap">
             <table>
-              <thead><tr><th>Date</th><th>Amount (₹)</th><th>Status</th><th>Payment ID</th></tr></thead>
+              <thead><tr><th>Date</th><th>Amount</th><th>Status</th><th>Payment ID</th></tr></thead>
               <tbody id="payoutsTbody"><tr class="loading-row"><td colspan="4"><div class="spinner"></div></td></tr></tbody>
             </table>
           </div>
           <div class="empty" id="emptyPayouts" style="display:none">
-            <div class="empty-icon">💳</div>
-            <h3>No payout requests yet</h3>
-            <p>Request a payout when your balance reaches ₹100 or more.</p>
+            <div class="empty-icon">💳</div><h3>No payout requests yet</h3><p>Request a payout when your balance reaches ₹100 or more.</p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ═══════════════ PROFILE PAGE ═══════════════ -->
+    <!-- ═══════ PROFILE ═══════ -->
     <div class="page" id="page-profile">
-      <div class="page-header">
-        <div>
-          <div class="page-title serif">Profile</div>
-          <div class="page-sub">Your account information and bank details</div>
-        </div>
-      </div>
+      <div class="page-header"><div><div class="page-title serif">Profile</div><div class="page-sub">Your account information and bank details</div></div></div>
       <div class="grid-2">
         <div class="card" style="padding:22px">
           <div class="section-title" style="margin-bottom:16px"><span class="icon">👤</span>Account Information</div>
-          <div id="profileInfo">
-            <div style="text-align:center;padding:24px"><div class="spinner"></div></div>
-          </div>
+          <div id="profileInfo"><div style="text-align:center;padding:24px"><div class="spinner"></div></div></div>
         </div>
         <div class="card" style="padding:22px">
           <div class="section-title" style="margin-bottom:16px"><span class="icon">🏦</span>Bank Account (Payout)</div>
-          <div id="bankInfo">
-            <div style="text-align:center;padding:24px"><div class="spinner"></div></div>
-          </div>
-          <div class="alert alert-info show" style="margin-top:14px;font-size:.78rem">
-            🔒 Bank details are encrypted and used only for payouts. Contact support to update.
-          </div>
+          <div id="bankInfo"><div style="text-align:center;padding:24px"><div class="spinner"></div></div></div>
+          <div class="alert alert-info show" style="margin-top:14px;font-size:.78rem">🔒 Bank details are encrypted and used only for payouts. Contact support to update.</div>
         </div>
       </div>
       <div class="card" style="padding:22px;background:var(--error-light);border-color:rgba(192,57,43,.2)">
@@ -592,22 +479,20 @@ tbody tr:hover{background:var(--bg)}
   </div><!-- /main -->
 </div><!-- /layout -->
 
-<!-- ════════════ MODALS ════════════ -->
-
-<!-- CREATE COUPON MODAL -->
+<!-- ══════════════════ CREATE COUPON MODAL ══════════════════ -->
 <div class="modal-overlay" id="modalCreateCoupon">
   <div class="modal">
     <div class="modal-header">
       <div class="modal-title serif">Create Coupon</div>
       <button class="modal-close" onclick="closeModal('modalCreateCoupon')">✕</button>
     </div>
-    <div class="alert" id="couponModalError"></div>
+    <div class="alert alert-error" id="couponModalError"></div>
     <div class="alert alert-success" id="couponModalSuccess"></div>
 
     <div class="form-group">
       <label class="form-label">Coupon Code <span class="req">*</span></label>
-      <input type="text" id="c-code" class="form-input" placeholder="e.g. PRIYA20" maxlength="20" style="text-transform:uppercase" oninput="this.value=this.value.toUpperCase()">
-      <div class="form-hint">Letters and numbers only, max 20 chars.</div>
+      <input type="text" id="c-code" class="form-input" placeholder="e.g. PRIYA20" maxlength="20" oninput="this.value=this.value.toUpperCase().replace(/[^A-Z0-9]/g,'')">
+      <div class="form-hint">Letters and numbers only, max 20 chars. No spaces or symbols.</div>
     </div>
 
     <div class="form-row">
@@ -620,9 +505,9 @@ tbody tr:hover{background:var(--bg)}
         </select>
       </div>
       <div class="form-group">
-        <label class="form-label">Discount Amount <span class="req">*</span></label>
+        <label class="form-label">Amount <span class="req">*</span></label>
         <input type="number" id="c-amount" class="form-input" placeholder="0" min="1">
-        <div class="form-hint" id="c-amountHint">Enter value above</div>
+        <div class="form-hint" id="c-amountHint">Select a type first</div>
       </div>
     </div>
 
@@ -631,7 +516,7 @@ tbody tr:hover{background:var(--bg)}
         <label class="form-label">Validity Type <span class="req">*</span></label>
         <select id="c-validityType" class="form-select" onchange="onValidityTypeChange()">
           <option value="">Select validity</option>
-          <option value="Number_of_sales">Number of Sales</option>
+          <option value="Number_of_sales">Number of Uses</option>
           <option value="Number_of_days">Number of Days</option>
         </select>
       </div>
@@ -643,21 +528,21 @@ tbody tr:hover{background:var(--bg)}
     </div>
 
     <div id="fixedDiscountNote" class="alert alert-info" style="display:none;margin-bottom:14px;font-size:.8rem">
-      💡 For fixed discount coupons, your commission = (Product Price × Your Rate%) − Fixed Discount per sale. Maximum fixed discount: ₹498.
+      💡 Fixed discount coupons deduct a flat ₹ amount from your commission per sale. Max: ₹498.
     </div>
 
     <button class="btn btn-accent btn-full" id="createCouponBtn" onclick="createCoupon()">Create Coupon →</button>
   </div>
 </div>
 
-<!-- REQUEST PAYOUT MODAL -->
+<!-- ══════════════════ PAYOUT MODAL ══════════════════ -->
 <div class="modal-overlay" id="modalPayout">
   <div class="modal">
     <div class="modal-header">
       <div class="modal-title serif">Request Payout</div>
       <button class="modal-close" onclick="closeModal('modalPayout')">✕</button>
     </div>
-    <div class="alert" id="payoutModalError"></div>
+    <div class="alert alert-error" id="payoutModalError"></div>
     <div class="alert alert-success" id="payoutModalSuccess"></div>
 
     <div class="card stat-card" style="background:var(--accent-light);border-color:rgba(200,136,46,.2);margin-bottom:18px;padding:16px">
@@ -668,12 +553,12 @@ tbody tr:hover{background:var(--bg)}
     <div class="form-group">
       <label class="form-label">Payout Amount (₹) <span class="req">*</span></label>
       <input type="number" id="p-amount" class="form-input" placeholder="Enter amount (min ₹100)" min="100">
-      <div class="form-hint">Minimum: ₹100 · Processed in 3–5 business days to your bank account.</div>
+      <div class="form-hint">Minimum: ₹100 · Processed in 3–5 business days.</div>
     </div>
 
     <div class="card" style="padding:14px;margin-bottom:18px">
-      <div class="stat-label">Payout to bank:</div>
-      <div id="payoutBankDisplay" style="font-size:.9rem;color:var(--text);margin-top:4px;font-weight:600">Loading…</div>
+      <div class="stat-label" style="margin-bottom:4px">Payout to:</div>
+      <div id="payoutBankDisplay" style="font-size:.9rem;color:var(--text);font-weight:600">Loading…</div>
     </div>
 
     <button class="btn btn-accent btn-full" id="submitPayoutBtn" onclick="submitPayout()">Request Payout →</button>
@@ -681,43 +566,38 @@ tbody tr:hover{background:var(--bg)}
 </div>
 
 <script>
-// ════════════════════════════════════════════════
-//  SUPABASE INIT — reads from cookie, then localStorage, then env
-// ════════════════════════════════════════════════
-const SUPA_URL  = getCookie('SUPABASE_URL')  || localStorage.getItem('SUPABASE_URL')  || '';
-const SUPA_KEY  = getCookie('SUPABASE_ANON_KEY') || localStorage.getItem('SUPABASE_ANON_KEY') || '';
-const { createClient } = supabase;
-const sb = createClient(SUPA_URL, SUPA_KEY);
-
-// ════════════════════════════════════════════════
-//  COOKIE HELPERS
-// ════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════
+//  SUPABASE INIT
+// ════════════════════════════════════════════════════════════
 function getCookie(name) {
   const m = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
   return m ? decodeURIComponent(m[2]) : null;
 }
-function setCookie(name, value, days=7) {
-  const exp = new Date(Date.now() + days*864e5).toUTCString();
+function setCookie(name, value, days = 7) {
+  const exp = new Date(Date.now() + days * 864e5).toUTCString();
   document.cookie = `${name}=${encodeURIComponent(value)};expires=${exp};path=/;SameSite=Lax`;
 }
 function deleteCookie(name) {
   document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/`;
 }
 
-// ════════════════════════════════════════════════
-//  AUTH — read affiliate from cookie first, then localStorage
-// ════════════════════════════════════════════════
+const SUPA_URL = getCookie('SUPABASE_URL')      || localStorage.getItem('SUPABASE_URL')      || '';
+const SUPA_KEY = getCookie('SUPABASE_ANON_KEY') || localStorage.getItem('SUPABASE_ANON_KEY') || '';
+
+let sb = null;
+if (SUPA_URL && SUPA_KEY) {
+  try { sb = supabase.createClient(SUPA_URL, SUPA_KEY); }
+  catch (e) { console.error('Supabase init failed:', e); }
+}
+
+// ════════════════════════════════════════════════════════════
+//  AUTH
+// ════════════════════════════════════════════════════════════
 function getStoredAffiliate() {
-  // Try cookie first
   const fromCookie = getCookie('cs_affiliate');
-  if (fromCookie) {
-    try { return JSON.parse(fromCookie); } catch(_) {}
-  }
-  // Fallback to localStorage
+  if (fromCookie) { try { return JSON.parse(fromCookie); } catch(_) {} }
   const fromLS = localStorage.getItem('cs_affiliate');
-  if (fromLS) {
-    try { return JSON.parse(fromLS); } catch(_) {}
-  }
+  if (fromLS)    { try { return JSON.parse(fromLS);     } catch(_) {} }
   return null;
 }
 
@@ -735,31 +615,43 @@ function logout() {
   window.location.href = 'affiliate.html';
 }
 
-// ════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════
 //  STATE
-// ════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════
 let AFF = null;
 let PRODUCTS = [];
-let ORDERS = [];
-let COUPONS = [];
-let PAYOUTS = [];
-let COUPON_USE_MAP = {};  // couponId -> useCount (from orders)
+let ORDERS   = [];
+let COUPONS  = [];
+let PAYOUTS  = [];
+// Map: coupon_code → use count (built from orders, keyed by code string for reliable lookup)
+let COUPON_USE_MAP_BY_CODE = {};
+// Map: coupon id (as string) → use count (for display in coupon cards)
+let COUPON_USE_MAP = {};
 
-// ════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════
 //  BOOT
-// ════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════
 (async function boot() {
   AFF = getStoredAffiliate();
   if (!AFF?.id) { window.location.href = 'affiliate.html'; return; }
 
-  // Refresh affiliate data from DB
+  if (!sb) {
+    // No Supabase config — show error and redirect
+    alert('Supabase is not configured. Please set up your credentials first.');
+    window.location.href = 'credentials.html';
+    return;
+  }
+
+  // Refresh affiliate data from DB (best-effort — may fail with RLS)
   try {
     const { data, error } = await sb.from('affiliates').select('*').eq('id', AFF.id).single();
-    if (error) throw error;
-    AFF = data;
-    storeAffiliate(AFF);
-  } catch(e) {
-    console.warn('Refresh AFF failed:', e.message);
+    if (!error && data) {
+      AFF = data;
+      storeAffiliate(AFF);
+    }
+  } catch (e) {
+    console.warn('Could not refresh affiliate data (RLS may be blocking):', e.message);
+    // Continue with cached data
   }
 
   setupSidebar();
@@ -775,107 +667,130 @@ let COUPON_USE_MAP = {};  // couponId -> useCount (from orders)
   initNav();
 })();
 
+// ════════════════════════════════════════════════════════════
+//  LOAD ALL DATA
+// ════════════════════════════════════════════════════════════
 async function loadAll() {
   try {
     const [prodRes, ordRes, cupRes, poRes] = await Promise.all([
-      sb.from('Products').select('id,Product_name,Product_description,Product_price,Product_image_url,strikethrough_price'),
-      sb.from('Orders').select('id,created_at,Order_number,Product,Customer_name,Customer_email,Is_paid,coupon_used,Razorpay_payment_id').eq('affiliate_id', AFF.id).order('created_at', {ascending:false}),
-      sb.from('coupons').select('*').eq('affiliate_id', AFF.id).order('created_at', {ascending:false}),
-      sb.from('affiliate_payout_request').select('*').eq('affiliate_id', AFF.id).order('created_at', {ascending:false})
+      sb.from('Products')
+        .select('id,Product_name,Product_description,Product_price,Product_image_url,strikethrough_price'),
+      sb.from('Orders')
+        .select('id,created_at,Order_number,Product,Customer_name,Customer_email,Is_paid,coupon_used,Razorpay_payment_id')
+        .eq('affiliate_id', AFF.id)
+        .order('created_at', { ascending: false }),
+      sb.from('coupons')
+        .select('*')
+        .eq('affiliate_id', AFF.id)
+        .order('created_at', { ascending: false }),
+      sb.from('affiliate_payout_request')
+        .select('*')
+        .eq('affiliate_id', AFF.id)
+        .order('created_at', { ascending: false })
     ]);
+
+    if (prodRes.error) console.warn('Products load error:', prodRes.error.message);
+    if (ordRes.error)  console.warn('Orders load error:',   ordRes.error.message);
+    if (cupRes.error)  console.warn('Coupons load error:',  cupRes.error.message);
+    if (poRes.error)   console.warn('Payouts load error:',  poRes.error.message);
+
     PRODUCTS = prodRes.data || [];
     ORDERS   = ordRes.data  || [];
     COUPONS  = cupRes.data  || [];
     PAYOUTS  = poRes.data   || [];
 
-    // Build coupon use counts from orders
+    // Build coupon use maps
+    // order.coupon_used is the coupon ID (bigint)
+    // Use String() conversion to avoid type mismatch between number/string keys
     COUPON_USE_MAP = {};
     ORDERS.forEach(o => {
-      if (o.coupon_used) {
-        COUPON_USE_MAP[o.coupon_used] = (COUPON_USE_MAP[o.coupon_used] || 0) + 1;
+      if (o.coupon_used != null) {
+        const key = String(o.coupon_used);
+        COUPON_USE_MAP[key] = (COUPON_USE_MAP[key] || 0) + 1;
       }
     });
-  } catch(e) {
-    console.error('loadAll error:', e);
+  } catch (e) {
+    console.error('loadAll critical error:', e);
   }
 }
 
 function hideLoader() {
   const el = document.getElementById('app-loading');
   el.classList.add('fade');
-  setTimeout(() => el.style.display='none', 450);
+  setTimeout(() => { el.style.display = 'none'; }, 450);
 }
 
-// ════════════════════════════════════════════════
-//  SIDEBAR + TIER SETUP
-// ════════════════════════════════════════════════
-function setupSidebar() {
-  const name = AFF.name || 'Affiliate';
-  document.getElementById('sidebarName').textContent = name;
-  document.getElementById('sidebarEmail').textContent = AFF.affiliate_email || '';
-  document.getElementById('userAvatar').textContent = name.charAt(0).toUpperCase();
-  document.getElementById('welcomeName').textContent = name.split(' ')[0];
-  document.getElementById('headerDate').textContent = 'Dashboard · ' + new Date().toLocaleDateString('en-IN',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-}
-
+// ════════════════════════════════════════════════════════════
+//  TIER HELPERS
+// ════════════════════════════════════════════════════════════
 function getTierInfo() {
   const sales = parseFloat(AFF.affiliate_sales || 0);
   const comm  = AFF.affiliate_commission || 'standard_partner_20%';
   let tier, rate, emoji, cls;
   if (comm.includes('elite') || sales >= 100) {
-    tier='Elite Partner'; rate=40; emoji='💎'; cls='elite';
+    tier = 'Elite Partner';    rate = 40; emoji = '💎'; cls = 'elite';
   } else if (comm.includes('growth') || sales >= 25) {
-    tier='Growth Partner'; rate=30; emoji='🥇'; cls='growth';
+    tier = 'Growth Partner';   rate = 30; emoji = '🥇'; cls = 'growth';
   } else {
-    tier='Standard Partner'; rate=20; emoji='🥈'; cls='standard';
+    tier = 'Standard Partner'; rate = 20; emoji = '🥈'; cls = 'standard';
   }
-  return {tier, rate, emoji, cls, sales, canFixed: cls !== 'standard'};
+  return { tier, rate, emoji, cls, sales, canFixed: cls !== 'standard' };
+}
+
+function setupSidebar() {
+  const name = AFF.name || 'Affiliate';
+  document.getElementById('sidebarName').textContent  = name;
+  document.getElementById('sidebarEmail').textContent = AFF.affiliate_email || '';
+  document.getElementById('userAvatar').textContent   = name.charAt(0).toUpperCase();
+  document.getElementById('welcomeName').textContent  = name.split(' ')[0];
+  document.getElementById('headerDate').textContent   = 'Dashboard · ' +
+    new Date().toLocaleDateString('en-IN', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
 }
 
 function setupTier() {
-  const {tier,rate,emoji,cls,sales} = getTierInfo();
-  // Sidebar pill
+  const { tier, rate, emoji, cls, sales } = getTierInfo();
+
   const pill = document.getElementById('sidebarTierPill');
   pill.textContent = `${emoji} ${tier}`;
-  pill.className = `tier-pill ${cls}`;
-  // Header badge
+  pill.className   = `tier-pill ${cls}`;
+
   const hb = document.getElementById('headerTierBadge');
   hb.textContent = `${emoji} ${tier} · ${rate}%`;
-  hb.className = `badge badge-${cls === 'standard' ? 'grey' : cls === 'growth' ? 'gold' : 'green'}`;
-  // Sales commission badge in Sales page
+  hb.className   = `badge badge-${cls === 'standard' ? 'grey' : cls === 'growth' ? 'gold' : 'green'}`;
+
   document.getElementById('salesCommissionBadge').textContent = `${rate}% Commission`;
 
   // Progress bar
-  let nextTier, nextSales;
   if (sales >= 100 || cls === 'elite') {
     document.getElementById('tierProgressBlock').style.display = 'none';
     return;
-  } else if (sales >= 25 || cls === 'growth') {
-    nextTier = 'Elite Partner'; nextSales = 100;
-  } else {
-    nextTier = 'Growth Partner'; nextSales = 25;
   }
-  const pct = Math.min(100, Math.round((sales / nextSales) * 100));
+  const nextTier  = sales >= 25 ? 'Elite Partner' : 'Growth Partner';
+  const nextSales = sales >= 25 ? 100 : 25;
+  const pct       = Math.min(100, Math.round((sales / nextSales) * 100));
+  const remaining = nextSales - sales;
+
   document.getElementById('tierProgressLabel').textContent = `Progress to ${nextTier}`;
   document.getElementById('tierProgressPct').textContent   = `${sales} / ${nextSales} sales`;
   document.getElementById('tierProgressFill').style.width  = pct + '%';
   document.getElementById('tierProgressNote').textContent  =
-    `${nextSales - sales} more sale${nextSales - sales !== 1 ? 's' : ''} to unlock ${nextTier}.`;
+    `${remaining} more sale${remaining !== 1 ? 's' : ''} needed to unlock ${nextTier}.`;
 }
 
-// ════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════
 //  COMMISSION CALCULATION
-// ════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════
 function calcCommission(order) {
-  const {rate} = getTierInfo();
-  const commRate = rate / 100;
-  const product = PRODUCTS.find(p => p.id === order.Product);
-  const price = parseFloat(product?.Product_price || 0);
+  const { rate } = getTierInfo();
+  const commRate  = rate / 100;
+  const product   = PRODUCTS.find(p => p.id === order.Product);
+  const price     = parseFloat(product?.Product_price || 0);
   const grossComm = price * commRate;
 
   let deduction = 0;
-  if (order.coupon_used) {
-    const coupon = COUPONS.find(c => c.id === order.coupon_used);
+  if (order.coupon_used != null) {
+    // Find coupon by id — use loose equality to handle number/string mismatch
+    const coupon = COUPONS.find(c => String(c.id) === String(order.coupon_used));
     if (coupon) {
       if (coupon.discount_type === 'percentage') {
         deduction = price * (parseFloat(coupon.discount) / 100);
@@ -885,7 +800,7 @@ function calcCommission(order) {
     }
   }
   const net = Math.max(0, grossComm - deduction);
-  return {grossComm, deduction, net, price};
+  return { grossComm, deduction, net, price };
 }
 
 function getProductName(pid) {
@@ -893,31 +808,42 @@ function getProductName(pid) {
 }
 
 function formatINR(n) {
-  return '₹' + parseFloat(n||0).toLocaleString('en-IN', {minimumFractionDigits:0});
+  const num = parseFloat(n || 0);
+  return '₹' + num.toLocaleString('en-IN', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
 }
 
 function fmtDate(iso) {
-  return new Date(iso).toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'});
+  if (!iso) return '—';
+  return new Date(iso).toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'numeric' });
 }
 
-// ════════════════════════════════════════════════
-//  OVERVIEW RENDER
-// ════════════════════════════════════════════════
+function getCouponName(couponId) {
+  if (couponId == null) return '—';
+  const c = COUPONS.find(c => String(c.id) === String(couponId));
+  return c ? c.coupon_code : '—';
+}
+
+// ════════════════════════════════════════════════════════════
+//  OVERVIEW
+// ════════════════════════════════════════════════════════════
 function renderOverview() {
-  const sales   = parseFloat(AFF.affiliate_sales || 0);
+  const sales   = parseFloat(AFF.affiliate_sales   || 0);
   const revenue = parseFloat(AFF.affiliate_revenue_inr || 0);
-  const paidOut = PAYOUTS.filter(p=>p.payout_status==='accepted').reduce((s,p)=>s+parseFloat(p.payout_amount_inr||0),0);
-  const pending = revenue - paidOut;
-  const activeCoupons = COUPONS.length;
+
+  // Available = total revenue − all accepted payouts
+  const acceptedPaid = PAYOUTS
+    .filter(p => p.payout_status === 'accepted')
+    .reduce((s, p) => s + parseFloat(p.payout_amount_inr || 0), 0);
+  const available = Math.max(0, revenue - acceptedPaid);
 
   document.getElementById('ov-sales').textContent   = sales;
   document.getElementById('ov-revenue').textContent = formatINR(revenue);
-  document.getElementById('ov-payout').textContent  = formatINR(pending);
-  document.getElementById('ov-coupons').textContent = activeCoupons;
+  document.getElementById('ov-payout').textContent  = formatINR(available);
+  document.getElementById('ov-coupons').textContent = COUPONS.length;
 
-  // Recent 5 orders
   const recent = ORDERS.slice(0, 5);
-  const tbody = document.getElementById('recentSalesTbody');
+  const tbody  = document.getElementById('recentSalesTbody');
+
   if (!recent.length) {
     tbody.innerHTML = '';
     document.getElementById('emptyRecentSales').style.display = 'block';
@@ -925,27 +851,28 @@ function renderOverview() {
   }
   document.getElementById('emptyRecentSales').style.display = 'none';
   tbody.innerHTML = recent.map(o => {
-    const {grossComm, deduction, net} = calcCommission(o);
-    const couponName = o.coupon_used ? (COUPONS.find(c=>c.id===o.coupon_used)?.coupon_code || '—') : '—';
+    const { net, deduction } = calcCommission(o);
+    const couponName = getCouponName(o.coupon_used);
     return `<tr>
       <td>${fmtDate(o.created_at)}</td>
       <td>${getProductName(o.Product)}</td>
-      <td>${formatINR(PRODUCTS.find(p=>p.id===o.Product)?.Product_price)}</td>
+      <td>${formatINR(PRODUCTS.find(p => p.id === o.Product)?.Product_price)}</td>
       <td><span class="td-mono">${couponName}</span></td>
       <td>
         <span style="color:var(--success);font-weight:700">${formatINR(net)}</span>
-        ${deduction>0 ? `<span style="font-size:.72rem;color:var(--text-3);margin-left:4px">-${formatINR(deduction)} disc.</span>` : ''}
+        ${deduction > 0 ? `<span style="font-size:.7rem;color:var(--text-3);margin-left:4px">(-${formatINR(deduction)})</span>` : ''}
       </td>
       <td><span class="badge ${o.Is_paid ? 'badge-green' : 'badge-orange'}">${o.Is_paid ? '✓ Paid' : '⏳ Pending'}</span></td>
     </tr>`;
   }).join('');
 }
 
-// ════════════════════════════════════════════════
-//  SALES PAGE RENDER
-// ════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════
+//  SALES PAGE
+// ════════════════════════════════════════════════════════════
 function renderSalesPage() {
-  let totalGross=0, totalNet=0, count=ORDERS.length;
+  let totalGross = 0, totalNet = 0;
+  const count = ORDERS.length;
   const tbody = document.getElementById('allSalesTbody');
 
   if (!count) {
@@ -954,21 +881,28 @@ function renderSalesPage() {
   } else {
     document.getElementById('emptyAllSales').style.display = 'none';
     tbody.innerHTML = ORDERS.map(o => {
-      const {grossComm,deduction,net,price} = calcCommission(o);
-      totalGross += grossComm; totalNet += net;
-      const couponName = o.coupon_used ? (COUPONS.find(c=>c.id===o.coupon_used)?.coupon_code || '—') : '—';
-      const couponType = o.coupon_used ? (COUPONS.find(c=>c.id===o.coupon_used)?.discount_type || '') : '';
-      const couponDisc = o.coupon_used ? (COUPONS.find(c=>c.id===o.coupon_used)?.discount || 0) : 0;
+      const { grossComm, deduction, net, price } = calcCommission(o);
+      totalGross += grossComm;
+      totalNet   += net;
+
+      const couponId   = o.coupon_used;
+      const coupon     = couponId != null ? COUPONS.find(c => String(c.id) === String(couponId)) : null;
+      const couponName = coupon ? coupon.coupon_code : '—';
+      const couponDisc = coupon ? (coupon.discount_type === 'fixed'
+        ? `₹${coupon.discount}` : `${coupon.discount}%`) : '';
+
       return `<tr>
         <td>${fmtDate(o.created_at)}</td>
         <td><span class="td-mono">${o.Order_number || '—'}</span></td>
         <td>${getProductName(o.Product)}</td>
         <td>${o.Customer_name || '—'}</td>
         <td>${formatINR(price)}</td>
-        <td>${o.coupon_used ? `<span class="td-mono">${couponName}</span> <span class="badge-grey badge" style="font-size:.65rem">${couponType==='fixed'?'₹'+couponDisc:couponDisc+'%'}</span>` : '—'}</td>
+        <td>${coupon
+          ? `<span class="td-mono">${couponName}</span> <span class="badge badge-grey" style="font-size:.65rem;margin-left:4px">${couponDisc}</span>`
+          : '—'}</td>
         <td>${deduction > 0 ? `<span style="color:var(--error)">-${formatINR(deduction)}</span>` : '—'}</td>
         <td><strong style="color:var(--success)">${formatINR(net)}</strong></td>
-        <td><span class="badge ${o.Is_paid?'badge-green':'badge-orange'}">${o.Is_paid?'✓ Paid':'⏳ Pending'}</span></td>
+        <td><span class="badge ${o.Is_paid ? 'badge-green' : 'badge-orange'}">${o.Is_paid ? '✓ Paid' : '⏳ Pending'}</span></td>
       </tr>`;
     }).join('');
   }
@@ -979,9 +913,9 @@ function renderSalesPage() {
   document.getElementById('s-avg').textContent   = count > 0 ? formatINR(totalNet / count) : '₹0';
 }
 
-// ════════════════════════════════════════════════
-//  LINKS PAGE RENDER
-// ════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════
+//  LINKS PAGE
+// ════════════════════════════════════════════════════════════
 function renderLinksPage() {
   const container = document.getElementById('linksContainer');
   if (!PRODUCTS.length) {
@@ -996,51 +930,54 @@ function renderLinksPage() {
     return `
       <div class="product-link-card">
         <div class="product-meta">
-          <div class="product-img-placeholder">${p.Product_image_url ? `<img src="${p.Product_image_url}" style="width:44px;height:44px;border-radius:10px;object-fit:cover" onerror="this.parentElement.textContent='📦'">` : '📦'}</div>
+          <div class="product-img-placeholder">
+            ${p.Product_image_url
+              ? `<img src="${p.Product_image_url}" style="width:44px;height:44px;border-radius:10px;object-fit:cover" onerror="this.parentElement.textContent='📦'">`
+              : '📦'}
+          </div>
           <div>
             <div class="product-name">${p.Product_name || 'Product'}</div>
             <div class="product-price">
               ${p.strikethrough_price ? `<s style="color:var(--text-3)">${formatINR(p.strikethrough_price)}</s> ` : ''}
               <strong>${formatINR(p.Product_price)}</strong>
-              <span style="margin-left:8px;font-size:.78rem;color:var(--text-3)">• ${salesForProduct} sale${salesForProduct!==1?'s':''} via your link</span>
+              <span style="margin-left:8px;font-size:.75rem;color:var(--text-3)">· ${salesForProduct} paid sale${salesForProduct !== 1 ? 's' : ''}</span>
             </div>
           </div>
         </div>
         <div class="copy-row">
           <code>${link}</code>
-          <button class="copy-btn" id="copy-${p.id}" onclick="copyLink('${link}','copy-${p.id}')">Copy Link</button>
+          <button class="copy-btn" id="copy-${p.id}" onclick="copyLink('${link}','copy-${p.id}')">Copy</button>
         </div>
       </div>`;
   }).join('');
 }
 
-// ════════════════════════════════════════════════
-//  COUPONS PAGE RENDER
-// ════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════
+//  COUPONS PAGE
+// ════════════════════════════════════════════════════════════
 function renderCouponsPage() {
-  const {cls, canFixed, rate} = getTierInfo();
-  // Tier note
+  const { cls, canFixed, rate } = getTierInfo();
   const noteEl = document.getElementById('couponTierNote');
+
   if (!canFixed) {
-    noteEl.textContent = `⚠ As a Standard Partner, you can only create percentage discount coupons (max ${rate}%). Upgrade to Growth Partner (25 sales) to unlock fixed discount coupons.`;
-    noteEl.style.display = 'block';
+    noteEl.textContent = `⚠ As a Standard Partner, you can only create percentage coupons (max ${rate}%). Reach 25 sales to unlock fixed discount coupons.`;
     noteEl.className = 'alert alert-warning show';
   } else {
-    noteEl.style.display = 'none';
+    noteEl.className = 'alert alert-warning';
+    noteEl.textContent = '';
   }
 
-  document.getElementById('coup-total').textContent = COUPONS.length;
-
-  // Count uses from orders
-  let totalUses = 0;
-  let bestCoupon = null, bestCount = -1;
+  // Calculate stats using String() key for safe lookup
+  let totalUses = 0, bestCoupon = null, bestCount = -1;
   COUPONS.forEach(c => {
-    const uses = COUPON_USE_MAP[c.id] || 0;
+    const uses = COUPON_USE_MAP[String(c.id)] || 0;
     totalUses += uses;
     if (uses > bestCount) { bestCount = uses; bestCoupon = c; }
   });
-  document.getElementById('coup-uses').textContent = totalUses;
-  document.getElementById('coup-best').textContent = bestCoupon ? bestCoupon.coupon_code : '—';
+
+  document.getElementById('coup-total').textContent = COUPONS.length;
+  document.getElementById('coup-uses').textContent  = totalUses;
+  document.getElementById('coup-best').textContent  = bestCoupon ? bestCoupon.coupon_code : '—';
 
   const container = document.getElementById('couponsContainer');
   if (!COUPONS.length) {
@@ -1050,20 +987,19 @@ function renderCouponsPage() {
   }
   document.getElementById('emptyCoupons').style.display = 'none';
 
-  // Sort: most used first
-  const sorted = [...COUPONS].sort((a,b) => (COUPON_USE_MAP[b.id]||0)-(COUPON_USE_MAP[a.id]||0));
+  const sorted = [...COUPONS].sort((a, b) =>
+    (COUPON_USE_MAP[String(b.id)] || 0) - (COUPON_USE_MAP[String(a.id)] || 0)
+  );
 
   container.innerHTML = sorted.map(c => {
-    const uses   = COUPON_USE_MAP[c.id] || 0;
-    const limit  = parseFloat(c.validity || 0);
-    const pct    = c.validity_type === 'Number_of_sales' ? Math.min(100, (uses/limit)*100) : null;
-    const isHot  = uses >= 5;
-    const discLabel = c.discount_type === 'percentage'
-      ? `${c.discount}% off`
-      : `₹${c.discount} off`;
-    const validLabel = c.validity_type === 'Number_of_sales'
-      ? `Valid for ${c.validity} uses`
-      : `Valid for ${c.validity} days`;
+    const uses        = COUPON_USE_MAP[String(c.id)] || 0;
+    const limit       = parseFloat(c.validity || 0);
+    const pct         = c.validity_type === 'Number_of_sales' && limit > 0
+      ? Math.min(100, Math.round((uses / limit) * 100)) : null;
+    const isHot       = uses >= 5;
+    const discLabel   = c.discount_type === 'percentage' ? `${c.discount}% off` : `₹${c.discount} off`;
+    const validLabel  = c.validity_type === 'Number_of_sales'
+      ? `Valid for ${c.validity} uses` : `Valid for ${c.validity} days`;
 
     return `
       <div class="coupon-card">
@@ -1073,37 +1009,47 @@ function renderCouponsPage() {
             ${isHot ? '<span class="hot-badge">🔥 HOT</span>' : ''}
           </div>
           <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
-            <span class="badge ${c.discount_type==='fixed'?'badge-blue':'badge-gold'}">${discLabel}</span>
+            <span class="badge ${c.discount_type === 'fixed' ? 'badge-blue' : 'badge-gold'}">${discLabel}</span>
             <span class="badge badge-grey">${c.discount_type === 'fixed' ? 'Fixed' : 'Percentage'}</span>
           </div>
         </div>
         <div class="coupon-stats">
-          <div class="coupon-stat">Uses: <strong>${uses}</strong>${c.validity_type==='Number_of_sales' ? ` / ${c.validity}` : ''}</div>
+          <div class="coupon-stat">Uses: <strong>${uses}</strong>${c.validity_type === 'Number_of_sales' ? ` / ${c.validity}` : ''}</div>
           <div class="coupon-stat">Validity: <strong>${validLabel}</strong></div>
         </div>
         ${pct !== null ? `
           <div class="coupon-bar"><div class="coupon-bar-fill" style="width:${pct}%"></div></div>
           <div class="coupon-performance">
             <span>${uses} of ${c.validity} uses consumed</span>
-            <span>${Math.round(pct)}% used</span>
-          </div>
-        ` : ''}
+            <span>${pct}% used</span>
+          </div>` : ''}
       </div>`;
   }).join('');
 }
 
-// ════════════════════════════════════════════════
-//  PAYOUTS PAGE RENDER
-// ════════════════════════════════════════════════
-function renderPayoutsPage() {
-  const totalPaid = PAYOUTS.filter(p=>p.payout_status==='accepted').reduce((s,p)=>s+parseFloat(p.payout_amount_inr||0),0);
-  const pendingCount = PAYOUTS.filter(p=>['pending','processing','initiated'].includes(p.payout_status)).length;
-  const available = parseFloat(AFF.affiliate_revenue_inr || 0) - totalPaid;
+// ════════════════════════════════════════════════════════════
+//  PAYOUTS PAGE
+// ════════════════════════════════════════════════════════════
+function calcAvailableBalance() {
+  const revenue    = parseFloat(AFF.affiliate_revenue_inr || 0);
+  const acceptedPaid = PAYOUTS
+    .filter(p => p.payout_status === 'accepted')
+    .reduce((s, p) => s + parseFloat(p.payout_amount_inr || 0), 0);
+  return Math.max(0, revenue - acceptedPaid);
+}
 
-  document.getElementById('po-available').textContent = formatINR(Math.max(0,available));
+function renderPayoutsPage() {
+  const available    = calcAvailableBalance();
+  const totalPaid    = PAYOUTS
+    .filter(p => p.payout_status === 'accepted')
+    .reduce((s, p) => s + parseFloat(p.payout_amount_inr || 0), 0);
+  const pendingCount = PAYOUTS
+    .filter(p => ['pending','processing','initiated'].includes(p.payout_status)).length;
+
+  document.getElementById('po-available').textContent = formatINR(available);
   document.getElementById('po-paid').textContent      = formatINR(totalPaid);
   document.getElementById('po-pending').textContent   = pendingCount;
-  document.getElementById('modalPayoutBal').textContent = formatINR(Math.max(0,available));
+  document.getElementById('modalPayoutBal').textContent = formatINR(available);
 
   const tbody = document.getElementById('payoutsTbody');
   if (!PAYOUTS.length) {
@@ -1120,6 +1066,7 @@ function renderPayoutsPage() {
     accepted:   '<span class="payout-status-badge ps-accepted">✓ Accepted</span>',
     declined:   '<span class="payout-status-badge ps-declined">✕ Declined</span>',
   };
+
   tbody.innerHTML = PAYOUTS.map(p => `
     <tr>
       <td>${fmtDate(p.created_at)}</td>
@@ -1130,39 +1077,49 @@ function renderPayoutsPage() {
   `).join('');
 }
 
-// ════════════════════════════════════════════════
-//  PROFILE PAGE RENDER
-// ════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════
+//  PROFILE PAGE
+// ════════════════════════════════════════════════════════════
 function renderProfilePage() {
+  const { emoji, tier } = getTierInfo();
   const infoRows = [
-    {label:'Full Name',   value: AFF.name || '—'},
-    {label:'Email',       value: AFF.affiliate_email || '—'},
-    {label:'Phone',       value: AFF.affiliate_phone ? '+' + AFF.affiliate_phone : '—'},
-    {label:'Best Role',   value: (AFF.best_role || '—').replace(/_/g,' ')},
-    {label:'Tier',        value: getTierInfo().emoji + ' ' + getTierInfo().tier},
-    {label:'Total Sales', value: AFF.affiliate_sales || 0},
-    {label:'Revenue',     value: formatINR(AFF.affiliate_revenue_inr)},
+    { label: 'Full Name',   value: AFF.name || '—' },
+    { label: 'Email',       value: AFF.affiliate_email || '—' },
+    { label: 'Phone',       value: AFF.affiliate_phone ? `+${AFF.affiliate_phone}` : '—' },
+    { label: 'Best Role',   value: (AFF.best_role || '—').replace(/_/g,' ') },
+    { label: 'Tier',        value: `${emoji} ${tier}` },
+    { label: 'Total Sales', value: AFF.affiliate_sales || 0 },
+    { label: 'Revenue',     value: formatINR(AFF.affiliate_revenue_inr) },
   ];
   document.getElementById('profileInfo').innerHTML = infoRows.map(r =>
-    `<div class="info-row"><div class="info-row-label">${r.label}</div><div class="info-row-value">${r.value}</div></div>`
+    `<div class="info-row">
+      <div class="info-row-label">${r.label}</div>
+      <div class="info-row-value">${r.value}</div>
+    </div>`
   ).join('');
 
-  const accNum = AFF.bankaccount_number?.toString() || '';
+  const accNum = String(AFF.bankaccount_number || '');
+  const masked = accNum.length > 4
+    ? '•'.repeat(accNum.length - 4) + accNum.slice(-4) : (accNum || '—');
   const bankRows = [
-    {label:'Account Holder', value: AFF.bankaccount_name || '—'},
-    {label:'Account Number',  value: accNum.length > 4 ? '•'.repeat(accNum.length-4) + accNum.slice(-4) : accNum || '—'},
-    {label:'IFSC Code',       value: AFF.bankaccount_ifsc || '—'},
+    { label: 'Account Holder', value: AFF.bankaccount_name || '—' },
+    { label: 'Account Number',  value: masked },
+    { label: 'IFSC Code',       value: AFF.bankaccount_ifsc || '—' },
   ];
   document.getElementById('bankInfo').innerHTML = bankRows.map(r =>
-    `<div class="info-row"><div class="info-row-label">${r.label}</div><div class="info-row-value">${r.value}</div></div>`
+    `<div class="info-row">
+      <div class="info-row-label">${r.label}</div>
+      <div class="info-row-value">${r.value}</div>
+    </div>`
   ).join('');
+
   document.getElementById('payoutBankDisplay').textContent =
-    `${AFF.bankaccount_name || '—'} · IFSC: ${AFF.bankaccount_ifsc || '—'} · ****${accNum.slice(-4)||''}`;
+    `${AFF.bankaccount_name || '—'} · IFSC: ${AFF.bankaccount_ifsc || '—'} · ****${accNum.slice(-4) || ''}`;
 }
 
-// ════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════
 //  NAVIGATION
-// ════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════
 function initNav() {
   document.querySelectorAll('.nav-item[data-page]').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -1170,8 +1127,10 @@ function initNav() {
       document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById('page-'+page).classList.add('active');
+      document.getElementById(`page-${page}`).classList.add('active');
       if (window.innerWidth < 960) toggleSidebar(false);
+      // Scroll main to top on page switch
+      document.getElementById('mainContent').scrollTop = 0;
     });
   });
 }
@@ -1179,36 +1138,36 @@ function initNav() {
 function toggleSidebar(forceOpen) {
   const s = document.getElementById('sidebar');
   const o = document.getElementById('overlay');
-  const isOpen = s.classList.contains('open');
-  const shouldOpen = forceOpen !== undefined ? forceOpen : !isOpen;
+  const shouldOpen = forceOpen !== undefined ? forceOpen : !s.classList.contains('open');
   s.classList.toggle('open', shouldOpen);
   o.classList.toggle('show', shouldOpen);
 }
 
-// ════════════════════════════════════════════════
-//  COUPON CREATION
-// ════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════
+//  CREATE COUPON
+// ════════════════════════════════════════════════════════════
 function onCouponTypeChange() {
-  const val = document.getElementById('c-type').value;
+  const val  = document.getElementById('c-type').value;
   const hint = document.getElementById('c-amountHint');
-  const noteEl = document.getElementById('fixedDiscountNote');
-  const {rate, canFixed} = getTierInfo();
+  const note = document.getElementById('fixedDiscountNote');
+  const { rate, canFixed } = getTierInfo();
 
   if (val === 'fixed') {
     if (!canFixed) {
-      showModalAlert('couponModalError', '❌ Fixed discount coupons are only available to Growth and Elite Partners. You need 25 sales to unlock this.', 'error');
+      showModalAlert('couponModalError', '❌ Fixed discount coupons are only for Growth & Elite Partners (25+ sales).', 'error');
       document.getElementById('c-type').value = '';
+      note.style.display = 'none';
       return;
     }
-    hint.textContent = 'Max: ₹498';
-    noteEl.style.display = 'block';
-    noteEl.className = 'alert alert-info show';
+    hint.textContent = 'Max ₹498 per use';
+    note.style.display = 'block';
+    note.className = 'alert alert-info show';
   } else if (val === 'percentage') {
-    hint.textContent = `Max: ${rate}%`;
-    noteEl.style.display = 'none';
+    hint.textContent = `Max ${rate}% (your tier limit)`;
+    note.style.display = 'none';
   } else {
-    hint.textContent = 'Enter value above';
-    noteEl.style.display = 'none';
+    hint.textContent = 'Select a type first';
+    note.style.display = 'none';
   }
 }
 
@@ -1223,28 +1182,27 @@ async function createCoupon() {
   hideModalAlert('couponModalError');
   hideModalAlert('couponModalSuccess');
 
-  const code     = (document.getElementById('c-code').value || '').trim().toUpperCase();
-  const type     = document.getElementById('c-type').value;
-  const amount   = parseFloat(document.getElementById('c-amount').value);
-  const valType  = document.getElementById('c-validityType').value;
-  const valVal   = parseInt(document.getElementById('c-validityVal').value);
+  const code    = (document.getElementById('c-code').value || '').trim().toUpperCase();
+  const type    = document.getElementById('c-type').value;
+  const amount  = parseFloat(document.getElementById('c-amount').value);
+  const valType = document.getElementById('c-validityType').value;
+  const valVal  = parseInt(document.getElementById('c-validityVal').value);
+  const { rate, canFixed } = getTierInfo();
 
-  const {rate, canFixed} = getTierInfo();
-
-  if (!code)        return showModalAlert('couponModalError', '❌ Please enter a coupon code.', 'error');
-  if (!/^[A-Z0-9]+$/.test(code)) return showModalAlert('couponModalError', '❌ Coupon code must contain only letters and numbers (no spaces or symbols).', 'error');
-  if (!type)        return showModalAlert('couponModalError', '❌ Please select a discount type.', 'error');
-  if (!amount || isNaN(amount) || amount <= 0) return showModalAlert('couponModalError', '❌ Please enter a valid discount amount.', 'error');
-  if (!valType)     return showModalAlert('couponModalError', '❌ Please select a validity type.', 'error');
-  if (!valVal || valVal < 1) return showModalAlert('couponModalError', '❌ Please enter a valid validity value (minimum 1).', 'error');
+  if (!code)                       return showModalAlert('couponModalError', '❌ Please enter a coupon code.', 'error');
+  if (!/^[A-Z0-9]+$/.test(code))  return showModalAlert('couponModalError', '❌ Coupon code must contain only letters and numbers (no spaces or symbols).', 'error');
+  if (!type)                       return showModalAlert('couponModalError', '❌ Please select a discount type.', 'error');
+  if (!amount || isNaN(amount) || amount <= 0) return showModalAlert('couponModalError', '❌ Please enter a valid discount amount greater than 0.', 'error');
+  if (!valType)                    return showModalAlert('couponModalError', '❌ Please select a validity type.', 'error');
+  if (!valVal || valVal < 1)       return showModalAlert('couponModalError', '❌ Please enter a validity value of at least 1.', 'error');
 
   if (type === 'fixed') {
-    if (!canFixed) return showModalAlert('couponModalError', '❌ Only Growth and Elite Partners can issue fixed discount coupons.', 'error');
+    if (!canFixed) return showModalAlert('couponModalError', '❌ Only Growth and Elite Partners can create fixed discount coupons.', 'error');
     if (amount > 498) return showModalAlert('couponModalError', '❌ Fixed discount cannot exceed ₹498.', 'error');
   }
   if (type === 'percentage') {
-    if (amount > rate) return showModalAlert('couponModalError', `❌ Your tier allows a maximum of ${rate}% discount.`, 'error');
-    if (amount > 100)  return showModalAlert('couponModalError', '❌ Percentage cannot exceed 100%.', 'error');
+    if (amount > rate)  return showModalAlert('couponModalError', `❌ Your tier allows a maximum discount of ${rate}%.`, 'error');
+    if (amount > 100)   return showModalAlert('couponModalError', '❌ Percentage cannot exceed 100%.', 'error');
   }
 
   const btn = document.getElementById('createCouponBtn');
@@ -1252,47 +1210,55 @@ async function createCoupon() {
 
   try {
     // Check uniqueness
-    const {data: existing} = await sb.from('coupons').select('id').eq('coupon_code', code).single();
+    const { data: existing } = await sb
+      .from('coupons').select('id').eq('coupon_code', code).maybeSingle();
     if (existing) {
-      showModalAlert('couponModalError', '❌ This coupon code is already taken. Please use a different code.', 'error');
+      showModalAlert('couponModalError', '❌ This coupon code is already taken. Please choose a different code.', 'error');
       btn.disabled = false; btn.textContent = 'Create Coupon →';
       return;
     }
-  } catch(_) { /* no row = good */ }
 
-  try {
-    const {data, error} = await sb.from('coupons').insert([{
-      affiliate_id:  AFF.id,
-      coupon_code:   code,
-      discount_type: type,
-      discount:      amount,
-      validity_type: valType,
-      validity:      valVal
-    }]).select().single();
+    const { data, error } = await sb
+      .from('coupons')
+      .insert([{
+        affiliate_id:  AFF.id,
+        coupon_code:   code,
+        discount_type: type,
+        discount:      amount,
+        validity_type: valType,
+        validity:      valVal
+      }])
+      .select()
+      .single();
+
     if (error) throw error;
 
     COUPONS.unshift(data);
+    COUPON_USE_MAP[String(data.id)] = 0;
     showModalAlert('couponModalSuccess', `✓ Coupon "${code}" created successfully!`, 'success');
+
     // Reset form
-    ['c-code','c-amount','c-validityVal'].forEach(id => document.getElementById(id).value = '');
+    ['c-code','c-amount','c-validityVal'].forEach(id => { document.getElementById(id).value = ''; });
     document.getElementById('c-type').value = '';
     document.getElementById('c-validityType').value = '';
     document.getElementById('fixedDiscountNote').style.display = 'none';
-    document.getElementById('coup-total').textContent = COUPONS.length;
+    document.getElementById('c-amountHint').textContent = 'Select a type first';
+    document.getElementById('c-validityHint').textContent = 'Uses or days';
+
     renderCouponsPage();
     setTimeout(() => closeModal('modalCreateCoupon'), 1600);
-  } catch(e) {
-    showModalAlert('couponModalError', '❌ Failed to create coupon: ' + (e.message || 'Please try again.'), 'error');
+  } catch (e) {
+    console.error('createCoupon error:', e);
+    showModalAlert('couponModalError', `❌ Failed to create coupon: ${e.message || 'Please try again.'}`, 'error');
   }
   btn.disabled = false; btn.textContent = 'Create Coupon →';
 }
 
-// ════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════
 //  PAYOUT
-// ════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════
 function openPayoutModal() {
-  const totalPaid = PAYOUTS.filter(p=>p.payout_status==='accepted').reduce((s,p)=>s+parseFloat(p.payout_amount_inr||0),0);
-  const available = Math.max(0, parseFloat(AFF.affiliate_revenue_inr || 0) - totalPaid);
+  const available = calcAvailableBalance();
   document.getElementById('modalPayoutBal').textContent = formatINR(available);
   document.getElementById('p-amount').value = '';
   hideModalAlert('payoutModalError');
@@ -1304,45 +1270,50 @@ async function submitPayout() {
   hideModalAlert('payoutModalError');
   hideModalAlert('payoutModalSuccess');
 
-  const amount = parseFloat(document.getElementById('p-amount').value);
-  const totalPaid = PAYOUTS.filter(p=>p.payout_status==='accepted').reduce((s,p)=>s+parseFloat(p.payout_amount_inr||0),0);
-  const available = Math.max(0, parseFloat(AFF.affiliate_revenue_inr || 0) - totalPaid);
+  const amount    = parseFloat(document.getElementById('p-amount').value);
+  const available = calcAvailableBalance();
 
   if (!amount || isNaN(amount) || amount <= 0)
-    return showModalAlert('payoutModalError','❌ Please enter a valid amount.','error');
+    return showModalAlert('payoutModalError', '❌ Please enter a valid amount.', 'error');
   if (amount < 100)
-    return showModalAlert('payoutModalError','❌ Minimum payout is ₹100.','error');
+    return showModalAlert('payoutModalError', '❌ Minimum payout amount is ₹100.', 'error');
   if (amount > available)
-    return showModalAlert('payoutModalError',`❌ Insufficient balance. Your available balance is ${formatINR(available)}.`,'error');
+    return showModalAlert('payoutModalError', `❌ Insufficient balance. Your available balance is ${formatINR(available)}.`, 'error');
 
-  const hasPendingPayout = PAYOUTS.some(p => ['pending','processing','initiated'].includes(p.payout_status));
-  if (hasPendingPayout)
-    return showModalAlert('payoutModalError','❌ You already have a pending payout request. Please wait for it to be processed before making a new request.','error');
+  const hasPending = PAYOUTS.some(p => ['pending','processing','initiated'].includes(p.payout_status));
+  if (hasPending)
+    return showModalAlert('payoutModalError', '❌ You already have a pending payout request. Please wait for it to be processed.', 'error');
 
   const btn = document.getElementById('submitPayoutBtn');
   btn.disabled = true; btn.textContent = 'Submitting…';
 
   try {
-    const {data, error} = await sb.from('affiliate_payout_request').insert([{
-      affiliate_id: AFF.id,
-      payout_amount_inr: amount,
-      payout_status: 'pending'
-    }]).select().single();
+    const { data, error } = await sb
+      .from('affiliate_payout_request')
+      .insert([{
+        affiliate_id:      AFF.id,
+        payout_amount_inr: amount,
+        payout_status:     'pending'
+      }])
+      .select()
+      .single();
+
     if (error) throw error;
 
     PAYOUTS.unshift(data);
     showModalAlert('payoutModalSuccess', `✓ Payout request of ${formatINR(amount)} submitted! We'll process it in 3–5 business days.`, 'success');
     renderPayoutsPage();
     setTimeout(() => closeModal('modalPayout'), 2000);
-  } catch(e) {
-    showModalAlert('payoutModalError', '❌ Request failed: ' + (e.message || 'Please try again.'), 'error');
+  } catch (e) {
+    console.error('submitPayout error:', e);
+    showModalAlert('payoutModalError', `❌ Request failed: ${e.message || 'Please try again.'}`, 'error');
   }
   btn.disabled = false; btn.textContent = 'Request Payout →';
 }
 
-// ════════════════════════════════════════════════
-//  HELPERS
-// ════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════
+//  MODAL HELPERS
+// ════════════════════════════════════════════════════════════
 function openModal(id) {
   document.getElementById(id).classList.add('active');
   document.body.style.overflow = 'hidden';
@@ -1355,28 +1326,34 @@ document.querySelectorAll('.modal-overlay').forEach(o =>
   o.addEventListener('click', e => { if (e.target === o) closeModal(o.id); })
 );
 
-function showModalAlert(id, msg, type='error') {
+function showModalAlert(id, msg, type = 'error') {
   const el = document.getElementById(id);
+  if (!el) return;
   el.textContent = msg;
   el.className = `alert alert-${type} show`;
 }
 function hideModalAlert(id) {
   const el = document.getElementById(id);
-  if(el){ el.className='alert'; el.textContent=''; }
+  if (el) { el.className = 'alert'; el.textContent = ''; }
 }
 
 async function copyLink(text, btnId) {
   try {
     await navigator.clipboard.writeText(text);
-    const btn = document.getElementById(btnId);
+  } catch (_) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+  }
+  const btn = document.getElementById(btnId);
+  if (btn) {
+    const orig = btn.textContent;
     btn.textContent = '✓ Copied!';
     btn.classList.add('copied');
-    setTimeout(() => { btn.textContent='Copy Link'; btn.classList.remove('copied'); }, 2000);
-  } catch(_) {
-    // fallback
-    const ta = document.createElement('textarea');
-    ta.value = text; document.body.appendChild(ta); ta.select();
-    document.execCommand('copy'); document.body.removeChild(ta);
+    setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2000);
   }
 }
 </script>
