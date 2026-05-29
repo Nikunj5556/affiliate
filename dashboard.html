@@ -567,7 +567,7 @@ tbody tr:hover{background:var(--bg)}
 
 <script>
 // ════════════════════════════════════════════════════════════
-//  SUPABASE INIT
+//  SUPABASE INIT — fetches config from Netlify environment
 // ════════════════════════════════════════════════════════════
 function getCookie(name) {
   const m = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
@@ -581,13 +581,34 @@ function deleteCookie(name) {
   document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/`;
 }
 
-const SUPA_URL = getCookie('SUPABASE_URL')      || localStorage.getItem('SUPABASE_URL')      || '';
-const SUPA_KEY = getCookie('SUPABASE_ANON_KEY') || localStorage.getItem('SUPABASE_ANON_KEY') || '';
-
 let sb = null;
-if (SUPA_URL && SUPA_KEY) {
-  try { sb = supabase.createClient(SUPA_URL, SUPA_KEY); }
-  catch (e) { console.error('Supabase init failed:', e); }
+
+async function initSupabase() {
+  let url = localStorage.getItem('SUPABASE_URL') || '';
+  let key = localStorage.getItem('SUPABASE_ANON_KEY') || '';
+
+  if (!url || !key) {
+    try {
+      const res = await fetch('/.netlify/functions/config');
+      if (res.ok) {
+        const cfg = await res.json();
+        url = cfg.supabaseUrl || '';
+        key = cfg.supabaseAnonKey || '';
+        if (url) localStorage.setItem('SUPABASE_URL', url);
+        if (key) localStorage.setItem('SUPABASE_ANON_KEY', key);
+      }
+    } catch (e) {
+      console.error('Failed to fetch Supabase config from server:', e);
+    }
+  }
+
+  if (url && key) {
+    try {
+      sb = supabase.createClient(url, key);
+    } catch (e) {
+      console.error('Supabase init failed:', e);
+    }
+  }
 }
 
 // ════════════════════════════════════════════════════════════
@@ -632,13 +653,13 @@ let COUPON_USE_MAP = {};
 //  BOOT
 // ════════════════════════════════════════════════════════════
 (async function boot() {
+  await initSupabase();
   AFF = getStoredAffiliate();
   if (!AFF?.id) { window.location.href = 'affiliate.html'; return; }
 
   if (!sb) {
-    // No Supabase config — show error and redirect
-    alert('Supabase is not configured. Please set up your credentials first.');
-    window.location.href = 'credentials.html';
+    alert('Supabase is not configured. Please contact the site administrator.');
+    window.location.href = 'affiliate.html';
     return;
   }
 

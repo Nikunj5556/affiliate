@@ -590,8 +590,7 @@ footer{background:var(--primary);padding:48px 5%;display:flex;align-items:center
 
 <script>
 // ════════════════════════════════════════════════════════════
-//  SUPABASE INIT — reads from localStorage / cookies
-//  All DB calls go directly to Supabase (no backend API needed)
+//  SUPABASE INIT — fetches config from Netlify environment
 // ════════════════════════════════════════════════════════════
 function getCookie(name) {
   const m = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
@@ -602,18 +601,35 @@ function setCookie(name, value, days = 7) {
   document.cookie = `${name}=${encodeURIComponent(value)};expires=${exp};path=/;SameSite=Lax`;
 }
 
-const SUPA_URL = getCookie('SUPABASE_URL') || localStorage.getItem('SUPABASE_URL') || '';
-const SUPA_KEY = getCookie('SUPABASE_ANON_KEY') || localStorage.getItem('SUPABASE_ANON_KEY') || '';
-
 let sb = null;
 let supabaseReady = false;
 
-if (SUPA_URL && SUPA_KEY) {
-  try {
-    sb = supabase.createClient(SUPA_URL, SUPA_KEY);
-    supabaseReady = true;
-  } catch (e) {
-    console.error('Failed to init Supabase:', e);
+async function initSupabase() {
+  let url = localStorage.getItem('SUPABASE_URL') || '';
+  let key = localStorage.getItem('SUPABASE_ANON_KEY') || '';
+
+  if (!url || !key) {
+    try {
+      const res = await fetch('/.netlify/functions/config');
+      if (res.ok) {
+        const cfg = await res.json();
+        url = cfg.supabaseUrl || '';
+        key = cfg.supabaseAnonKey || '';
+        if (url) localStorage.setItem('SUPABASE_URL', url);
+        if (key) localStorage.setItem('SUPABASE_ANON_KEY', key);
+      }
+    } catch (e) {
+      console.error('Failed to fetch Supabase config from server:', e);
+    }
+  }
+
+  if (url && key) {
+    try {
+      sb = supabase.createClient(url, key);
+      supabaseReady = true;
+    } catch (e) {
+      console.error('Failed to init Supabase:', e);
+    }
   }
 }
 
@@ -1039,7 +1055,9 @@ function storeAffiliate(data) {
 // ════════════════════════════════════════════════════════════
 //  BOOTSTRAP
 // ════════════════════════════════════════════════════════════
-(function boot() {
+(async function boot() {
+  await initSupabase();
+
   const loader = document.getElementById('app-loading');
   loader.classList.add('hidden');
   setTimeout(() => { loader.style.display = 'none'; }, 450);
