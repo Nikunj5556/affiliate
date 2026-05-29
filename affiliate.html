@@ -575,6 +575,14 @@ footer{background:var(--primary);padding:48px 5%;display:flex;align-items:center
 
 <script>
 // ============================================================
+//  COOKIE HELPER
+// ============================================================
+function setCookie(name, value, days = 7) {
+  const exp = new Date(Date.now() + days * 864e5).toUTCString();
+  document.cookie = `${name}=${encodeURIComponent(value)};expires=${exp};path=/;SameSite=Lax`;
+}
+
+// ============================================================
 //  API HELPER — all DB calls go through Vercel serverless fns
 // ============================================================
 async function api(path, method = 'GET', body = null) {
@@ -788,7 +796,10 @@ async function obSubmit() {
     const affiliateData = result.data;
     if (!affiliateData?.id) throw new Error('Account creation failed — no ID returned.');
 
-    localStorage.setItem('cs_affiliate', JSON.stringify(affiliateData));
+    const affStr = JSON.stringify(affiliateData);
+    setCookie('cs_affiliate', affStr, 7);
+    localStorage.setItem('cs_affiliate', affStr); // keep as fallback
+    setCookie('cs_affiliate_token', btoa(obData.email + ':' + Date.now()), 7);
     localStorage.setItem('cs_affiliate_token', btoa(obData.email + ':' + Date.now()));
     obShowStep(5);
   } catch (err) {
@@ -858,7 +869,10 @@ async function loginVerify() {
     const affResult = await api(`/api/affiliates/get?id=${loginAffId}`);
     const affiliate  = affResult.data;
 
-    localStorage.setItem('cs_affiliate', JSON.stringify(affiliate));
+    const affStr = JSON.stringify(affiliate);
+    setCookie('cs_affiliate', affStr, 7);
+    localStorage.setItem('cs_affiliate', affStr); // keep as fallback
+    setCookie('cs_affiliate_token', btoa(affiliate.affiliate_email + ':' + Date.now()), 7);
     localStorage.setItem('cs_affiliate_token', btoa(affiliate.affiliate_email + ':' + Date.now()));
     window.location.href = 'dashboard.html';
   } catch (err) {
