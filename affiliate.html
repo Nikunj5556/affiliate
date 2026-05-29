@@ -7,7 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 :root{
   --bg:#FAFAF6;--surface:#FFFFFF;--surface-2:#F4F1EA;
@@ -211,13 +210,11 @@ footer{background:var(--primary);padding:48px 5%;display:flex;align-items:center
 .alert-success{background:var(--success-light);color:var(--success);border:1px solid rgba(42,122,69,.2)}
 .alert-info{background:var(--accent-light);color:var(--accent-hover);border:1px solid rgba(200,136,46,.2)}
 
-/* LOADING OVERLAY for init */
+/* LOADING */
 #app-loading{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;transition:opacity .4s ease}
 #app-loading.hidden{opacity:0;pointer-events:none}
 .spin{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.init-error{background:var(--error-light);color:var(--error);border:1px solid rgba(192,57,43,.2);border-radius:var(--r);padding:20px 28px;max-width:420px;text-align:center;font-size:.9rem;line-height:1.6}
-.init-error strong{display:block;font-size:1.1rem;margin-bottom:8px}
 
 /* RESPONSIVE */
 @media(max-width:900px){
@@ -244,7 +241,7 @@ footer{background:var(--primary);padding:48px 5%;display:flex;align-items:center
 </head>
 <body>
 
-<!-- LOADING OVERLAY — shown until Supabase is ready -->
+<!-- LOADING OVERLAY -->
 <div id="app-loading">
   <div class="nav-logo serif" style="font-size:1.6rem;color:var(--primary)">Creator<span style="color:var(--accent)">Stack</span></div>
   <div class="spin"></div>
@@ -394,7 +391,7 @@ footer{background:var(--primary);padding:48px 5%;display:flex;align-items:center
   <div class="faq-list">
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How are commissions calculated?<span class="icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Your commission = product price × your tier rate (20/30/40%). If you gave a coupon discount, that is deducted. Example: ₹500 product, Standard tier (20%), coupon gives 10% off → commission = (₹500 × 20%) − (₹500 × 10%) = ₹100 − ₹50 = ₹50.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">When do I get upgraded to Growth or Elite?<span class="icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Upgrades are based on cumulative sales. Growth Partner (30%) unlocks at 25 total sales. Elite Partner (40%) unlocks at 100 total sales. Your dashboard always shows your current progress toward the next tier.</div></div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What's the difference between fixed and percentage discounts?<span class="icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Percentage discounts reduce the product price by a % (e.g., 15% off). Fixed discounts reduce by a flat INR amount (e.g., ₹200 off). Fixed discount coupons are only available to Growth and Elite partners, with a maximum of ₹498. Both discount types are deducted from your commission.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What's the difference between fixed and percentage discounts?<span class="icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Percentage discounts reduce the product price by a % (e.g., 15% off). Fixed discounts reduce by a flat INR amount (e.g., ₹200 off). Fixed discount coupons are only available to Growth and Elite partners, with a maximum of ₹498.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How does my affiliate link work?<span class="icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Your link format is: <code style="background:var(--surface-2);padding:2px 6px;border-radius:4px;font-size:.85em">creatorstack.breakfastclub.co.in/PRODUCT_ID?ref=YOUR_ID</code>. When a buyer clicks your link and makes a paid purchase, the sale is automatically attributed to your account.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I create multiple coupons?<span class="icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Yes — create as many coupon codes as you want from your dashboard. Each can have different rates and validity settings. Your dashboard shows usage counts for each coupon so you can identify your best-performing codes.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I request a payout?<span class="icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Go to Payouts in your dashboard and click "Request Payout". Minimum amount is ₹100. Processing takes 3–5 business days to your registered Indian bank account.</div></div></div>
@@ -429,7 +426,7 @@ footer{background:var(--primary);padding:48px 5%;display:flex;align-items:center
   <div class="footer-copy">© 2025 CreatorStack · Breakfast Club</div>
 </footer>
 
-<!-- ===== ONBOARDING MODAL ===== -->
+<!-- ONBOARDING MODAL -->
 <div class="modal-overlay" id="onboardModal">
   <div class="modal">
     <div class="modal-header">
@@ -455,14 +452,14 @@ footer{background:var(--primary);padding:48px 5%;display:flex;align-items:center
       <div class="form-group">
         <label class="form-label">Email Address <span>*</span></label>
         <input type="email" id="ob-email" class="form-input" placeholder="priya@example.com">
-        <div class="form-hint">A 6-digit OTP will be inserted in the system for your email.</div>
+        <div class="form-hint">A 6-digit OTP will be sent to this email for verification.</div>
       </div>
       <button class="btn btn-primary btn-full" id="ob-s1-btn" onclick="obStep1()">Continue — Verify Email →</button>
     </div>
 
     <!-- Step 2: OTP -->
     <div class="form-step" id="ob-step-2">
-      <div class="otp-info">OTP created for <strong id="ob-email-display"></strong>.<br>Check your inbox (and spam). Valid for 10 minutes.</div>
+      <div class="otp-info">OTP sent to <strong id="ob-email-display"></strong>.<br>Check your inbox (and spam). Valid for 10 minutes.</div>
       <div class="otp-grid" id="ob-otp-grid">
         <input type="text" inputmode="numeric" maxlength="1" class="otp-cell" oninput="otpNext(this,1,'ob-otp-grid')" onkeydown="otpBack(event,this,'ob-otp-grid')">
         <input type="text" inputmode="numeric" maxlength="1" class="otp-cell" oninput="otpNext(this,2,'ob-otp-grid')" onkeydown="otpBack(event,this,'ob-otp-grid')">
@@ -538,7 +535,7 @@ footer{background:var(--primary);padding:48px 5%;display:flex;align-items:center
   </div>
 </div>
 
-<!-- ===== LOGIN MODAL ===== -->
+<!-- LOGIN MODAL -->
 <div class="modal-overlay" id="loginModal">
   <div class="modal">
     <div class="modal-header">
@@ -561,7 +558,7 @@ footer{background:var(--primary);padding:48px 5%;display:flex;align-items:center
     </div>
 
     <div class="form-step" id="login-step-2">
-      <div class="otp-info">OTP created for <strong id="login-email-display"></strong>.<br>Check your inbox. Valid for 10 minutes.</div>
+      <div class="otp-info">OTP sent to <strong id="login-email-display"></strong>.<br>Check your inbox. Valid for 10 minutes.</div>
       <div class="otp-grid" id="login-otp-grid">
         <input type="text" inputmode="numeric" maxlength="1" class="otp-cell" oninput="otpNext(this,1,'login-otp-grid')" onkeydown="otpBack(event,this,'login-otp-grid')">
         <input type="text" inputmode="numeric" maxlength="1" class="otp-cell" oninput="otpNext(this,2,'login-otp-grid')" onkeydown="otpBack(event,this,'login-otp-grid')">
@@ -578,47 +575,21 @@ footer{background:var(--primary);padding:48px 5%;display:flex;align-items:center
 
 <script>
 // ============================================================
-//  SUPABASE INIT — must complete before any user action
+//  API HELPER — all DB calls go through Vercel serverless fns
 // ============================================================
-let sb = null;
-
-async function initSupabase() {
-  // 1. Try Vercel /api/config
-  try {
-    const res = await fetch('/api/config');
-    if (res.ok) {
-      const { SUPABASE_URL, SUPABASE_ANON_KEY } = await res.json();
-      if (SUPABASE_URL && SUPABASE_ANON_KEY) {
-        sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-        return true;
-      }
-    }
-  } catch (_) {}
-
-  // 2. localStorage fallback (local dev / credentials.html)
-  const url = localStorage.getItem('SUPABASE_URL');
-  const key = localStorage.getItem('SUPABASE_ANON_KEY');
-  if (url && key && !url.includes('YOUR_')) {
-    sb = supabase.createClient(url, key);
-    console.info('[CreatorStack] Using localStorage credentials (dev mode).');
-    return true;
-  }
-
-  return false;
-}
-
-function showInitError(msg) {
-  const el = document.getElementById('app-loading');
-  el.innerHTML = `<div class="nav-logo serif" style="font-size:1.6rem;color:var(--primary)">Creator<span style="color:var(--accent)">Stack</span></div>
-    <div class="init-error"><strong>⚠️ Configuration Required</strong>${msg}</div>
-    <a href="credentials.html" class="btn btn-accent" style="margin-top:12px">Set Up Credentials →</a>`;
+async function api(path, method = 'GET', body = null) {
+  const opts = { method, headers: { 'Content-Type': 'application/json' } };
+  if (body) opts.body = JSON.stringify(body);
+  const res = await fetch(path, opts);
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || `Request failed (${res.status})`);
+  return data;
 }
 
 // ============================================================
 //  MODAL HELPERS
 // ============================================================
 function openModal(id) {
-  if (!sb) { showInitError('Supabase is not configured. Please set up credentials first.'); return; }
   document.getElementById(id).classList.add('active');
   document.body.style.overflow = 'hidden';
 }
@@ -656,7 +627,8 @@ function otpBack(e, el, gridId) {
   }
 }
 function getOtp(gridId) {
-  return Array.from(document.getElementById(gridId).querySelectorAll('.otp-cell')).map(c => c.value).join('');
+  return Array.from(document.getElementById(gridId).querySelectorAll('.otp-cell'))
+    .map(c => c.value).join('');
 }
 function clearOtp(gridId) {
   document.getElementById(gridId).querySelectorAll('.otp-cell').forEach(c => c.value = '');
@@ -676,7 +648,7 @@ function hideAlert(id) {
 }
 
 // ============================================================
-//  ONBOARDING
+//  ONBOARDING STATE
 // ============================================================
 let obData = {};
 let obOtpId = null;
@@ -696,42 +668,42 @@ function obShowStep(n) {
   if (n === 5) document.getElementById('ob-indicators').style.display = 'none';
 }
 
+// STEP 1 — name + email → check not already registered → create OTP
 async function obStep1() {
   hideAlert('ob-error'); hideAlert('ob-info');
   const name = document.getElementById('ob-name').value.trim();
   const email = document.getElementById('ob-email').value.trim().toLowerCase();
+
   if (!name || name.length < 2) { showAlert('ob-error', 'Please enter your full name (at least 2 characters).'); return; }
   if (!/\S+@\S+\.\S+/.test(email)) { showAlert('ob-error', 'Please enter a valid email address.'); return; }
 
   const btn = document.getElementById('ob-s1-btn');
-  btn.disabled = true; btn.textContent = 'Sending OTP…';
+  btn.disabled = true; btn.textContent = 'Checking…';
 
   try {
-    // Check if already fully registered
-    const { data: existing } = await sb.from('affiliates').select('id,is_email_verified').eq('affiliate_email', email).maybeSingle();
-    if (existing?.is_email_verified) {
+    // Check if already registered (uses SERVICE_ROLE_KEY on backend to bypass RLS)
+    const check = await api(`/api/affiliates/check-email?email=${encodeURIComponent(email)}`);
+    if (check.verified) {
       showAlert('ob-error', 'This email is already registered. Please login instead.');
-      btn.disabled = false; btn.textContent = 'Continue — Verify Email →'; return;
+      btn.disabled = false; btn.textContent = 'Continue — Verify Email →';
+      return;
     }
 
-    // Insert OTP — DB auto-generates otp_code and expires_at
-    const { data: otp, error: otpErr } = await sb.from('affiliate_email_otp')
-      .insert([{ affiliate_email: email, affiliate_name: name, is_used: false, email_sent: true }])
-      .select().single();
-    if (otpErr) throw otpErr;
-
-    obOtpId = otp.id;
+    // Create OTP record in DB (backend auto-generates 6-digit code + expiry)
+    const result = await api('/api/otp/create', 'POST', { affiliate_email: email, affiliate_name: name });
+    obOtpId = result.data.id;
     obData = { name, email };
     document.getElementById('ob-email-display').textContent = email;
     obShowStep(2);
     showAlert('ob-info', `✓ OTP created for ${email}. Check your inbox (valid 10 min).`, 'info');
   } catch (err) {
     console.error('obStep1:', err);
-    showAlert('ob-error', `Failed to create OTP: ${err.message || 'Please try again.'}`);
+    showAlert('ob-error', `Failed: ${err.message || 'Please try again.'}`);
   }
   btn.disabled = false; btn.textContent = 'Continue — Verify Email →';
 }
 
+// STEP 2 — verify OTP
 async function obVerifyOtp() {
   hideAlert('ob-error'); hideAlert('ob-info');
   const code = getOtp('ob-otp-grid');
@@ -741,30 +713,28 @@ async function obVerifyOtp() {
   btn.disabled = true; btn.textContent = 'Verifying…';
 
   try {
-    const { data: otp, error } = await sb.from('affiliate_email_otp')
-      .select('*').eq('id', obOtpId).eq('otp_code', code).eq('is_used', false).maybeSingle();
-    if (error) throw error;
-    if (!otp) { showAlert('ob-error', 'Invalid OTP. Please check and try again.'); btn.disabled = false; btn.textContent = 'Verify OTP →'; return; }
-    if (new Date(otp.expires_at) < new Date()) { showAlert('ob-error', 'OTP has expired. Please request a new one.'); btn.disabled = false; btn.textContent = 'Verify OTP →'; return; }
-
-    await sb.from('affiliate_email_otp').update({ is_used: true }).eq('id', obOtpId);
+    await api('/api/otp/verify', 'POST', { otp_id: obOtpId, otp_code: code });
     obShowStep(3);
     showAlert('ob-info', '✓ Email verified successfully!', 'info');
   } catch (err) {
     console.error('obVerifyOtp:', err);
-    showAlert('ob-error', `Verification failed: ${err.message || 'Please try again.'}`);
+    const msg = (err.message || '').includes('expired')
+      ? 'OTP has expired. Please request a new one.'
+      : 'Invalid OTP. Please check and try again.';
+    showAlert('ob-error', msg);
   }
   btn.disabled = false; btn.textContent = 'Verify OTP →';
 }
 
+// STEP 2 resend
 async function obResendOtp() {
   hideAlert('ob-error'); hideAlert('ob-info');
   try {
-    const { data: otp, error } = await sb.from('affiliate_email_otp')
-      .insert([{ affiliate_email: obData.email, affiliate_name: obData.name, is_used: false, email_sent: true }])
-      .select().single();
-    if (error) throw error;
-    obOtpId = otp.id;
+    const result = await api('/api/otp/create', 'POST', {
+      affiliate_email: obData.email,
+      affiliate_name: obData.name
+    });
+    obOtpId = result.data.id;
     clearOtp('ob-otp-grid');
     showAlert('ob-info', '✓ New OTP created. Check your inbox.', 'info');
   } catch (err) {
@@ -772,6 +742,7 @@ async function obResendOtp() {
   }
 }
 
+// STEP 3 — role + phone
 function obStep3() {
   hideAlert('ob-error');
   const role = document.getElementById('ob-role').value;
@@ -784,10 +755,11 @@ function obStep3() {
   obShowStep(4);
 }
 
+// STEP 4 — bank details → register
 async function obSubmit() {
   hideAlert('ob-error');
   const bankName = document.getElementById('ob-bank-name').value.trim();
-  const bankAcc = document.getElementById('ob-bank-account').value.trim();
+  const bankAcc  = document.getElementById('ob-bank-account').value.trim();
   const bankIFSC = document.getElementById('ob-bank-ifsc').value.trim().toUpperCase();
 
   if (!bankName || !bankAcc || !bankIFSC) { showAlert('ob-error', 'Please fill in all bank details.'); return; }
@@ -799,32 +771,21 @@ async function obSubmit() {
 
   try {
     const payload = {
-      name: obData.name,
-      affiliate_email: obData.email,
-      is_email_verified: true,
-      affiliate_phone: parseFloat(obData.phone) || 0,
-      affiliate_commission: 'standard_partner_20%',
-      affiliate_sales: 0,
+      name:                obData.name,
+      affiliate_email:     obData.email,
+      is_email_verified:   true,
+      affiliate_phone:     parseFloat(obData.phone) || 0,
+      affiliate_commission:'standard_partner_20%',
+      affiliate_sales:     0,
       affiliate_revenue_inr: 0,
-      best_role: obData.role,
-      bankaccount_name: bankName,
-      bankaccount_number: parseFloat(bankAcc) || 0,
-      bankaccount_ifsc: bankIFSC
+      best_role:           obData.role,
+      bankaccount_name:    bankName,
+      bankaccount_number:  parseFloat(bankAcc) || 0,
+      bankaccount_ifsc:    bankIFSC,
     };
 
-    const { data: existingAff } = await sb.from('affiliates').select('id').eq('affiliate_email', obData.email).maybeSingle();
-    let affiliateData;
-
-    if (existingAff) {
-      const { data, error } = await sb.from('affiliates').update(payload).eq('id', existingAff.id).select().single();
-      if (error) throw error;
-      affiliateData = data;
-    } else {
-      const { data, error } = await sb.from('affiliates').insert([payload]).select().single();
-      if (error) throw error;
-      affiliateData = data;
-    }
-
+    const result = await api('/api/affiliates/register', 'POST', payload);
+    const affiliateData = result.data;
     if (!affiliateData?.id) throw new Error('Account creation failed — no ID returned.');
 
     localStorage.setItem('cs_affiliate', JSON.stringify(affiliateData));
@@ -838,11 +799,13 @@ async function obSubmit() {
 }
 
 // ============================================================
-//  LOGIN
+//  LOGIN STATE
 // ============================================================
-let loginOtpId = null;
-let loginAffId = null;
+let loginOtpId  = null;
+let loginAffId  = null;
+let loginAffName = '';
 
+// STEP 1 — check affiliate exists → create OTP
 async function loginSendOtp() {
   hideAlert('login-error'); hideAlert('login-info');
   const email = document.getElementById('login-email').value.trim().toLowerCase();
@@ -852,31 +815,34 @@ async function loginSendOtp() {
   btn.disabled = true; btn.textContent = 'Checking…';
 
   try {
-    const { data: aff, error: affErr } = await sb.from('affiliates')
-      .select('id,name,is_email_verified').eq('affiliate_email', email).maybeSingle();
+    // Verify affiliate exists + is email-verified (backend bypasses RLS)
+    const affResult = await api('/api/affiliates/login', 'POST', { email });
+    loginAffId   = affResult.data.id;
+    loginAffName = affResult.data.name || '';
 
-    if (affErr && affErr.code !== 'PGRST116') throw affErr;
-    if (!aff) { showAlert('login-error', 'No affiliate account found with this email. Please register first.'); btn.disabled = false; btn.textContent = 'Send Login OTP →'; return; }
-    if (!aff.is_email_verified) { showAlert('login-error', 'Email not verified. Please complete registration.'); btn.disabled = false; btn.textContent = 'Send Login OTP →'; return; }
+    // Create OTP record
+    const otpResult = await api('/api/otp/create', 'POST', {
+      affiliate_email: email,
+      affiliate_name:  loginAffName,
+    });
+    loginOtpId = otpResult.data.id;
 
-    const { data: otp, error: otpErr } = await sb.from('affiliate_email_otp')
-      .insert([{ affiliate_email: email, affiliate_name: aff.name || '', is_used: false, email_sent: true }])
-      .select().single();
-    if (otpErr) throw otpErr;
-
-    loginOtpId = otp.id;
-    loginAffId = aff.id;
     document.getElementById('login-email-display').textContent = email;
     document.getElementById('login-step-1').classList.remove('active');
     document.getElementById('login-step-2').classList.add('active');
     showAlert('login-info', `✓ OTP created for ${email}. Check your inbox.`, 'info');
   } catch (err) {
     console.error('loginSendOtp:', err);
-    showAlert('login-error', `Failed to send OTP: ${err.message || 'Please try again.'}`);
+    const isNotFound = (err.message || '').toLowerCase().includes('not found')
+                    || (err.message || '').toLowerCase().includes('not verified');
+    showAlert('login-error', isNotFound
+      ? 'No verified affiliate account found for this email. Please register first.'
+      : `Failed: ${err.message}`);
   }
   btn.disabled = false; btn.textContent = 'Send Login OTP →';
 }
 
+// STEP 2 — verify OTP → fetch fresh affiliate data → redirect
 async function loginVerify() {
   hideAlert('login-error'); hideAlert('login-info');
   const code = getOtp('login-otp-grid');
@@ -886,23 +852,21 @@ async function loginVerify() {
   btn.disabled = true; btn.textContent = 'Verifying…';
 
   try {
-    const { data: otp, error } = await sb.from('affiliate_email_otp')
-      .select('*').eq('id', loginOtpId).eq('otp_code', code).eq('is_used', false).maybeSingle();
-    if (error) throw error;
-    if (!otp) { showAlert('login-error', 'Invalid OTP. Please try again.'); btn.disabled = false; btn.textContent = 'Login →'; return; }
-    if (new Date(otp.expires_at) < new Date()) { showAlert('login-error', 'OTP has expired. Please request a new one.'); btn.disabled = false; btn.textContent = 'Login →'; return; }
+    await api('/api/otp/verify', 'POST', { otp_id: loginOtpId, otp_code: code });
 
-    await sb.from('affiliate_email_otp').update({ is_used: true }).eq('id', loginOtpId);
-
-    const { data: affiliate, error: affErr } = await sb.from('affiliates').select('*').eq('id', loginAffId).single();
-    if (affErr) throw affErr;
+    // Fetch fresh affiliate data after successful OTP verification
+    const affResult = await api(`/api/affiliates/get?id=${loginAffId}`);
+    const affiliate  = affResult.data;
 
     localStorage.setItem('cs_affiliate', JSON.stringify(affiliate));
     localStorage.setItem('cs_affiliate_token', btoa(affiliate.affiliate_email + ':' + Date.now()));
     window.location.href = 'dashboard.html';
   } catch (err) {
     console.error('loginVerify:', err);
-    showAlert('login-error', `Login failed: ${err.message || 'Please try again.'}`);
+    const msg = (err.message || '').includes('expired')
+      ? 'OTP has expired. Please request a new one.'
+      : 'Invalid OTP. Please try again.';
+    showAlert('login-error', msg);
   }
   btn.disabled = false; btn.textContent = 'Login →';
 }
@@ -911,12 +875,11 @@ async function loginResend() {
   hideAlert('login-error'); hideAlert('login-info');
   const email = document.getElementById('login-email').value.trim().toLowerCase();
   try {
-    const { data: aff } = await sb.from('affiliates').select('name').eq('affiliate_email', email).maybeSingle();
-    const { data: otp, error } = await sb.from('affiliate_email_otp')
-      .insert([{ affiliate_email: email, affiliate_name: aff?.name || '', is_used: false, email_sent: true }])
-      .select().single();
-    if (error) throw error;
-    loginOtpId = otp.id;
+    const result = await api('/api/otp/create', 'POST', {
+      affiliate_email: email,
+      affiliate_name:  loginAffName,
+    });
+    loginOtpId = result.data.id;
     clearOtp('login-otp-grid');
     showAlert('login-info', '✓ New OTP created. Check your inbox.', 'info');
   } catch (err) {
@@ -927,31 +890,24 @@ async function loginResend() {
 // ============================================================
 //  BOOTSTRAP
 // ============================================================
-(async function () {
-  const ok = await initSupabase();
+(function () {
+  // Hide loading overlay immediately (no Supabase init needed)
   const loader = document.getElementById('app-loading');
-
-  if (!ok) {
-    showInitError('Supabase credentials are not configured. Set SUPABASE_URL and SUPABASE_ANON_KEY in Vercel, or use the credentials page for local dev.');
-    return;
-  }
-
-  // Hide loader
   loader.classList.add('hidden');
-  setTimeout(() => loader.style.display = 'none', 450);
+  setTimeout(() => { loader.style.display = 'none'; }, 450);
 
-  // Wire up buttons
+  // Wire up CTA buttons
   const ob = () => openModal('onboardModal');
   const lg = () => openModal('loginModal');
-  document.getElementById('loginBtn').onclick = lg;
-  document.getElementById('joinBtn').onclick = ob;
+  document.getElementById('loginBtn').onclick   = lg;
+  document.getElementById('joinBtn').onclick    = ob;
   document.getElementById('heroJoinBtn').onclick = ob;
   document.getElementById('heroLoginBtn').onclick = lg;
-  document.getElementById('rewardsCta').onclick = ob;
-  document.getElementById('ctaJoin').onclick = ob;
-  document.getElementById('ctaLogin').onclick = lg;
+  document.getElementById('rewardsCta').onclick  = ob;
+  document.getElementById('ctaJoin').onclick    = ob;
+  document.getElementById('ctaLogin').onclick   = lg;
 
-  // If already logged in, show dashboard link in nav
+  // If already logged in, swap Apply button for Dashboard link
   try {
     const stored = localStorage.getItem('cs_affiliate');
     if (stored) {
