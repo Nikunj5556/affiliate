@@ -581,8 +581,15 @@ function deleteCookie(name) {
   document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/`;
 }
 
-const SUPA_URL = getCookie('SUPABASE_URL')      || localStorage.getItem('SUPABASE_URL')      || '';
-const SUPA_KEY = getCookie('SUPABASE_ANON_KEY') || localStorage.getItem('SUPABASE_ANON_KEY') || '';
+// Netlify injects environment variables here during build. If not injected (local dev),
+// falls back to localStorage/cookies
+const SUPA_URL = '##SUPABASE_URL##'.startsWith('##')
+  ? (getCookie('SUPABASE_URL') || localStorage.getItem('SUPABASE_URL') || '')
+  : '##SUPABASE_URL##';
+
+const SUPA_KEY = '##SUPABASE_ANON_KEY##'.startsWith('##')
+  ? (getCookie('SUPABASE_ANON_KEY') || localStorage.getItem('SUPABASE_ANON_KEY') || '')
+  : '##SUPABASE_ANON_KEY##';
 
 let sb = null;
 if (SUPA_URL && SUPA_KEY) {
