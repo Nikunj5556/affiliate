@@ -602,8 +602,15 @@ function setCookie(name, value, days = 7) {
   document.cookie = `${name}=${encodeURIComponent(value)};expires=${exp};path=/;SameSite=Lax`;
 }
 
-const SUPA_URL = getCookie('SUPABASE_URL') || localStorage.getItem('SUPABASE_URL') || '';
-const SUPA_KEY = getCookie('SUPABASE_ANON_KEY') || localStorage.getItem('SUPABASE_ANON_KEY') || '';
+// Netlify injects environment variables here during build. If not injected (local dev),
+// falls back to localStorage/cookies
+const SUPA_URL = '##SUPABASE_URL##'.startsWith('##')
+  ? (getCookie('SUPABASE_URL') || localStorage.getItem('SUPABASE_URL') || '')
+  : '##SUPABASE_URL##';
+
+const SUPA_KEY = '##SUPABASE_ANON_KEY##'.startsWith('##')
+  ? (getCookie('SUPABASE_ANON_KEY') || localStorage.getItem('SUPABASE_ANON_KEY') || '')
+  : '##SUPABASE_ANON_KEY##';
 
 let sb = null;
 let supabaseReady = false;
