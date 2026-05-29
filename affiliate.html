@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 :root{
   --bg:#FAFAF6;--surface:#FFFFFF;--surface-2:#F4F1EA;
@@ -35,7 +36,7 @@ img{max-width:100%;display:block}
 
 /* NAV */
 nav{position:sticky;top:0;z-index:200;background:rgba(250,250,246,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:64px}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.5rem;color:var(--primary);display:flex;align-items:center;gap:6px}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.5rem;color:var(--primary)}
 .nav-logo span{color:var(--accent)}
 .nav-links{display:flex;align-items:center;gap:8px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:.875rem;border:none;outline:none;cursor:pointer;transition:var(--t);border-radius:10px;padding:10px 20px;white-space:nowrap}
@@ -45,9 +46,10 @@ nav{position:sticky;top:0;z-index:200;background:rgba(250,250,246,.92);backdrop-
 .btn-outline:hover{border-color:var(--primary);background:var(--surface)}
 .btn-primary{background:var(--primary);color:#fff;box-shadow:var(--shadow-sm)}
 .btn-primary:hover{background:var(--primary-hover);transform:translateY(-1px);box-shadow:var(--shadow-md)}
-.btn-primary:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.btn-primary:disabled{opacity:.6;cursor:not-allowed;transform:none!important}
 .btn-accent{background:var(--accent);color:#fff;box-shadow:var(--shadow-sm)}
 .btn-accent:hover{background:var(--accent-hover);transform:translateY(-1px);box-shadow:var(--shadow-md)}
+.btn-accent:disabled{opacity:.6;cursor:not-allowed;transform:none!important}
 .btn-lg{padding:14px 32px;font-size:1rem;border-radius:12px}
 .btn-full{width:100%}
 
@@ -112,7 +114,6 @@ section{padding:88px 5%}
 .tier-card.tier-elite .tier-feat::before{background:var(--elite-light);color:var(--elite)}
 .tier-upgrade{display:flex;align-items:center;gap:8px;background:var(--surface-2);border-radius:10px;padding:10px 14px;margin-top:20px;font-size:.78rem;font-weight:600;color:var(--text-2)}
 .tier-upgrade .dot{width:6px;height:6px;border-radius:50%;background:var(--text-3)}
-.tier-card.tier-elite .tier-upgrade{display:none}
 
 /* SCROLL STRIP */
 .featured-strip{background:var(--primary);padding:24px 5%;overflow:hidden;position:relative}
@@ -184,7 +185,7 @@ footer{background:var(--primary);padding:48px 5%;display:flex;align-items:center
 .form-input,.form-select{width:100%;padding:12px 16px;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r-sm);font-family:'Plus Jakarta Sans',sans-serif;font-size:.95rem;color:var(--text);outline:none;transition:var(--t)}
 .form-input:focus,.form-select:focus{border-color:var(--primary);background:var(--surface);box-shadow:0 0 0 3px rgba(28,24,53,.06)}
 .form-input::placeholder{color:var(--text-3)}
-.form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%239C9086' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:calc(100% - 14px) center;cursor:pointer}
+.form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%239C9086' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:calc(100% - 14px) center;cursor:pointer;padding-right:36px}
 .phone-row{display:grid;grid-template-columns:90px 1fr;gap:10px}
 .form-hint{font-size:.78rem;color:var(--text-3);margin-top:6px}
 
@@ -209,6 +210,13 @@ footer{background:var(--primary);padding:48px 5%;display:flex;align-items:center
 .alert-error{background:var(--error-light);color:var(--error);border:1px solid rgba(192,57,43,.2)}
 .alert-success{background:var(--success-light);color:var(--success);border:1px solid rgba(42,122,69,.2)}
 .alert-info{background:var(--accent-light);color:var(--accent-hover);border:1px solid rgba(200,136,46,.2)}
+.alert-warning{background:#FEF0E3;color:#D97A04;border:1px solid rgba(217,122,4,.2)}
+
+/* NO SUPABASE BANNER */
+.no-config-banner{background:var(--error-light);border-bottom:2px solid var(--error);padding:14px 5%;display:none;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.no-config-banner.show{display:flex}
+.no-config-banner p{font-size:.875rem;color:var(--error);font-weight:600}
+.no-config-banner a{background:var(--error);color:#fff;padding:8px 16px;border-radius:8px;font-size:.82rem;font-weight:700;text-decoration:none;white-space:nowrap}
 
 /* LOADING */
 #app-loading{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;transition:opacity .4s ease}
@@ -243,8 +251,14 @@ footer{background:var(--primary);padding:48px 5%;display:flex;align-items:center
 
 <!-- LOADING OVERLAY -->
 <div id="app-loading">
-  <div class="nav-logo serif" style="font-size:1.6rem;color:var(--primary)">Creator<span style="color:var(--accent)">Stack</span></div>
+  <div class="nav-logo serif" style="font-size:1.6rem;color:var(--primary);font-family:'Cormorant Garamond',serif">Creator<span style="color:var(--accent)">Stack</span></div>
   <div class="spin"></div>
+</div>
+
+<!-- NO CONFIG BANNER -->
+<div class="no-config-banner" id="noConfigBanner">
+  <p>⚠️ Supabase is not configured. The portal won't work until you add your credentials.</p>
+  <a href="credentials.html">Configure Now →</a>
 </div>
 
 <!-- NAV -->
@@ -426,7 +440,7 @@ footer{background:var(--primary);padding:48px 5%;display:flex;align-items:center
   <div class="footer-copy">© 2025 CreatorStack · Breakfast Club</div>
 </footer>
 
-<!-- ONBOARDING MODAL -->
+<!-- ══════════════════ ONBOARDING MODAL ══════════════════ -->
 <div class="modal-overlay" id="onboardModal">
   <div class="modal">
     <div class="modal-header">
@@ -443,7 +457,7 @@ footer{background:var(--primary);padding:48px 5%;display:flex;align-items:center
     <div class="alert alert-error" id="ob-error"></div>
     <div class="alert alert-info" id="ob-info"></div>
 
-    <!-- Step 1 -->
+    <!-- Step 1: Name + Email -->
     <div class="form-step active" id="ob-step-1">
       <div class="form-group">
         <label class="form-label">Full Name <span>*</span></label>
@@ -472,7 +486,7 @@ footer{background:var(--primary);padding:48px 5%;display:flex;align-items:center
       <div style="text-align:center;margin-top:16px"><button class="resend-btn" onclick="obResendOtp()">Resend OTP</button></div>
     </div>
 
-    <!-- Step 3 -->
+    <!-- Step 3: Role + Phone -->
     <div class="form-step" id="ob-step-3">
       <div class="form-group">
         <label class="form-label">What best describes you? <span>*</span></label>
@@ -503,7 +517,7 @@ footer{background:var(--primary);padding:48px 5%;display:flex;align-items:center
       <button class="btn btn-primary btn-full" onclick="obStep3()">Continue →</button>
     </div>
 
-    <!-- Step 4 -->
+    <!-- Step 4: Bank Details -->
     <div class="form-step" id="ob-step-4">
       <div style="background:var(--accent-light);border:1px solid rgba(200,136,46,.2);border-radius:10px;padding:14px;margin-bottom:20px;font-size:.82rem;color:var(--text-2)">
         🔒 Bank details are stored securely and used only for payouts. Indian bank accounts only.
@@ -518,7 +532,7 @@ footer{background:var(--primary);padding:48px 5%;display:flex;align-items:center
       </div>
       <div class="form-group">
         <label class="form-label">IFSC Code <span>*</span></label>
-        <input type="text" id="ob-bank-ifsc" class="form-input" placeholder="e.g. SBIN0001234" style="text-transform:uppercase">
+        <input type="text" id="ob-bank-ifsc" class="form-input" placeholder="e.g. SBIN0001234" style="text-transform:uppercase" oninput="this.value=this.value.toUpperCase()">
       </div>
       <button class="btn btn-accent btn-full" id="ob-submit-btn" onclick="obSubmit()">Complete Registration 🎉</button>
     </div>
@@ -535,7 +549,7 @@ footer{background:var(--primary);padding:48px 5%;display:flex;align-items:center
   </div>
 </div>
 
-<!-- LOGIN MODAL -->
+<!-- ══════════════════ LOGIN MODAL ══════════════════ -->
 <div class="modal-overlay" id="loginModal">
   <div class="modal">
     <div class="modal-header">
@@ -548,7 +562,8 @@ footer{background:var(--primary);padding:48px 5%;display:flex;align-items:center
     <div class="form-step active" id="login-step-1">
       <div class="form-group">
         <label class="form-label">Registered Email</label>
-        <input type="email" id="login-email" class="form-input" placeholder="your@email.com">
+        <input type="email" id="login-email" class="form-input" placeholder="your@email.com"
+          onkeydown="if(event.key==='Enter') loginSendOtp()">
         <div class="form-hint">Enter the email you registered with as an affiliate.</div>
       </div>
       <button class="btn btn-primary btn-full" id="login-otp-btn" onclick="loginSendOtp()">Send Login OTP →</button>
@@ -574,30 +589,43 @@ footer{background:var(--primary);padding:48px 5%;display:flex;align-items:center
 </div>
 
 <script>
-// ============================================================
-//  COOKIE HELPER
-// ============================================================
+// ════════════════════════════════════════════════════════════
+//  SUPABASE INIT — reads from localStorage / cookies
+//  All DB calls go directly to Supabase (no backend API needed)
+// ════════════════════════════════════════════════════════════
+function getCookie(name) {
+  const m = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+  return m ? decodeURIComponent(m[2]) : null;
+}
 function setCookie(name, value, days = 7) {
   const exp = new Date(Date.now() + days * 864e5).toUTCString();
   document.cookie = `${name}=${encodeURIComponent(value)};expires=${exp};path=/;SameSite=Lax`;
 }
 
-// ============================================================
-//  API HELPER — all DB calls go through Vercel serverless fns
-// ============================================================
-async function api(path, method = 'GET', body = null) {
-  const opts = { method, headers: { 'Content-Type': 'application/json' } };
-  if (body) opts.body = JSON.stringify(body);
-  const res = await fetch(path, opts);
-  const data = await res.json();
-  if (!res.ok) throw new Error(data.error || `Request failed (${res.status})`);
-  return data;
+const SUPA_URL = getCookie('SUPABASE_URL') || localStorage.getItem('SUPABASE_URL') || '';
+const SUPA_KEY = getCookie('SUPABASE_ANON_KEY') || localStorage.getItem('SUPABASE_ANON_KEY') || '';
+
+let sb = null;
+let supabaseReady = false;
+
+if (SUPA_URL && SUPA_KEY) {
+  try {
+    sb = supabase.createClient(SUPA_URL, SUPA_KEY);
+    supabaseReady = true;
+  } catch (e) {
+    console.error('Failed to init Supabase:', e);
+  }
 }
 
-// ============================================================
+// ════════════════════════════════════════════════════════════
 //  MODAL HELPERS
-// ============================================================
+// ════════════════════════════════════════════════════════════
 function openModal(id) {
+  if (!supabaseReady) {
+    document.getElementById('noConfigBanner').classList.add('show');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return;
+  }
   document.getElementById(id).classList.add('active');
   document.body.style.overflow = 'hidden';
 }
@@ -609,9 +637,9 @@ document.querySelectorAll('.modal-overlay').forEach(o =>
   o.addEventListener('click', e => { if (e.target === o) closeModal(o.id); })
 );
 
-// ============================================================
+// ════════════════════════════════════════════════════════════
 //  FAQ
-// ============================================================
+// ════════════════════════════════════════════════════════════
 function toggleFaq(btn) {
   const item = btn.parentElement;
   const isOpen = item.classList.contains('open');
@@ -619,9 +647,9 @@ function toggleFaq(btn) {
   if (!isOpen) item.classList.add('open');
 }
 
-// ============================================================
+// ════════════════════════════════════════════════════════════
 //  OTP INPUT HELPERS
-// ============================================================
+// ════════════════════════════════════════════════════════════
 function otpNext(el, idx, gridId) {
   el.value = el.value.replace(/\D/g, '');
   const cells = document.getElementById(gridId).querySelectorAll('.otp-cell');
@@ -642,22 +670,121 @@ function clearOtp(gridId) {
   document.getElementById(gridId).querySelectorAll('.otp-cell').forEach(c => c.value = '');
 }
 
-// ============================================================
+// ════════════════════════════════════════════════════════════
 //  ALERT HELPERS
-// ============================================================
+// ════════════════════════════════════════════════════════════
 function showAlert(id, msg, type = 'error') {
   const el = document.getElementById(id);
+  if (!el) return;
   el.textContent = msg;
   el.className = `alert alert-${type} show`;
+  el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 function hideAlert(id) {
   const el = document.getElementById(id);
   if (el) { el.className = 'alert'; el.textContent = ''; }
 }
 
-// ============================================================
+// ════════════════════════════════════════════════════════════
+//  SUPABASE HELPERS — direct DB calls
+// ════════════════════════════════════════════════════════════
+
+/** Insert OTP record and return its id */
+async function dbCreateOtp(affiliate_email, affiliate_name) {
+  const { data, error } = await sb
+    .from('affiliate_email_otp')
+    .insert([{
+      affiliate_email: affiliate_email.toLowerCase().trim(),
+      affiliate_name: affiliate_name || '',
+      is_used: false,
+      email_sent: true
+      // otp_code and expires_at auto-generated by DB defaults
+    }])
+    .select('id, otp_code, expires_at')
+    .single();
+  if (error) throw new Error(error.message);
+  return data;
+}
+
+/** Verify OTP — checks code, expiry, not-used */
+async function dbVerifyOtp(otpId, otpCode) {
+  const { data, error } = await sb
+    .from('affiliate_email_otp')
+    .select('*')
+    .eq('id', otpId)
+    .eq('is_used', false)
+    .maybeSingle();
+
+  if (error) throw new Error(error.message);
+  if (!data) throw new Error('Invalid or already used OTP. Please request a new one.');
+  if (new Date(data.expires_at) < new Date()) throw new Error('OTP has expired. Please request a new one.');
+  if (data.otp_code !== otpCode) throw new Error('Incorrect OTP code. Please try again.');
+
+  // Mark as used
+  const { error: updErr } = await sb
+    .from('affiliate_email_otp')
+    .update({ is_used: true })
+    .eq('id', otpId);
+  if (updErr) throw new Error(updErr.message);
+}
+
+/** Check if email already registered */
+async function dbCheckEmail(email) {
+  const { data, error } = await sb
+    .from('affiliate_email_otp') // use OTP table which is publicly insertable
+    .select('id')
+    .limit(1);
+  // We can't query affiliates directly via anon key with RLS
+  // Instead query affiliate_email_otp — but we need to check affiliates.
+  // Use the pattern: try to select from affiliates — if RLS blocks it, we handle gracefully.
+  // Actually with anon key + RLS, we may not be able to read affiliates.
+  // Solution: attempt the insert and handle the unique constraint error.
+  return null; // Will rely on insert conflict error
+}
+
+/** Register new affiliate directly via Supabase */
+async function dbRegisterAffiliate(payload) {
+  const { data, error } = await sb
+    .from('affiliates')
+    .insert([payload])
+    .select()
+    .single();
+  if (error) {
+    // Handle duplicate email
+    if (error.code === '23505' || error.message?.includes('unique') || error.message?.includes('duplicate')) {
+      throw new Error('This email is already registered. Please login instead.');
+    }
+    throw new Error(error.message);
+  }
+  return data;
+}
+
+/** Fetch affiliate by email (for login) */
+async function dbGetAffiliateByEmail(email) {
+  const { data, error } = await sb
+    .from('affiliates')
+    .select('*')
+    .eq('affiliate_email', email.toLowerCase().trim())
+    .eq('is_email_verified', true)
+    .maybeSingle();
+  if (error) throw new Error(error.message);
+  return data; // null if not found
+}
+
+/** Fetch fresh affiliate by id */
+async function dbGetAffiliateById(id) {
+  const { data, error } = await sb
+    .from('affiliates')
+    .select('*')
+    .eq('id', id)
+    .single();
+  if (error) throw new Error(error.message);
+  return data;
+}
+
+// ════════════════════════════════════════════════════════════
 //  ONBOARDING STATE
-// ============================================================
+// ════════════════════════════════════════════════════════════
 let obData = {};
 let obOtpId = null;
 
@@ -676,37 +803,34 @@ function obShowStep(n) {
   if (n === 5) document.getElementById('ob-indicators').style.display = 'none';
 }
 
-// STEP 1 — name + email → check not already registered → create OTP
+// STEP 1 — name + email → create OTP
 async function obStep1() {
   hideAlert('ob-error'); hideAlert('ob-info');
-  const name = document.getElementById('ob-name').value.trim();
+  const name  = document.getElementById('ob-name').value.trim();
   const email = document.getElementById('ob-email').value.trim().toLowerCase();
 
-  if (!name || name.length < 2) { showAlert('ob-error', 'Please enter your full name (at least 2 characters).'); return; }
-  if (!/\S+@\S+\.\S+/.test(email)) { showAlert('ob-error', 'Please enter a valid email address.'); return; }
+  if (!name || name.length < 2) {
+    showAlert('ob-error', '❌ Please enter your full name (at least 2 characters).');
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    showAlert('ob-error', '❌ Please enter a valid email address.');
+    return;
+  }
 
   const btn = document.getElementById('ob-s1-btn');
-  btn.disabled = true; btn.textContent = 'Checking…';
+  btn.disabled = true; btn.textContent = 'Sending OTP…';
 
   try {
-    // Check if already registered (uses SERVICE_ROLE_KEY on backend to bypass RLS)
-    const check = await api(`/api/affiliates/check-email?email=${encodeURIComponent(email)}`);
-    if (check.verified) {
-      showAlert('ob-error', 'This email is already registered. Please login instead.');
-      btn.disabled = false; btn.textContent = 'Continue — Verify Email →';
-      return;
-    }
-
-    // Create OTP record in DB (backend auto-generates 6-digit code + expiry)
-    const result = await api('/api/otp/create', 'POST', { affiliate_email: email, affiliate_name: name });
-    obOtpId = result.data.id;
-    obData = { name, email };
+    const otpData = await dbCreateOtp(email, name);
+    obOtpId = otpData.id;
+    obData  = { name, email };
     document.getElementById('ob-email-display').textContent = email;
     obShowStep(2);
     showAlert('ob-info', `✓ OTP created for ${email}. Check your inbox (valid 10 min).`, 'info');
   } catch (err) {
-    console.error('obStep1:', err);
-    showAlert('ob-error', `Failed: ${err.message || 'Please try again.'}`);
+    console.error('obStep1 error:', err);
+    showAlert('ob-error', `❌ ${err.message || 'Failed to create OTP. Check your Supabase config.'}`);
   }
   btn.disabled = false; btn.textContent = 'Continue — Verify Email →';
 }
@@ -715,50 +839,50 @@ async function obStep1() {
 async function obVerifyOtp() {
   hideAlert('ob-error'); hideAlert('ob-info');
   const code = getOtp('ob-otp-grid');
-  if (code.length < 6) { showAlert('ob-error', 'Please enter the complete 6-digit OTP.'); return; }
+  if (code.length < 6) {
+    showAlert('ob-error', '❌ Please enter the complete 6-digit OTP.');
+    return;
+  }
 
   const btn = document.getElementById('ob-verify-btn');
   btn.disabled = true; btn.textContent = 'Verifying…';
 
   try {
-    await api('/api/otp/verify', 'POST', { otp_id: obOtpId, otp_code: code });
+    await dbVerifyOtp(obOtpId, code);
     obShowStep(3);
-    showAlert('ob-info', '✓ Email verified successfully!', 'info');
+    showAlert('ob-info', '✓ Email verified! Continue with your details.', 'info');
   } catch (err) {
-    console.error('obVerifyOtp:', err);
-    const msg = (err.message || '').includes('expired')
-      ? 'OTP has expired. Please request a new one.'
-      : 'Invalid OTP. Please check and try again.';
-    showAlert('ob-error', msg);
+    console.error('obVerifyOtp error:', err);
+    showAlert('ob-error', `❌ ${err.message}`);
   }
   btn.disabled = false; btn.textContent = 'Verify OTP →';
 }
 
-// STEP 2 resend
 async function obResendOtp() {
   hideAlert('ob-error'); hideAlert('ob-info');
   try {
-    const result = await api('/api/otp/create', 'POST', {
-      affiliate_email: obData.email,
-      affiliate_name: obData.name
-    });
-    obOtpId = result.data.id;
+    const otpData = await dbCreateOtp(obData.email, obData.name);
+    obOtpId = otpData.id;
     clearOtp('ob-otp-grid');
     showAlert('ob-info', '✓ New OTP created. Check your inbox.', 'info');
   } catch (err) {
-    showAlert('ob-error', `Failed to resend: ${err.message || 'Please try again.'}`);
+    showAlert('ob-error', `❌ Failed to resend: ${err.message}`);
   }
 }
 
-// STEP 3 — role + phone
+// STEP 3 — role + phone validation
 function obStep3() {
   hideAlert('ob-error');
-  const role = document.getElementById('ob-role').value;
+  const role  = document.getElementById('ob-role').value;
   const phone = document.getElementById('ob-phone').value.trim();
-  const cc = document.getElementById('ob-cc').value;
-  if (!role) { showAlert('ob-error', 'Please select your role.'); return; }
-  if (!phone || !/^\d{8,15}$/.test(phone)) { showAlert('ob-error', 'Please enter a valid phone number (8–15 digits).'); return; }
-  obData.role = role;
+  const cc    = document.getElementById('ob-cc').value;
+
+  if (!role) { showAlert('ob-error', '❌ Please select your role.'); return; }
+  if (!phone || !/^\d{8,15}$/.test(phone)) {
+    showAlert('ob-error', '❌ Please enter a valid phone number (8–15 digits, no spaces or dashes).');
+    return;
+  }
+  obData.role  = role;
   obData.phone = `${cc}${phone}`;
   obShowStep(4);
 }
@@ -770,117 +894,120 @@ async function obSubmit() {
   const bankAcc  = document.getElementById('ob-bank-account').value.trim();
   const bankIFSC = document.getElementById('ob-bank-ifsc').value.trim().toUpperCase();
 
-  if (!bankName || !bankAcc || !bankIFSC) { showAlert('ob-error', 'Please fill in all bank details.'); return; }
-  if (!/^[A-Z]{4}0[A-Z0-9]{6}$/.test(bankIFSC)) { showAlert('ob-error', 'Invalid IFSC format (e.g. SBIN0001234).'); return; }
-  if (!/^\d{9,18}$/.test(bankAcc)) { showAlert('ob-error', 'Account number must be 9–18 digits.'); return; }
+  if (!bankName) { showAlert('ob-error', '❌ Please enter the account holder name.'); return; }
+  if (!bankAcc || !/^\d{9,18}$/.test(bankAcc)) {
+    showAlert('ob-error', '❌ Account number must be 9–18 digits only.');
+    return;
+  }
+  if (!/^[A-Z]{4}0[A-Z0-9]{6}$/.test(bankIFSC)) {
+    showAlert('ob-error', '❌ Invalid IFSC format. Example: SBIN0001234 (4 letters + 0 + 6 chars).');
+    return;
+  }
 
   const btn = document.getElementById('ob-submit-btn');
   btn.disabled = true; btn.textContent = 'Creating your account…';
 
   try {
     const payload = {
-      name:                obData.name,
-      affiliate_email:     obData.email,
-      is_email_verified:   true,
-      affiliate_phone:     parseFloat(obData.phone) || 0,
-      affiliate_commission:'standard_partner_20%',
-      affiliate_sales:     0,
+      name:                 obData.name,
+      affiliate_email:      obData.email,
+      is_email_verified:    true,
+      affiliate_phone:      Number(obData.phone) || null,
+      affiliate_commission: 'standard_partner_20%',
+      affiliate_sales:      0,
       affiliate_revenue_inr: 0,
-      best_role:           obData.role,
-      bankaccount_name:    bankName,
-      bankaccount_number:  parseFloat(bankAcc) || 0,
-      bankaccount_ifsc:    bankIFSC,
+      best_role:            obData.role,
+      bankaccount_name:     bankName,
+      bankaccount_number:   Number(bankAcc) || null,
+      bankaccount_ifsc:     bankIFSC,
     };
 
-    const result = await api('/api/affiliates/register', 'POST', payload);
-    const affiliateData = result.data;
-    if (!affiliateData?.id) throw new Error('Account creation failed — no ID returned.');
+    const affiliate = await dbRegisterAffiliate(payload);
+    if (!affiliate?.id) throw new Error('Account creation failed — no ID returned.');
 
-    const affStr = JSON.stringify(affiliateData);
-    setCookie('cs_affiliate', affStr, 7);
-    localStorage.setItem('cs_affiliate', affStr); // keep as fallback
-    setCookie('cs_affiliate_token', btoa(obData.email + ':' + Date.now()), 7);
-    localStorage.setItem('cs_affiliate_token', btoa(obData.email + ':' + Date.now()));
+    storeAffiliate(affiliate);
     obShowStep(5);
   } catch (err) {
-    console.error('obSubmit:', err);
-    showAlert('ob-error', `Registration failed: ${err.message || 'Please try again.'}`);
+    console.error('obSubmit error:', err);
+    showAlert('ob-error', `❌ Registration failed: ${err.message}`);
   }
   btn.disabled = false; btn.textContent = 'Complete Registration 🎉';
 }
 
-// ============================================================
-//  LOGIN STATE
-// ============================================================
-let loginOtpId  = null;
-let loginAffId  = null;
-let loginAffName = '';
+// ════════════════════════════════════════════════════════════
+//  LOGIN
+// ════════════════════════════════════════════════════════════
+let loginOtpId   = null;
+let loginAffData = null;
 
-// STEP 1 — check affiliate exists → create OTP
 async function loginSendOtp() {
   hideAlert('login-error'); hideAlert('login-info');
   const email = document.getElementById('login-email').value.trim().toLowerCase();
-  if (!/\S+@\S+\.\S+/.test(email)) { showAlert('login-error', 'Please enter a valid email address.'); return; }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    showAlert('login-error', '❌ Please enter a valid email address.');
+    return;
+  }
 
   const btn = document.getElementById('login-otp-btn');
   btn.disabled = true; btn.textContent = 'Checking…';
 
   try {
-    // Verify affiliate exists + is email-verified (backend bypasses RLS)
-    const affResult = await api('/api/affiliates/login', 'POST', { email });
-    loginAffId   = affResult.data.id;
-    loginAffName = affResult.data.name || '';
+    // Lookup affiliate by email
+    const affiliate = await dbGetAffiliateByEmail(email);
 
-    // Create OTP record
-    const otpResult = await api('/api/otp/create', 'POST', {
-      affiliate_email: email,
-      affiliate_name:  loginAffName,
-    });
-    loginOtpId = otpResult.data.id;
+    if (!affiliate) {
+      showAlert('login-error', '❌ No verified affiliate account found for this email. Please register first.');
+      btn.disabled = false; btn.textContent = 'Send Login OTP →';
+      return;
+    }
+
+    loginAffData = affiliate;
+
+    // Create OTP
+    const otpData = await dbCreateOtp(email, affiliate.name || '');
+    loginOtpId = otpData.id;
 
     document.getElementById('login-email-display').textContent = email;
     document.getElementById('login-step-1').classList.remove('active');
     document.getElementById('login-step-2').classList.add('active');
     showAlert('login-info', `✓ OTP created for ${email}. Check your inbox.`, 'info');
   } catch (err) {
-    console.error('loginSendOtp:', err);
-    const isNotFound = (err.message || '').toLowerCase().includes('not found')
-                    || (err.message || '').toLowerCase().includes('not verified');
-    showAlert('login-error', isNotFound
-      ? 'No verified affiliate account found for this email. Please register first.'
-      : `Failed: ${err.message}`);
+    console.error('loginSendOtp error:', err);
+    // Provide a clear error — not a raw JSON parse error
+    const msg = err.message || 'Something went wrong. Please check your Supabase configuration.';
+    showAlert('login-error', `❌ ${msg}`);
   }
   btn.disabled = false; btn.textContent = 'Send Login OTP →';
 }
 
-// STEP 2 — verify OTP → fetch fresh affiliate data → redirect
 async function loginVerify() {
   hideAlert('login-error'); hideAlert('login-info');
   const code = getOtp('login-otp-grid');
-  if (code.length < 6) { showAlert('login-error', 'Please enter the complete 6-digit OTP.'); return; }
+  if (code.length < 6) {
+    showAlert('login-error', '❌ Please enter the complete 6-digit OTP.');
+    return;
+  }
 
   const btn = document.getElementById('login-verify-btn');
   btn.disabled = true; btn.textContent = 'Verifying…';
 
   try {
-    await api('/api/otp/verify', 'POST', { otp_id: loginOtpId, otp_code: code });
+    await dbVerifyOtp(loginOtpId, code);
 
-    // Fetch fresh affiliate data after successful OTP verification
-    const affResult = await api(`/api/affiliates/get?id=${loginAffId}`);
-    const affiliate  = affResult.data;
+    // Fetch fresh affiliate data
+    let affiliate = loginAffData;
+    try {
+      affiliate = await dbGetAffiliateById(loginAffData.id);
+    } catch (e) {
+      console.warn('Could not refresh affiliate data, using cached:', e.message);
+    }
 
-    const affStr = JSON.stringify(affiliate);
-    setCookie('cs_affiliate', affStr, 7);
-    localStorage.setItem('cs_affiliate', affStr); // keep as fallback
-    setCookie('cs_affiliate_token', btoa(affiliate.affiliate_email + ':' + Date.now()), 7);
-    localStorage.setItem('cs_affiliate_token', btoa(affiliate.affiliate_email + ':' + Date.now()));
+    storeAffiliate(affiliate);
     window.location.href = 'dashboard.html';
   } catch (err) {
-    console.error('loginVerify:', err);
-    const msg = (err.message || '').includes('expired')
-      ? 'OTP has expired. Please request a new one.'
-      : 'Invalid OTP. Please try again.';
-    showAlert('login-error', msg);
+    console.error('loginVerify error:', err);
+    showAlert('login-error', `❌ ${err.message}`);
   }
   btn.disabled = false; btn.textContent = 'Login →';
 }
@@ -889,46 +1016,58 @@ async function loginResend() {
   hideAlert('login-error'); hideAlert('login-info');
   const email = document.getElementById('login-email').value.trim().toLowerCase();
   try {
-    const result = await api('/api/otp/create', 'POST', {
-      affiliate_email: email,
-      affiliate_name:  loginAffName,
-    });
-    loginOtpId = result.data.id;
+    const otpData = await dbCreateOtp(email, loginAffData?.name || '');
+    loginOtpId = otpData.id;
     clearOtp('login-otp-grid');
-    showAlert('login-info', '✓ New OTP created. Check your inbox.', 'info');
+    showAlert('login-info', '✓ New OTP sent. Check your inbox.', 'info');
   } catch (err) {
-    showAlert('login-error', `Failed to resend: ${err.message || 'Please try again.'}`);
+    showAlert('login-error', `❌ Failed to resend: ${err.message}`);
   }
 }
 
-// ============================================================
+// ════════════════════════════════════════════════════════════
+//  STORAGE HELPERS
+// ════════════════════════════════════════════════════════════
+function storeAffiliate(data) {
+  const str = JSON.stringify(data);
+  setCookie('cs_affiliate', str, 7);
+  localStorage.setItem('cs_affiliate', str);
+  setCookie('cs_affiliate_token', btoa(data.affiliate_email + ':' + Date.now()), 7);
+  localStorage.setItem('cs_affiliate_token', btoa(data.affiliate_email + ':' + Date.now()));
+}
+
+// ════════════════════════════════════════════════════════════
 //  BOOTSTRAP
-// ============================================================
-(function () {
-  // Hide loading overlay immediately (no Supabase init needed)
+// ════════════════════════════════════════════════════════════
+(function boot() {
   const loader = document.getElementById('app-loading');
   loader.classList.add('hidden');
   setTimeout(() => { loader.style.display = 'none'; }, 450);
 
+  // Show config banner if Supabase not configured
+  if (!supabaseReady) {
+    document.getElementById('noConfigBanner').classList.add('show');
+  }
+
   // Wire up CTA buttons
   const ob = () => openModal('onboardModal');
   const lg = () => openModal('loginModal');
-  document.getElementById('loginBtn').onclick   = lg;
-  document.getElementById('joinBtn').onclick    = ob;
+  document.getElementById('loginBtn').onclick    = lg;
+  document.getElementById('joinBtn').onclick     = ob;
   document.getElementById('heroJoinBtn').onclick = ob;
   document.getElementById('heroLoginBtn').onclick = lg;
   document.getElementById('rewardsCta').onclick  = ob;
-  document.getElementById('ctaJoin').onclick    = ob;
-  document.getElementById('ctaLogin').onclick   = lg;
+  document.getElementById('ctaJoin').onclick     = ob;
+  document.getElementById('ctaLogin').onclick    = lg;
 
   // If already logged in, swap Apply button for Dashboard link
   try {
-    const stored = localStorage.getItem('cs_affiliate');
+    const stored = localStorage.getItem('cs_affiliate') || getCookie('cs_affiliate');
     if (stored) {
       const aff = JSON.parse(stored);
       if (aff?.id) {
-        document.getElementById('joinBtn').outerHTML =
-          `<a href="dashboard.html" class="btn btn-accent">My Dashboard →</a>`;
+        const joinBtn = document.getElementById('joinBtn');
+        if (joinBtn) joinBtn.outerHTML = `<a href="dashboard.html" class="btn btn-accent">My Dashboard →</a>`;
       }
     }
   } catch (_) {}
