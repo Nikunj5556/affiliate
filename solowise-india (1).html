@@ -1,0 +1,3053 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Solowise India creates premium software products, SaaS applications, and digital assets available for acquisition."
+  />
+  <meta name="theme-color" content="#070912" />
+  <title>Solowise India — Software Products Built for Acquisition</title>
+
+  <style>
+    :root {
+      --bg: #070912;
+      --bg-soft: #0b0f1c;
+      --surface: rgba(18, 23, 39, 0.72);
+      --surface-strong: #111728;
+      --surface-light: rgba(255, 255, 255, 0.05);
+      --text: #f7f8ff;
+      --muted: #a9b0c3;
+      --subtle: #747e95;
+      --line: rgba(255, 255, 255, 0.1);
+      --line-strong: rgba(255, 255, 255, 0.16);
+      --blue: #76a7ff;
+      --blue-strong: #4f83ff;
+      --violet: #9d76ff;
+      --green: #6de4af;
+      --danger: #ff8895;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+      --max: 1180px;
+      color-scheme: dark;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 92px;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(circle at 12% 0%, rgba(73, 96, 203, 0.18), transparent 31rem),
+        radial-gradient(circle at 88% 6%, rgba(123, 75, 196, 0.13), transparent 26rem),
+        var(--bg);
+      color: var(--text);
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    :focus-visible {
+      outline: 3px solid rgba(118, 167, 255, 0.8);
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 1000;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: white;
+      color: #070912;
+      transform: translateY(-150%);
+      transition: transform 0.18s ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max));
+      margin-inline: auto;
+    }
+
+    .section {
+      padding: 118px 0;
+      position: relative;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 18px;
+      color: #c4d4ff;
+      font-size: 0.76rem;
+      font-weight: 750;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 20px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--blue), var(--violet));
+    }
+
+    .section-heading {
+      max-width: 700px;
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.35rem);
+      letter-spacing: -0.055em;
+      line-height: 1.08;
+    }
+
+    .section-copy {
+      max-width: 620px;
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .section-top {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 46px;
+    }
+
+    .section-top .section-copy {
+      max-width: 460px;
+    }
+
+    .grid-glow {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
+      opacity: 0.6;
+    }
+
+    /* Navigation */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid transparent;
+      transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        backdrop-filter 0.25s ease;
+    }
+
+    .site-header.is-scrolled {
+      border-color: var(--line);
+      background: rgba(7, 9, 18, 0.76);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 1rem;
+      font-weight: 780;
+      letter-spacing: -0.035em;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(150, 176, 255, 0.5);
+      border-radius: 9px;
+      background:
+        radial-gradient(circle at 28% 25%, rgba(165, 184, 255, 0.85), transparent 30%),
+        linear-gradient(145deg, rgba(89, 131, 255, 0.52), rgba(140, 89, 255, 0.52));
+      box-shadow: 0 6px 24px rgba(82, 111, 255, 0.3);
+    }
+
+    .brand-mark span {
+      width: 10px;
+      height: 10px;
+      display: block;
+      border: 2px solid white;
+      border-radius: 3px;
+      transform: rotate(45deg);
+    }
+
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+      margin-left: auto;
+    }
+
+    .desktop-nav a,
+    .mobile-nav a {
+      color: var(--muted);
+      font-size: 0.9rem;
+      transition: color 0.18s ease;
+    }
+
+    .desktop-nav a:hover,
+    .mobile-nav a:hover {
+      color: var(--text);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .menu-toggle svg {
+      width: 19px;
+      height: 19px;
+    }
+
+    .mobile-menu {
+      display: none;
+    }
+
+    /* Buttons */
+
+    .button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 18px;
+      border: 1px solid transparent;
+      border-radius: 11px;
+      color: var(--text);
+      font-size: 0.86rem;
+      font-weight: 720;
+      letter-spacing: 0.01em;
+      transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        background 0.18s ease,
+        border-color 0.18s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      background: linear-gradient(135deg, #5a88ff, #875dff);
+      box-shadow:
+        0 10px 28px rgba(81, 111, 255, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.22);
+    }
+
+    .button-primary:hover {
+      box-shadow:
+        0 14px 34px rgba(89, 111, 255, 0.36),
+        inset 0 1px 0 rgba(255, 255, 255, 0.24);
+    }
+
+    .button-secondary {
+      border-color: var(--line-strong);
+      background: rgba(255, 255, 255, 0.045);
+      color: #e9edfa;
+    }
+
+    .button-secondary:hover {
+      border-color: rgba(146, 169, 255, 0.45);
+      background: rgba(104, 132, 255, 0.1);
+    }
+
+    .button-small {
+      min-height: 39px;
+      padding-inline: 14px;
+      font-size: 0.78rem;
+    }
+
+    .button .arrow {
+      transition: transform 0.18s ease;
+    }
+
+    .button:hover .arrow {
+      transform: translateX(3px);
+    }
+
+    /* Hero */
+
+    .hero {
+      min-height: calc(100vh - 76px);
+      display: grid;
+      align-items: center;
+      padding: 94px 0 78px;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 680px;
+      height: 680px;
+      top: -290px;
+      left: 50%;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba(84, 116, 255, 0.2) 0%,
+        rgba(111, 79, 255, 0.09) 32%,
+        transparent 70%
+      );
+      transform: translateX(-50%);
+      filter: blur(6px);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 940px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 25px;
+      padding: 7px 11px 7px 8px;
+      border: 1px solid rgba(132, 154, 255, 0.26);
+      border-radius: 999px;
+      background: rgba(115, 137, 255, 0.08);
+      color: #c8d5ff;
+      font-size: 0.76rem;
+      font-weight: 650;
+    }
+
+    .hero-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 4px rgba(109, 228, 175, 0.11);
+    }
+
+    .hero h1 {
+      max-width: 930px;
+      margin: 0 auto;
+      font-size: clamp(3rem, 7vw, 5.8rem);
+      font-weight: 760;
+      letter-spacing: -0.07em;
+      line-height: 0.98;
+    }
+
+    .hero h1 .gradient-text {
+      background: linear-gradient(100deg, #f8f9ff 15%, #9ec0ff 56%, #c2a4ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-copy {
+      max-width: 660px;
+      margin: 28px auto 0;
+      color: #b2b9cc;
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .hero-assurance {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px 23px;
+      margin: 31px 0 0;
+      color: var(--subtle);
+      font-size: 0.82rem;
+    }
+
+    .hero-assurance span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-assurance span::before {
+      content: "✦";
+      color: #9ab7ff;
+      font-size: 0.75rem;
+    }
+
+    .hero-orbit {
+      width: min(100%, 960px);
+      margin: 76px auto 0;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.2fr 0.9fr 0.8fr;
+      gap: 13px;
+      text-align: left;
+    }
+
+    .orbit-card {
+      min-height: 148px;
+      padding: 21px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid rgba(163, 181, 255, 0.15);
+      border-radius: var(--radius-md);
+      background: linear-gradient(145deg, rgba(27, 34, 57, 0.9), rgba(14, 18, 31, 0.88));
+      box-shadow: var(--shadow);
+    }
+
+    .orbit-card::after {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      right: -100px;
+      bottom: -110px;
+      border-radius: 50%;
+      background: rgba(104, 124, 255, 0.15);
+      filter: blur(6px);
+    }
+
+    .orbit-label {
+      color: #77819d;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .orbit-title {
+      margin: 14px 0 8px;
+      font-size: 1.05rem;
+      font-weight: 720;
+      letter-spacing: -0.025em;
+    }
+
+    .orbit-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.79rem;
+      line-height: 1.55;
+    }
+
+    .orbit-status {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #a7f1cd;
+      font-size: 0.69rem;
+      font-weight: 650;
+    }
+
+    .orbit-status::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    .mini-ui {
+      display: grid;
+      gap: 8px;
+      margin-top: 19px;
+    }
+
+    .mini-ui-row {
+      height: 9px;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .mini-ui-row:nth-child(1) {
+      width: 83%;
+      background: linear-gradient(90deg, rgba(96, 134, 255, 0.85), rgba(140, 103, 255, 0.4));
+    }
+
+    .mini-ui-row:nth-child(2) {
+      width: 62%;
+    }
+
+    .mini-ui-row:nth-child(3) {
+      width: 74%;
+    }
+
+    /* Products */
+
+    .products {
+      background:
+        linear-gradient(180deg, transparent, rgba(22, 28, 48, 0.35), transparent);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .product-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 440px;
+      padding: 26px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(145deg, rgba(24, 30, 50, 0.75), rgba(12, 16, 28, 0.86)),
+        var(--surface);
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.2);
+      transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(139, 164, 255, 0.36);
+      box-shadow: 0 26px 72px rgba(0, 0, 0, 0.36);
+    }
+
+    .product-card.featured {
+      grid-column: span 2;
+      min-height: 475px;
+      padding: 34px;
+      background:
+        radial-gradient(circle at 92% 12%, rgba(103, 104, 255, 0.21), transparent 31%),
+        linear-gradient(133deg, rgba(30, 36, 68, 0.86), rgba(12, 17, 31, 0.94));
+    }
+
+    .product-card.featured::before {
+      content: "";
+      position: absolute;
+      top: -220px;
+      right: -120px;
+      width: 560px;
+      height: 560px;
+      border: 1px solid rgba(159, 179, 255, 0.14);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 76px rgba(128, 107, 255, 0.025),
+        0 0 0 154px rgba(128, 107, 255, 0.02);
+      pointer-events: none;
+    }
+
+    .featured-content {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 610px);
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .product-category {
+      color: #aebdff;
+      font-size: 0.75rem;
+      font-weight: 750;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .availability {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 10px;
+      border: 1px solid rgba(109, 228, 175, 0.2);
+      border-radius: 999px;
+      background: rgba(68, 205, 138, 0.08);
+      color: #aaf1d1;
+      font-size: 0.71rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .availability::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    .product-name {
+      margin: 0;
+      font-size: clamp(1.8rem, 3vw, 2.75rem);
+      letter-spacing: -0.055em;
+      line-height: 1;
+    }
+
+    .product-description {
+      max-width: 590px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.68;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 28px 0 0;
+    }
+
+    .tag {
+      padding: 7px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.045);
+      color: #cdd3e5;
+      font-size: 0.74rem;
+      font-weight: 570;
+    }
+
+    .product-card .card-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: auto;
+      padding-top: 32px;
+    }
+
+    .product-card:not(.featured) {
+      justify-content: center;
+      background:
+        radial-gradient(circle at 85% 0%, rgba(112, 97, 236, 0.12), transparent 35%),
+        rgba(16, 21, 36, 0.72);
+    }
+
+    .product-card:not(.featured) .product-name {
+      font-size: 1.58rem;
+    }
+
+    .product-card:not(.featured) .product-description {
+      max-width: 440px;
+      font-size: 0.91rem;
+    }
+
+    .product-card.coming-soon {
+      opacity: 0.86;
+    }
+
+    .coming-status {
+      display: inline-flex;
+      align-items: center;
+      width: max-content;
+      margin-top: 22px;
+      color: #939db5;
+      font-size: 0.76rem;
+    }
+
+    /* Why acquire */
+
+    .comparison-shell {
+      padding: 21px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(14, 18, 31, 0.7);
+      box-shadow: var(--shadow);
+    }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 90px 1fr;
+      gap: 0;
+      align-items: stretch;
+    }
+
+    .path-card {
+      padding: 34px;
+      border: 1px solid var(--line);
+      border-radius: 19px;
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .path-card.acquire-path {
+      border-color: rgba(118, 145, 255, 0.25);
+      background:
+        linear-gradient(145deg, rgba(68, 87, 181, 0.15), rgba(110, 66, 170, 0.11)),
+        rgba(255, 255, 255, 0.03);
+    }
+
+    .path-heading {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 28px;
+      color: #d6ddec;
+      font-size: 0.79rem;
+      font-weight: 760;
+      letter-spacing: 0.13em;
+    }
+
+    .path-heading span {
+      width: 9px;
+      height: 9px;
+      border-radius: 2px;
+      background: #69748d;
+    }
+
+    .acquire-path .path-heading span {
+      background: linear-gradient(135deg, var(--blue), var(--violet));
+      box-shadow: 0 0 18px rgba(118, 145, 255, 0.6);
+    }
+
+    .path-flow {
+      display: grid;
+      gap: 10px;
+    }
+
+    .path-step {
+      display: flex;
+      align-items: center;
+      min-height: 39px;
+      padding: 9px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 9px;
+      background: rgba(255, 255, 255, 0.035);
+      color: #bbc2d4;
+      font-size: 0.9rem;
+    }
+
+    .path-step + .path-step::before {
+      content: "↓";
+      position: absolute;
+      margin-top: -38px;
+      margin-left: 4px;
+      color: #64708a;
+      transform: translateY(-50%);
+    }
+
+    .acquire-path .path-step {
+      border-color: rgba(143, 165, 255, 0.16);
+      background: rgba(99, 125, 255, 0.08);
+      color: #d5ddff;
+    }
+
+    .comparison-versus {
+      display: grid;
+      place-items: center;
+      color: #69738c;
+      font-size: 0.69rem;
+      font-weight: 760;
+      letter-spacing: 0.12em;
+    }
+
+    .comparison-versus span {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: #101525;
+    }
+
+    /* Included */
+
+    .included-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .included-card {
+      min-height: 195px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background:
+        linear-gradient(145deg, rgba(24, 29, 48, 0.58), rgba(14, 18, 30, 0.76));
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .included-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(138, 161, 255, 0.3);
+    }
+
+    .included-icon {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 23px;
+      border: 1px solid rgba(142, 162, 255, 0.24);
+      border-radius: 11px;
+      background: linear-gradient(145deg, rgba(100, 131, 255, 0.2), rgba(143, 91, 255, 0.14));
+      color: #cbd8ff;
+    }
+
+    .included-icon svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .included-card h3 {
+      margin: 0;
+      font-size: 1rem;
+      letter-spacing: -0.025em;
+    }
+
+    .included-card p {
+      margin: 9px 0 0;
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.6;
+    }
+
+    .included-note {
+      margin: 22px 0 0;
+      color: var(--subtle);
+      font-size: 0.84rem;
+      text-align: center;
+    }
+
+    /* Process */
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: rgba(13, 17, 29, 0.64);
+    }
+
+    .process-step {
+      min-height: 278px;
+      padding: 31px 26px;
+      position: relative;
+      border-right: 1px solid var(--line);
+    }
+
+    .process-step:last-child {
+      border-right: 0;
+    }
+
+    .process-number {
+      color: #789aff;
+      font-size: 0.73rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+    }
+
+    .process-step h3 {
+      margin: 45px 0 10px;
+      font-size: 1.18rem;
+      letter-spacing: -0.03em;
+    }
+
+    .process-step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.65;
+    }
+
+    .process-arrow {
+      position: absolute;
+      top: 31px;
+      right: -10px;
+      z-index: 2;
+      width: 20px;
+      height: 20px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: #151b2d;
+      color: #93a6d9;
+      font-size: 0.75rem;
+    }
+
+    /* Inquiry */
+
+    .inquiry-section {
+      padding-bottom: 126px;
+    }
+
+    .inquiry-wrap {
+      display: grid;
+      grid-template-columns: 0.86fr 1.14fr;
+      gap: 26px;
+      padding: 28px;
+      border: 1px solid rgba(146, 167, 255, 0.17);
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(circle at 5% 0%, rgba(78, 108, 255, 0.14), transparent 37%),
+        linear-gradient(145deg, rgba(22, 28, 49, 0.76), rgba(11, 15, 26, 0.88));
+      box-shadow: var(--shadow);
+    }
+
+    .inquiry-info {
+      padding: 20px 13px;
+    }
+
+    .inquiry-info h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      letter-spacing: -0.06em;
+      line-height: 1.06;
+    }
+
+    .inquiry-info > p {
+      max-width: 420px;
+      margin: 19px 0 0;
+      color: var(--muted);
+      line-height: 1.68;
+    }
+
+    .inquiry-points {
+      display: grid;
+      gap: 16px;
+      margin: 43px 0 0;
+    }
+
+    .inquiry-point {
+      display: flex;
+      gap: 13px;
+      color: #cbd1e2;
+      font-size: 0.88rem;
+    }
+
+    .inquiry-point-check {
+      flex: 0 0 auto;
+      width: 21px;
+      height: 21px;
+      display: grid;
+      place-items: center;
+      margin-top: 1px;
+      border: 1px solid rgba(109, 228, 175, 0.25);
+      border-radius: 50%;
+      color: #a7f0ce;
+      font-size: 0.74rem;
+    }
+
+    .inquiry-point span:last-child {
+      color: var(--muted);
+    }
+
+    .form-shell {
+      padding: 26px;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 20px;
+      background: rgba(7, 10, 19, 0.5);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .form-field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .form-field.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-field label {
+      color: #d9deed;
+      font-size: 0.8rem;
+      font-weight: 650;
+    }
+
+    .optional-label {
+      color: var(--subtle);
+      font-weight: 500;
+    }
+
+    .form-control {
+      width: 100%;
+      min-height: 47px;
+      padding: 12px 13px;
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      border-radius: 10px;
+      outline: none;
+      background: rgba(255, 255, 255, 0.045);
+      color: var(--text);
+      font-size: 0.9rem;
+      transition:
+        border-color 0.18s ease,
+        background 0.18s ease,
+        box-shadow 0.18s ease;
+    }
+
+    .form-control::placeholder {
+      color: #69748c;
+    }
+
+    .form-control:hover {
+      border-color: rgba(157, 177, 255, 0.28);
+    }
+
+    .form-control:focus {
+      border-color: rgba(117, 153, 255, 0.85);
+      background: rgba(100, 127, 255, 0.055);
+      box-shadow: 0 0 0 3px rgba(107, 139, 255, 0.12);
+    }
+
+    textarea.form-control {
+      min-height: 144px;
+      resize: vertical;
+    }
+
+    .field-error {
+      min-height: 17px;
+      color: var(--danger);
+      font-size: 0.74rem;
+      line-height: 1.35;
+    }
+
+    .form-control[aria-invalid="true"] {
+      border-color: rgba(255, 121, 140, 0.75);
+    }
+
+    .form-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 8px;
+    }
+
+    .privacy-note {
+      max-width: 280px;
+      margin: 0;
+      color: var(--subtle);
+      font-size: 0.73rem;
+      line-height: 1.5;
+    }
+
+    .form-message {
+      display: none;
+      margin: 18px 0 0;
+      padding: 13px 14px;
+      border: 1px solid;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      line-height: 1.55;
+    }
+
+    .form-message.is-visible {
+      display: block;
+    }
+
+    .form-message.success {
+      border-color: rgba(105, 227, 171, 0.25);
+      background: rgba(74, 192, 133, 0.09);
+      color: #b7f3d4;
+    }
+
+    .form-message.error {
+      border-color: rgba(255, 133, 150, 0.25);
+      background: rgba(255, 99, 119, 0.08);
+      color: #ffc0c9;
+    }
+
+    .honeypot {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      overflow: hidden !important;
+      clip: rect(1px, 1px, 1px, 1px) !important;
+      white-space: nowrap !important;
+    }
+
+    .submit-spinner {
+      display: none;
+      width: 15px;
+      height: 15px;
+      border: 2px solid rgba(255, 255, 255, 0.45);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+
+    .is-loading .submit-spinner {
+      display: inline-block;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* FAQ */
+
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .faq-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 21px 0;
+      border: 0;
+      background: transparent;
+      color: var(--text);
+      text-align: left;
+      font-size: 0.96rem;
+      font-weight: 630;
+    }
+
+    .faq-question svg {
+      flex: 0 0 auto;
+      width: 18px;
+      height: 18px;
+      color: #96a4c5;
+      transition: transform 0.22s ease;
+    }
+
+    .faq-item.is-open .faq-question svg {
+      transform: rotate(45deg);
+      color: #a9bdff;
+    }
+
+    .faq-answer {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.25s ease;
+    }
+
+    .faq-item.is-open .faq-answer {
+      grid-template-rows: 1fr;
+    }
+
+    .faq-answer-inner {
+      overflow: hidden;
+    }
+
+    .faq-answer p {
+      margin: 0;
+      padding: 0 35px 21px 0;
+      color: var(--muted);
+      font-size: 0.89rem;
+      line-height: 1.7;
+    }
+
+    /* Product detail route */
+
+    .product-detail-view {
+      display: none;
+      min-height: 100vh;
+      padding: 110px 0 88px;
+    }
+
+    body.product-route .homepage {
+      display: none;
+    }
+
+    body.product-route .product-detail-view {
+      display: block;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #b7c7fa;
+      font-size: 0.86rem;
+      font-weight: 630;
+    }
+
+    .back-link:hover {
+      color: white;
+    }
+
+    .detail-hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 50px;
+      padding: 66px 0 88px;
+      align-items: center;
+    }
+
+    .detail-hero h1 {
+      max-width: 700px;
+      margin: 12px 0 0;
+      font-size: clamp(3rem, 6.5vw, 5.5rem);
+      letter-spacing: -0.075em;
+      line-height: 0.96;
+    }
+
+    .detail-hero p {
+      max-width: 650px;
+      margin: 23px 0 0;
+      color: var(--muted);
+      font-size: 1.07rem;
+      line-height: 1.7;
+    }
+
+    .detail-panel {
+      padding: 27px;
+      border: 1px solid rgba(148, 171, 255, 0.18);
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(circle at 100% 0%, rgba(100, 93, 255, 0.21), transparent 43%),
+        rgba(17, 23, 41, 0.8);
+      box-shadow: var(--shadow);
+    }
+
+    .detail-panel-label {
+      color: #8694bc;
+      font-size: 0.71rem;
+      font-weight: 760;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .detail-panel ul {
+      display: grid;
+      gap: 12px;
+      margin: 20px 0 27px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .detail-panel li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #c8d0e4;
+      font-size: 0.88rem;
+    }
+
+    .detail-panel li::before {
+      content: "✓";
+      width: 20px;
+      height: 20px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(105, 142, 255, 0.15);
+      color: #a8c4ff;
+      font-size: 0.73rem;
+    }
+
+    .detail-features {
+      padding: 64px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .detail-features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 38px;
+    }
+
+    .detail-feature {
+      min-height: 190px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .detail-feature h3 {
+      margin: 13px 0 7px;
+      font-size: 1rem;
+      letter-spacing: -0.025em;
+    }
+
+    .detail-feature p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+
+    .detail-disclaimer {
+      margin-top: 31px;
+      padding: 17px 19px;
+      border-left: 2px solid #7199ff;
+      border-radius: 0 10px 10px 0;
+      background: rgba(102, 135, 255, 0.08);
+      color: #bbc6df;
+      font-size: 0.88rem;
+      line-height: 1.65;
+    }
+
+    /* Footer */
+
+    .site-footer {
+      border-top: 1px solid var(--line);
+      background: rgba(5, 7, 14, 0.42);
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr 0.6fr 0.6fr;
+      gap: 36px;
+      padding: 65px 0 50px;
+    }
+
+    .footer-description {
+      max-width: 290px;
+      margin: 15px 0 0;
+      color: var(--subtle);
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+
+    .footer-title {
+      margin: 3px 0 16px;
+      color: #c5ccdf;
+      font-size: 0.74rem;
+      font-weight: 760;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 11px;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      font-size: 0.87rem;
+      transition: color 0.18s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 19px 0 25px;
+      border-top: 1px solid var(--line);
+      color: #69748d;
+      font-size: 0.76rem;
+    }
+
+    /* Privacy / terms lightweight views */
+
+    .legal-view {
+      display: none;
+      min-height: calc(100vh - 76px);
+      padding: 130px 0 100px;
+    }
+
+    body.legal-route .homepage,
+    body.legal-route .product-detail-view {
+      display: none;
+    }
+
+    body.legal-route .legal-view {
+      display: block;
+    }
+
+    .legal-content {
+      max-width: 800px;
+      padding: 36px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(16, 21, 36, 0.68);
+    }
+
+    .legal-content h1 {
+      margin: 0;
+      font-size: clamp(2.3rem, 5vw, 4rem);
+      letter-spacing: -0.065em;
+    }
+
+    .legal-content h2 {
+      margin: 34px 0 10px;
+      font-size: 1.15rem;
+    }
+
+    .legal-content p {
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* Reveal */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+
+    @media (max-width: 880px) {
+      .desktop-nav,
+      .nav-actions .button {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: grid;
+        place-items: center;
+      }
+
+      .mobile-menu {
+        position: fixed;
+        z-index: 90;
+        inset: 76px 0 auto;
+        display: block;
+        padding: 18px 20px 22px;
+        border-bottom: 1px solid var(--line);
+        background: rgba(9, 12, 23, 0.97);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        transform: translateY(-130%);
+        visibility: hidden;
+        transition:
+          transform 0.24s ease,
+          visibility 0.24s ease;
+      }
+
+      .mobile-menu.is-open {
+        transform: translateY(0);
+        visibility: visible;
+      }
+
+      .mobile-nav {
+        display: grid;
+        gap: 3px;
+      }
+
+      .mobile-nav a {
+        padding: 12px 7px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        color: #d0d6e5;
+      }
+
+      .mobile-menu .button {
+        width: 100%;
+        margin-top: 17px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 75px;
+      }
+
+      .hero-orbit {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+      }
+
+      .product-card.featured {
+        grid-column: span 1;
+      }
+
+      .included-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .process-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .process-step:nth-child(2) {
+        border-right: 0;
+      }
+
+      .process-step:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .process-arrow {
+        display: none;
+      }
+
+      .inquiry-wrap,
+      .faq-layout,
+      .detail-hero {
+        grid-template-columns: 1fr;
+      }
+
+      .inquiry-wrap {
+        gap: 15px;
+      }
+
+      .inquiry-info {
+        padding: 14px 10px;
+      }
+
+      .faq-layout {
+        gap: 35px;
+      }
+
+      .detail-hero {
+        gap: 33px;
+      }
+
+      .detail-features-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(calc(100% - 28px), var(--max));
+      }
+
+      .section {
+        padding: 82px 0;
+      }
+
+      .section-top {
+        display: block;
+        margin-bottom: 32px;
+      }
+
+      .section-top .section-copy {
+        margin-top: 15px;
+      }
+
+      .hero {
+        padding: 61px 0;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.7rem, 14vw, 4.1rem);
+      }
+
+      .hero-copy {
+        font-size: 0.99rem;
+      }
+
+      .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 100%;
+      }
+
+      .hero-actions .button {
+        width: 100%;
+      }
+
+      .hero-assurance {
+        justify-content: flex-start;
+        display: grid;
+        margin-left: 10px;
+      }
+
+      .orbit-card {
+        min-height: 125px;
+      }
+
+      .product-grid,
+      .included-grid,
+      .detail-features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-card,
+      .product-card.featured {
+        min-height: auto;
+        padding: 23px;
+      }
+
+      .product-card.featured {
+        background:
+          radial-gradient(circle at 100% 0%, rgba(103, 104, 255, 0.17), transparent 40%),
+          linear-gradient(133deg, rgba(30, 36, 68, 0.86), rgba(12, 17, 31, 0.94));
+      }
+
+      .card-meta {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 11px;
+        margin-bottom: 23px;
+      }
+
+      .product-name {
+        font-size: 2rem;
+      }
+
+      .comparison-shell {
+        padding: 11px;
+      }
+
+      .comparison {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .comparison-versus {
+        height: 33px;
+      }
+
+      .path-card {
+        padding: 25px 20px;
+      }
+
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .process-step,
+      .process-step:nth-child(2) {
+        min-height: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .process-step:last-child {
+        border-bottom: 0;
+      }
+
+      .process-step h3 {
+        margin-top: 29px;
+      }
+
+      .inquiry-wrap {
+        padding: 12px;
+        border-radius: 21px;
+      }
+
+      .form-shell {
+        padding: 19px 15px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-field.full {
+        grid-column: auto;
+      }
+
+      .form-bottom {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .form-bottom .button {
+        width: 100%;
+      }
+
+      .privacy-note {
+        max-width: none;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+        padding: 49px 0 36px;
+      }
+
+      .footer-top > :first-child {
+        grid-column: 1 / -1;
+      }
+
+      .footer-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .legal-content {
+        padding: 25px 20px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header" id="site-header">
+    <div class="container nav">
+      <a class="brand" href="#/" aria-label="Solowise India home">
+        <span class="brand-mark" aria-hidden="true"><span></span></span>
+        <span>Solowise India</span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="#products">Products</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="button button-primary button-small" href="#contact">Contact Us</a>
+
+        <button
+          class="menu-toggle"
+          id="menu-toggle"
+          type="button"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <nav class="mobile-nav" aria-label="Mobile navigation">
+        <a href="#products">Products</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="button button-primary" href="#contact">Contact Us <span class="arrow">→</span></a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- =======================================================
+      HOMEPAGE
+    ======================================================== -->
+    <div class="homepage">
+      <section class="hero">
+        <div class="grid-glow" aria-hidden="true"></div>
+
+        <div class="container hero-inner reveal">
+          <div class="hero-badge">
+            <span class="hero-badge-dot" aria-hidden="true"></span>
+            Software products available for acquisition
+          </div>
+
+          <h1>
+            Software products, built and ready for their
+            <span class="gradient-text">next owner.</span>
+          </h1>
+
+          <p class="hero-copy">
+            Acquire complete software products, SaaS applications, and digital assets
+            instead of starting from an empty repository. Built foundations for buyers
+            ready to rebrand, extend, and commercialize.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#products">
+              Explore Products <span class="arrow">→</span>
+            </a>
+            <a class="button button-secondary" href="#contact">
+              Discuss an Acquisition <span class="arrow">→</span>
+            </a>
+          </div>
+
+          <div class="hero-assurance" aria-label="What acquisition packages may include">
+            <span>Complete products</span>
+            <span>Source code where applicable</span>
+            <span>Existing infrastructure</span>
+            <span>Rebrandable foundations</span>
+          </div>
+
+          <div class="hero-orbit" aria-label="Solowise product studio overview">
+            <article class="orbit-card">
+              <div class="orbit-status">Available</div>
+              <div class="orbit-label">Featured acquisition</div>
+              <div class="orbit-title">MailForgePro</div>
+              <p class="orbit-note">Complete outreach workflow infrastructure.</p>
+              <div class="mini-ui" aria-hidden="true">
+                <div class="mini-ui-row"></div>
+                <div class="mini-ui-row"></div>
+                <div class="mini-ui-row"></div>
+              </div>
+            </article>
+
+            <article class="orbit-card">
+              <div class="orbit-label">Our model</div>
+              <div class="orbit-title">Build → Launch → Acquire</div>
+              <p class="orbit-note">
+                A focused catalogue of proprietary digital products — not a freelancer portfolio.
+              </p>
+            </article>
+
+            <article class="orbit-card">
+              <div class="orbit-label">For buyers who want</div>
+              <div class="orbit-title">A credible starting point</div>
+              <p class="orbit-note">
+                Review capabilities, discuss terms, and determine the right acquisition package.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section products" id="products">
+        <div class="grid-glow" aria-hidden="true"></div>
+
+        <div class="container">
+          <div class="section-top reveal">
+            <div>
+              <div class="eyebrow">Available products</div>
+              <h2 class="section-heading">Built software. Clear acquisition paths.</h2>
+            </div>
+            <p class="section-copy">
+              A growing catalogue of software products and digital assets developed as
+              complete, extensible foundations.
+            </p>
+          </div>
+
+          <div class="product-grid">
+            <article class="product-card featured reveal">
+              <div class="featured-content">
+                <div class="card-meta">
+                  <span class="product-category">Outreach Infrastructure</span>
+                  <span class="availability">Available for Acquisition</span>
+                </div>
+
+                <h3 class="product-name">MailForgePro</h3>
+
+                <p class="product-description">
+                  A complete outreach workflow platform for managing prospect data,
+                  personalized campaigns, multi-step follow-ups, scheduling, and
+                  campaign activity.
+                </p>
+
+                <div class="tag-list" aria-label="MailForgePro features">
+                  <span class="tag">Campaigns</span>
+                  <span class="tag">Dynamic Personalization</span>
+                  <span class="tag">Follow-ups</span>
+                  <span class="tag">CSV</span>
+                  <span class="tag">Custom Logic</span>
+                  <span class="tag">Scheduling</span>
+                </div>
+
+                <div class="card-actions">
+                  <a class="button button-primary" href="#/products/mailforgepro">
+                    View Project <span class="arrow">→</span>
+                  </a>
+                  <a class="button button-secondary" href="#contact" data-prefill-project="MailForgePro">
+                    Inquire <span class="arrow">→</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card coming-soon reveal">
+              <div class="card-meta">
+                <span class="product-category">Digital Products</span>
+              </div>
+              <h3 class="product-name">More products in development</h3>
+              <p class="product-description">
+                New proprietary SaaS tools, operational platforms, and digital assets
+                may be added to the catalogue as they become available for acquisition.
+              </p>
+              <span class="coming-status">Catalogue expanding intentionally</span>
+              <div class="card-actions">
+                <a class="button button-secondary" href="#contact">
+                  Discuss a Requirement <span class="arrow">→</span>
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <div class="container">
+          <div class="section-top reveal">
+            <div>
+              <div class="eyebrow">Why acquire</div>
+              <h2 class="section-heading">Why build from zero?</h2>
+            </div>
+            <p class="section-copy">
+              Acquisition does not remove the need for product work. It changes where
+              you begin: with an existing product foundation rather than a blank build.
+            </p>
+          </div>
+
+          <div class="comparison-shell reveal">
+            <div class="comparison">
+              <div class="path-card">
+                <div class="path-heading"><span></span>START FROM SCRATCH</div>
+                <div class="path-flow">
+                  <div class="path-step">Idea</div>
+                  <div class="path-step">Architecture</div>
+                  <div class="path-step">Database</div>
+                  <div class="path-step">UI</div>
+                  <div class="path-step">Core workflows</div>
+                  <div class="path-step">Testing</div>
+                  <div class="path-step">Deployment</div>
+                  <div class="path-step">Iteration</div>
+                </div>
+              </div>
+
+              <div class="comparison-versus" aria-hidden="true"><span>VS</span></div>
+
+              <div class="path-card acquire-path">
+                <div class="path-heading"><span></span>ACQUIRE</div>
+                <div class="path-flow">
+                  <div class="path-step">Existing product</div>
+                  <div class="path-step">Customize</div>
+                  <div class="path-step">Rebrand</div>
+                  <div class="path-step">Deploy</div>
+                  <div class="path-step">Commercialize</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-top reveal">
+            <div>
+              <div class="eyebrow">Acquisition packages</div>
+              <h2 class="section-heading">What an acquisition can include.</h2>
+            </div>
+            <p class="section-copy">
+              Each product has its own scope. Included assets, technical support, and
+              handover terms are confirmed during the acquisition discussion.
+            </p>
+          </div>
+
+          <div class="included-grid">
+            <article class="included-card reveal">
+              <div class="included-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M8.5 3.5 3.5 6.4v5.2l5 2.9 5-2.9V6.4l-5-2.9Z" />
+                  <path d="m3.5 6.4 5 2.9 5-2.9M8.5 9.3v5.2" />
+                  <path d="m15.5 12.5 5 2.9v5.2l-5 2.9-5-2.9v-5.2l5-2.9Z" />
+                  <path d="m10.5 15.4 5 2.9 5-2.9M15.5 18.3v5.2" />
+                </svg>
+              </div>
+              <h3>Source Code</h3>
+              <p>Complete application codebase where applicable to the specific product.</p>
+            </article>
+
+            <article class="included-card reveal">
+              <div class="included-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <rect x="3" y="4" width="18" height="16" rx="2" />
+                  <path d="M3 9h18M8 4v5" />
+                </svg>
+              </div>
+              <h3>Product Interface</h3>
+              <p>Existing polished UI, product patterns, and user workflows where included.</p>
+            </article>
+
+            <article class="included-card reveal">
+              <div class="included-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M4 4h11a3 3 0 0 1 3 3v13H7a3 3 0 0 0-3 3V4Z" />
+                  <path d="M18 20h2V7a3 3 0 0 0-3-3h-2M8 9h6M8 13h5" />
+                </svg>
+              </div>
+              <h3>Documentation</h3>
+              <p>Available technical, setup, and handover documentation for the product.</p>
+            </article>
+
+            <article class="included-card reveal">
+              <div class="included-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M12 3v12M7 8l5-5 5 5M5 15v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4" />
+                </svg>
+              </div>
+              <h3>Deployment Assistance</h3>
+              <p>Deployment assistance may be available where included in the agreed package.</p>
+            </article>
+
+            <article class="included-card reveal">
+              <div class="included-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="m12 3 2.4 4.86L20 8.67l-4 3.9.95 5.5L12 15.55l-4.95 2.52.95-5.5-4-3.9 5.6-.81L12 3Z" />
+                </svg>
+              </div>
+              <h3>Brand Assets</h3>
+              <p>Existing brand and interface assets where they are part of the acquisition.</p>
+            </article>
+
+            <article class="included-card reveal">
+              <div class="included-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2" />
+                  <circle cx="10" cy="7" r="4" />
+                  <path d="M17 11a4 4 0 0 0 0-8M21 21v-2a4 4 0 0 0-3-3.87" />
+                </svg>
+              </div>
+              <h3>Handover</h3>
+              <p>Transfer and onboarding support as agreed with the buyer and documented in terms.</p>
+            </article>
+          </div>
+
+          <p class="included-note">
+            Scope varies by product. Third-party service accounts, credentials, and subscriptions
+            are handled separately unless explicitly included in an acquisition agreement.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="how-it-works">
+        <div class="container">
+          <div class="section-top reveal">
+            <div>
+              <div class="eyebrow">Simple process</div>
+              <h2 class="section-heading">How acquisition works.</h2>
+            </div>
+            <p class="section-copy">
+              A direct, discussion-led process designed for serious buyers. Transactions
+              are not automatically completed through this website.
+            </p>
+          </div>
+
+          <div class="process-grid reveal">
+            <article class="process-step">
+              <div class="process-number">01</div>
+              <h3>Explore</h3>
+              <p>Review available products and their capabilities.</p>
+              <span class="process-arrow" aria-hidden="true">→</span>
+            </article>
+
+            <article class="process-step">
+              <div class="process-number">02</div>
+              <h3>Inquire</h3>
+              <p>Tell us which product interests you and what you intend to do with it.</p>
+              <span class="process-arrow" aria-hidden="true">→</span>
+            </article>
+
+            <article class="process-step">
+              <div class="process-number">03</div>
+              <h3>Discuss</h3>
+              <p>Review technical details, acquisition terms, and the agreed package.</p>
+              <span class="process-arrow" aria-hidden="true">→</span>
+            </article>
+
+            <article class="process-step">
+              <div class="process-number">04</div>
+              <h3>Acquire</h3>
+              <p>Complete the transaction and receive the agreed project assets and handover.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section inquiry-section" id="contact">
+        <div class="container">
+          <div class="inquiry-wrap reveal">
+            <div class="inquiry-info">
+              <div class="eyebrow">Start a conversation</div>
+              <h2>Acquisition inquiry or custom project requirement.</h2>
+              <p>
+                Interested in acquiring an existing product, exploring a tailored package,
+                or discussing a custom software requirement? Send the context and we will respond.
+              </p>
+
+              <div class="inquiry-points">
+                <div class="inquiry-point">
+                  <span class="inquiry-point-check" aria-hidden="true">✓</span>
+                  <span>Ask about what is included with a specific acquisition.</span>
+                </div>
+                <div class="inquiry-point">
+                  <span class="inquiry-point-check" aria-hidden="true">✓</span>
+                  <span>Discuss rebranding, deployment, technical scope, or handover.</span>
+                </div>
+                <div class="inquiry-point">
+                  <span class="inquiry-point-check" aria-hidden="true">✓</span>
+                  <span>Share a custom product requirement for consideration.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-shell">
+              <form id="acquisition-form" novalidate>
+                <div class="honeypot" aria-hidden="true">
+                  <label for="website">Website</label>
+                  <input
+                    id="website"
+                    name="website"
+                    type="text"
+                    tabindex="-1"
+                    autocomplete="off"
+                  />
+                </div>
+
+                <div class="form-grid">
+                  <div class="form-field full">
+                    <label for="project_name">Project / Product Name</label>
+                    <input
+                      class="form-control"
+                      id="project_name"
+                      name="project_name"
+                      type="text"
+                      maxlength="120"
+                      placeholder="MailForgePro"
+                      required
+                      aria-describedby="project_name_error"
+                    />
+                    <div class="field-error" id="project_name_error" aria-live="polite"></div>
+                  </div>
+
+                  <div class="form-field full">
+                    <label for="email">Email</label>
+                    <input
+                      class="form-control"
+                      id="email"
+                      name="email"
+                      type="email"
+                      maxlength="254"
+                      placeholder="you@company.com"
+                      required
+                      autocomplete="email"
+                      aria-describedby="email_error"
+                    />
+                    <div class="field-error" id="email_error" aria-live="polite"></div>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="name">Name <span class="optional-label">(optional)</span></label>
+                    <input
+                      class="form-control"
+                      id="name"
+                      name="name"
+                      type="text"
+                      maxlength="100"
+                      placeholder="Your name"
+                      autocomplete="name"
+                    />
+                    <div class="field-error" id="name_error" aria-live="polite"></div>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="company">Company <span class="optional-label">(optional)</span></label>
+                    <input
+                      class="form-control"
+                      id="company"
+                      name="company"
+                      type="text"
+                      maxlength="120"
+                      placeholder="Company name"
+                      autocomplete="organization"
+                    />
+                    <div class="field-error" id="company_error" aria-live="polite"></div>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="budget">Budget <span class="optional-label">(optional)</span></label>
+                    <input
+                      class="form-control"
+                      id="budget"
+                      name="budget"
+                      type="text"
+                      maxlength="80"
+                      placeholder="e.g. $5,000–$10,000"
+                    />
+                    <div class="field-error" id="budget_error" aria-live="polite"></div>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="phone">Phone / WhatsApp <span class="optional-label">(optional)</span></label>
+                    <input
+                      class="form-control"
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      maxlength="50"
+                      placeholder="+91 ..."
+                      autocomplete="tel"
+                    />
+                    <div class="field-error" id="phone_error" aria-live="polite"></div>
+                  </div>
+
+                  <div class="form-field full">
+                    <label for="requirement">Requirement</label>
+                    <textarea
+                      class="form-control"
+                      id="requirement"
+                      name="requirement"
+                      maxlength="4000"
+                      placeholder="I'm interested in acquiring this product and would like to know what is included, deployment requirements and whether the product can be rebranded."
+                      required
+                      aria-describedby="requirement_error"
+                    ></textarea>
+                    <div class="field-error" id="requirement_error" aria-live="polite"></div>
+                  </div>
+                </div>
+
+                <div class="form-bottom">
+                  <p class="privacy-note">
+                    We'll only use these details to respond to your acquisition inquiry.
+                  </p>
+
+                  <button class="button button-primary" id="submit-button" type="submit">
+                    <span class="submit-label">Submit Acquisition Request</span>
+                    <span class="submit-spinner" aria-hidden="true"></span>
+                  </button>
+                </div>
+
+                <div
+                  class="form-message"
+                  id="form-message"
+                  role="status"
+                  aria-live="polite"
+                ></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container faq-layout">
+          <div class="reveal">
+            <div class="eyebrow">Common questions</div>
+            <h2 class="section-heading">FAQ</h2>
+            <p class="section-copy">
+              Acquisition discussions are product-specific. These answers explain the general approach.
+            </p>
+          </div>
+
+          <div class="faq-list reveal">
+            <article class="faq-item is-open">
+              <button class="faq-question" type="button" aria-expanded="true">
+                <span>What exactly is being sold?</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 12h14M12 5v14" />
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  <p>
+                    The scope depends on the individual project. Each product discussion
+                    covers the relevant software assets, source code where applicable,
+                    product interface, documentation, and agreed handover terms.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false">
+                <span>Can products be rebranded?</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 12h14M12 5v14" />
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  <p>
+                    Many products are designed as extensible foundations and can be suitable
+                    for rebranding. The permitted branding and product rights are confirmed
+                    during the acquisition discussion and reflected in the final agreement.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false">
+                <span>Do I receive the source code?</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 12h14M12 5v14" />
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  <p>
+                    Source code can be included where applicable, but it is always confirmed
+                    for the individual acquisition package. The relevant repository,
+                    configuration, and handover scope are discussed before a transaction.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false">
+                <span>Can I inspect a product before purchasing?</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 12h14M12 5v14" />
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  <p>
+                    Appropriate product information can be shared during a serious inquiry.
+                    The level of access, demonstrations, and technical review depend on the
+                    product and stage of the acquisition conversation.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false">
+                <span>Can you help with deployment?</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 12h14M12 5v14" />
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  <p>
+                    Deployment assistance may be available as part of a specific acquisition
+                    package. Availability, environments, and the buyer's technical requirements
+                    are reviewed before confirming the scope.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false">
+                <span>Are the products sold exclusively?</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 12h14M12 5v14" />
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  <p>
+                    Exclusivity is a term to be explicitly agreed for each acquisition. Do not
+                    assume a product is exclusively transferred until the acquisition terms say so.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false">
+                <span>Can I request a custom acquisition package?</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 12h14M12 5v14" />
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  <p>
+                    Yes. Use the inquiry form to explain your intended use, requirements, and
+                    any requested scope. We can then determine whether a tailored acquisition
+                    or custom project arrangement is practical.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false">
+                <span>Are third-party services included?</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 12h14M12 5v14" />
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  <p>
+                    Third-party services, subscriptions, credentials, and provider accounts are
+                    generally separate unless explicitly stated in the agreed package. Buyers may
+                    need to configure their own accounts and credentials after handover.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- =======================================================
+      PRODUCT ROUTE: #/products/mailforgepro
+    ======================================================== -->
+    <section class="product-detail-view" aria-labelledby="mailforgepro-title">
+      <div class="container">
+        <a class="back-link" href="#products">← Back to products</a>
+
+        <div class="detail-hero">
+          <div>
+            <div class="eyebrow">Outreach Infrastructure</div>
+            <h1 id="mailforgepro-title">MailForgePro</h1>
+            <p>
+              A complete outreach workflow platform built to bring prospect data,
+              personalized campaigns, multi-step follow-ups, scheduling, and operational
+              activity into one extensible application.
+            </p>
+
+            <div class="tag-list" aria-label="MailForgePro capabilities">
+              <span class="tag">Spreadsheet Contacts</span>
+              <span class="tag">CSV Import / Export</span>
+              <span class="tag">Dynamic Variables</span>
+              <span class="tag">Conditional Logic</span>
+              <span class="tag">Follow-up Workflows</span>
+              <span class="tag">Activity Logs</span>
+            </div>
+
+            <div class="hero-actions" style="justify-content:flex-start;">
+              <a class="button button-primary" href="#contact" data-prefill-project="MailForgePro">
+                Discuss MailForgePro <span class="arrow">→</span>
+              </a>
+              <a class="button button-secondary" href="#products">View Other Products</a>
+            </div>
+          </div>
+
+          <aside class="detail-panel">
+            <div class="detail-panel-label">Acquisition discussion</div>
+            <div class="availability" style="margin-top:14px;">Available for Acquisition</div>
+            <ul>
+              <li>Existing application architecture</li>
+              <li>Established UI and product workflows</li>
+              <li>Rebrand and extension potential</li>
+              <li>Buyer-configured email provider integration</li>
+              <li>Scope agreed before acquisition</li>
+            </ul>
+            <a class="button button-secondary" style="width:100%;" href="#contact" data-prefill-project="MailForgePro">
+              Request Details <span class="arrow">→</span>
+            </a>
+          </aside>
+        </div>
+
+        <div class="detail-features">
+          <div class="eyebrow">Product foundation</div>
+          <h2 class="section-heading">Structured outbound workflows, already assembled.</h2>
+
+          <div class="detail-features-grid">
+            <article class="detail-feature">
+              <div class="included-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M4 5h16M4 12h16M4 19h16M8 3v4M15 10v4M11 17v4" />
+                </svg>
+              </div>
+              <h3>Prospect Operations</h3>
+              <p>
+                Spreadsheet-style contact management with custom fields, campaign state,
+                and CSV import/export workflows.
+              </p>
+            </article>
+
+            <article class="detail-feature">
+              <div class="included-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M4 5h16v14H4zM8 9h8M8 13h5" />
+                  <path d="M16 5v14" />
+                </svg>
+              </div>
+              <h3>Personalization Layer</h3>
+              <p>
+                Reusable templates, dynamic variables, and conditional replacement logic
+                for tailored outreach content.
+              </p>
+            </article>
+
+            <article class="detail-feature">
+              <div class="included-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M12 8v5l3 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+              </div>
+              <h3>Campaign Sequencing</h3>
+              <p>
+                Main campaign and multi-step follow-up workflows, including scheduling
+                and reply-aware follow-up handling.
+              </p>
+            </article>
+
+            <article class="detail-feature">
+              <div class="included-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M4 19V5M4 19h16M8 15v-3M12 15V8M16 15v-5" />
+                </svg>
+              </div>
+              <h3>Operational Visibility</h3>
+              <p>
+                Dashboard, sent-email history, activity logs, searchable records, and
+                campaign execution context.
+              </p>
+            </article>
+
+            <article class="detail-feature">
+              <div class="included-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M3 12h18M12 3v18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4" />
+                </svg>
+              </div>
+              <h3>Product Readiness</h3>
+              <p>
+                Existing dashboard patterns, forms, tables, status badges, responsive
+                workflows, and light/dark interface support.
+              </p>
+            </article>
+
+            <article class="detail-feature">
+              <div class="included-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M12 2v6M12 16v6M4.93 4.93l4.24 4.24M14.83 14.83l4.24 4.24M2 12h6M16 12h6M4.93 19.07l4.24-4.24M14.83 9.17l4.24-4.24" />
+                </svg>
+              </div>
+              <h3>Extension Potential</h3>
+              <p>
+                A buyer can explore rebranding, integrations, multiple workspaces,
+                permissions, analytics, or verticalized product direction.
+              </p>
+            </article>
+          </div>
+
+          <div class="detail-disclaimer">
+            MailForgePro is presented as a completed software product and workflow foundation,
+            not as a claim of existing revenue, users, or guaranteed commercial outcomes.
+            Third-party provider credentials are not assumed to transfer; the buyer configures
+            the provider setup required for their own deployment.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+      LEGAL ROUTES
+    ======================================================== -->
+    <section class="legal-view" id="privacy-view">
+      <div class="container">
+        <div class="legal-content">
+          <a class="back-link" href="#/">← Back to home</a>
+          <h1 style="margin-top:26px;">Privacy</h1>
+          <p>
+            Solowise India uses inquiry details submitted through this website solely to
+            respond to product acquisition, product information, or custom project inquiries.
+          </p>
+          <h2>Information submitted</h2>
+          <p>
+            The inquiry form may collect a project name, email address, requirement details,
+            and optional contact or company information that you choose to provide.
+          </p>
+          <h2>How information is used</h2>
+          <p>
+            We use submitted information to review and respond to your inquiry. We do not
+            use the form to make automatic transactions or to create an account on your behalf.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="legal-view" id="terms-view">
+      <div class="container">
+        <div class="legal-content">
+          <a class="back-link" href="#/">← Back to home</a>
+          <h1 style="margin-top:26px;">Terms</h1>
+          <p>
+            Product availability, acquisition scope, exclusivity, technical assets, third-party
+            services, pricing, and handover obligations are subject to a separate agreement
+            between Solowise India and the buyer.
+          </p>
+          <h2>Website information</h2>
+          <p>
+            Website content is for general product discovery and inquiry purposes. Nothing on
+            this website constitutes a binding offer, a guarantee of availability, or a promise
+            of commercial results.
+          </p>
+          <h2>Acquisition discussions</h2>
+          <p>
+            Any inspection, demonstration, asset transfer, deployment assistance, or technical
+            support is provided only under terms agreed for the relevant product acquisition.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <a class="brand" href="#/" aria-label="Solowise India home">
+            <span class="brand-mark" aria-hidden="true"><span></span></span>
+            <span>Solowise India</span>
+          </a>
+          <p class="footer-description">Software products built for acquisition.</p>
+        </div>
+
+        <div>
+          <div class="footer-title">Explore</div>
+          <div class="footer-links">
+            <a href="#products">Products</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#about">About</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-title">Contact & legal</div>
+          <div class="footer-links">
+            <a href="#contact">Contact</a>
+            <a href="#/privacy">Privacy</a>
+            <a href="#/terms">Terms</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Solowise India. All rights reserved.</span>
+        <span>Build → Launch → Acquire</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      "use strict";
+
+      /*
+       * SUPABASE CONFIGURATION
+       * Public anon credentials are safe to expose in browser code.
+       * Do not put a service-role key in this HTML file.
+       *
+       * The provided database schema contains:
+       * public.leads(id, created_at, name, email, metadata)
+       *
+       * Required inquiry data beyond name/email is stored in `metadata`.
+       */
+      const SUPABASE_URL = "https://sdsfgqhebohsjcpqxaei.supabase.co";
+      const SUPABASE_ANON_KEY =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNkc2Zn" +
+        "cWhlYm9oc2pjcHF4YWVpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg3NjUwMTUsImV4cCI6MjEwNDM0" +
+        "MTAxNX0.Xh4vJlR9fzBSdUhwptPc6tcPCeKBiAzkXkzh-Z675Nk";
+
+      const header = document.getElementById("site-header");
+      const menuToggle = document.getElementById("menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      const cleanText = (value, maxLength) => {
+        return String(value || "")
+          .replace(/[\u0000-\u001F\u007F]/g, " ")
+          .replace(/\s+/g, " ")
+          .trim()
+          .slice(0, maxLength);
+      };
+
+      const cleanTextarea = (value, maxLength) => {
+        return String(value || "")
+          .replace(/\u0000/g, "")
+          .replace(/\r\n/g, "\n")
+          .replace(/\r/g, "\n")
+          .trim()
+          .slice(0, maxLength);
+      };
+
+      const isValidEmail = (email) => {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(email);
+      };
+
+      const closeMobileMenu = () => {
+        mobileMenu.classList.remove("is-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+        document.body.classList.remove("menu-open");
+      };
+
+      menuToggle.addEventListener("click", () => {
+        const isOpen = mobileMenu.classList.toggle("is-open");
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+        menuToggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+        document.body.classList.toggle("menu-open", isOpen);
+      });
+
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeMobileMenu);
+      });
+
+      window.addEventListener(
+        "scroll",
+        () => header.classList.toggle("is-scrolled", window.scrollY > 10),
+        { passive: true }
+      );
+
+      // FAQ accordion
+      document.querySelectorAll(".faq-question").forEach((button) => {
+        button.addEventListener("click", () => {
+          const item = button.closest(".faq-item");
+          const isOpen = item.classList.contains("is-open");
+
+          document.querySelectorAll(".faq-item").forEach((faqItem) => {
+            faqItem.classList.remove("is-open");
+            faqItem.querySelector(".faq-question").setAttribute("aria-expanded", "false");
+          });
+
+          if (!isOpen) {
+            item.classList.add("is-open");
+            button.setAttribute("aria-expanded", "true");
+          }
+        });
+      });
+
+      // Subtle section reveal
+      const motionReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (motionReduced || !("IntersectionObserver" in window)) {
+        document.querySelectorAll(".reveal").forEach((element) => element.classList.add("is-visible"));
+      } else {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12 }
+        );
+
+        document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+      }
+
+      // Static-host-friendly client-side views:
+      // #/products/mailforgepro
+      // #/privacy
+      // #/terms
+      const setRoute = () => {
+        const hash = window.location.hash || "#/";
+        const body = document.body;
+
+        body.classList.remove("product-route", "legal-route");
+
+        document.getElementById("privacy-view").style.display = "none";
+        document.getElementById("terms-view").style.display = "none";
+
+        if (hash === "#/products/mailforgepro") {
+          body.classList.add("product-route");
+          window.scrollTo({ top: 0, behavior: motionReduced ? "auto" : "smooth" });
+          return;
+        }
+
+        if (hash === "#/privacy") {
+          body.classList.add("legal-route");
+          document.getElementById("privacy-view").style.display = "block";
+          window.scrollTo({ top: 0, behavior: motionReduced ? "auto" : "smooth" });
+          return;
+        }
+
+        if (hash === "#/terms") {
+          body.classList.add("legal-route");
+          document.getElementById("terms-view").style.display = "block";
+          window.scrollTo({ top: 0, behavior: motionReduced ? "auto" : "smooth" });
+          return;
+        }
+
+        if (hash.startsWith("#/")) {
+          history.replaceState(null, "", "#/");
+        }
+      };
+
+      window.addEventListener("hashchange", setRoute);
+      setRoute();
+
+      // Pre-fill MailForgePro from product CTAs
+      document.querySelectorAll("[data-prefill-project]").forEach((link) => {
+        link.addEventListener("click", () => {
+          const productInput = document.getElementById("project_name");
+          productInput.value = link.dataset.prefillProject || "";
+          setTimeout(() => productInput.focus(), 450);
+        });
+      });
+
+      // Inquiry form
+      const form = document.getElementById("acquisition-form");
+      const submitButton = document.getElementById("submit-button");
+      const formMessage = document.getElementById("form-message");
+
+      const showFormMessage = (type, html) => {
+        formMessage.className = `form-message is-visible ${type}`;
+        formMessage.innerHTML = html;
+      };
+
+      const clearFormMessage = () => {
+        formMessage.className = "form-message";
+        formMessage.textContent = "";
+      };
+
+      const setFieldError = (fieldName, message) => {
+        const input = form.elements[fieldName];
+        const error = document.getElementById(`${fieldName}_error`);
+
+        if (!input || !error) return;
+
+        error.textContent = message || "";
+        input.setAttribute("aria-invalid", message ? "true" : "false");
+      };
+
+      const clearErrors = () => {
+        ["project_name", "email", "name", "company", "budget", "phone", "requirement"].forEach((field) => {
+          setFieldError(field, "");
+        });
+      };
+
+      const setLoading = (loading) => {
+        submitButton.disabled = loading;
+        submitButton.classList.toggle("is-loading", loading);
+        submitButton.querySelector(".submit-label").textContent = loading
+          ? "Submitting Request..."
+          : "Submit Acquisition Request";
+      };
+
+      form.addEventListener("input", () => {
+        clearFormMessage();
+      });
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        clearErrors();
+        clearFormMessage();
+
+        if (submitButton.disabled) return;
+
+        const startedAt = Number(form.dataset.loadedAt || Date.now());
+        const elapsed = Date.now() - startedAt;
+
+        const honeypot = form.elements.website.value;
+        const projectName = cleanText(form.elements.project_name.value, 120);
+        const email = cleanText(form.elements.email.value, 254).toLowerCase();
+        const name = cleanText(form.elements.name.value, 100);
+        const company = cleanText(form.elements.company.value, 120);
+        const budget = cleanText(form.elements.budget.value, 80);
+        const phone = cleanText(form.elements.phone.value, 50);
+        const requirement = cleanTextarea(form.elements.requirement.value, 4000);
+
+        let hasError = false;
+
+        if (!projectName || projectName.length < 2) {
+          setFieldError("project_name", "Please enter a project or product name.");
+          hasError = true;
+        }
+
+        if (!email || !isValidEmail(email)) {
+          setFieldError("email", "Please enter a valid email address.");
+          hasError = true;
+        }
+
+        if (!requirement || requirement.length < 15) {
+          setFieldError("requirement", "Please add at least a short description of your requirement.");
+          hasError = true;
+        }
+
+        if (hasError) {
+          showFormMessage("error", "Please review the highlighted fields and try again.");
+          return;
+        }
+
+        // Honeypot bots are intentionally treated as a completed form submission.
+        if (honeypot || elapsed < 1200) {
+          showFormMessage(
+            "success",
+            "<strong>Request received.</strong><br>Thanks — your acquisition inquiry has been received. We'll review the details and get back to you."
+          );
+          form.reset();
+          return;
+        }
+
+        const fingerprint = `${projectName}|${email}|${requirement}`.toLowerCase();
+        const lastFingerprint = sessionStorage.getItem("solowise_last_inquiry");
+        const lastSubmittedAt = Number(sessionStorage.getItem("solowise_last_inquiry_at") || "0");
+
+        if (lastFingerprint === fingerprint && Date.now() - lastSubmittedAt < 10 * 60 * 1000) {
+          showFormMessage(
+            "error",
+            "This inquiry appears to have already been submitted recently. Please wait for a response or change the inquiry details."
+          );
+          return;
+        }
+
+        setLoading(true);
+
+        const payload = {
+          name: name || null,
+          email,
+          metadata: {
+            project_name: projectName,
+            requirement,
+            company: company || null,
+            budget: budget || null,
+            phone: phone || null,
+            status: "new",
+            source: "website",
+            page_url: window.location.href,
+            submitted_at: new Date().toISOString()
+          }
+        };
+
+        try {
+          const response = await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
+            method: "POST",
+            headers: {
+              apikey: SUPABASE_ANON_KEY,
+              Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+              "Content-Type": "application/json",
+              Prefer: "return=minimal"
+            },
+            body: JSON.stringify(payload)
+          });
+
+          if (!response.ok) {
+            let details = "";
+            try {
+              const data = await response.json();
+              details = data.message || data.hint || "";
+            } catch (_) {
+              // No additional parsing needed.
+            }
+
+            if (response.status === 401 || response.status === 403) {
+              throw new Error(
+                "The inquiry endpoint is not currently permitted to accept submissions. Please contact us again shortly."
+              );
+            }
+
+            throw new Error(details || "The request could not be submitted.");
+          }
+
+          sessionStorage.setItem("solowise_last_inquiry", fingerprint);
+          sessionStorage.setItem("solowise_last_inquiry_at", String(Date.now()));
+
+          form.reset();
+          form.dataset.loadedAt = String(Date.now());
+
+          showFormMessage(
+            "success",
+            "<strong>Request received.</strong><br>Thanks — your acquisition inquiry has been received. We'll review the details and get back to you."
+          );
+        } catch (error) {
+          showFormMessage(
+            "error",
+            "<strong>Something went wrong.</strong><br>Please try again. If the issue continues, contact us again later."
+          );
+          console.error("Inquiry submission error:", error);
+        } finally {
+          setLoading(false);
+        }
+      });
+
+      form.dataset.loadedAt = String(Date.now());
+    })();
+  </script>
+</body>
+</html>
